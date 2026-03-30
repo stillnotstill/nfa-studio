@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Peters — Creative Director, Producer, Strategist</title>
+<meta name="description" content="Creative director, producer, and content strategist. Strategy-led creative production from vision through delivery.">
+<meta property="og:title" content="Joshua Peters — Creative Director">
+<meta property="og:description" content="Creative director, producer, and content strategist. Strategy-led creative production from vision through delivery.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joshua Peters — Creative Director">
+<meta name="twitter:description" content="Strategy-led creative production. Vision through delivery.">
+<meta name="twitter:image" content="images/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0c0c0e;
+  --bg-warm: #100f0d;
+  --bg-elevated: #141413;
+  --bg-card: #18181a;
+  --text: #e5e0d8;
+  --text-muted: #807b73;
+  --accent: #c8ff00;
+  --accent-soft: rgba(200, 255, 0, 0.08);
+  --border: #252420;
+  --border-light: #2a2924;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-warm);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* TEXTURED BACKGROUND SYSTEM */
+
+/* Canvas layer for animated particles */
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Grain overlay */
+.page-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* Ambient light orbs that drift */
+.ambient-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(120px);
+  opacity: 0;
+  animation: orbDrift 25s ease-in-out infinite;
+}
+
+.ambient-orb.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200, 255, 0, 0.025) 0%, transparent 70%);
+  top: -10%; left: -5%;
+  animation-delay: 0s;
+  animation-duration: 30s;
+}
+
+.ambient-orb.orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(160, 120, 50, 0.02) 0%, transparent 70%);
+  bottom: 10%; right: -8%;
+  animation-delay: -10s;
+  animation-duration: 35s;
+}
+
+.ambient-orb.orb-3 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(200, 255, 0, 0.015) 0%, transparent 70%);
+  top: 40%; left: 50%;
+  animation-delay: -18s;
+  animation-duration: 28s;
+}
+
+@keyframes orbDrift {
+  0% { opacity: 0; transform: translate(0, 0) scale(1); }
+  15% { opacity: 1; }
+  50% { opacity: 0.7; transform: translate(40px, -30px) scale(1.15); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Subtle vignette */
+.page-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, transparent 30%, rgba(8, 7, 6, 0.5) 100%);
+  z-index: 1;
+}
+
+#app { position: relative; z-index: 1; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-warm); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* ══════════════════════════════════════
+   NAV
+   ══════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  background: rgba(16, 15, 13, 0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: transform 0.4s ease;
+}
+
+.nav-logo {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+}
+
+.logo-dot {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after { width: 100%; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 200;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-picker-wrap {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.color-picker-wrap input[type="color"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.picker-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ff0000,
+    #ff8800,
+    #ffff00,
+    #88ff00,
+    #00ff00,
+    #00ff88,
+    #00ffff,
+    #0088ff,
+    #0000ff,
+    #8800ff,
+    #ff00ff,
+    #ff0088,
+    #ff0000
+  );
+  border: none;
+  transition: all 0.3s ease;
+  display: block;
+  position: relative;
+}
+
+.picker-swatch::after {
+  display: none;
+}
+
+.picker-swatch:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+
+.color-picker-wrap input[type="color"]:focus + .picker-swatch {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.hamburger span {
+  width: 24px; height: 1.5px;
+  background: var(--text);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* ══════════════════════════════════════
+   PAGE SYSTEM
+   ══════════════════════════════════════ */
+.page {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   SHARED
+   ══════════════════════════════════════ */
+section { padding: 6rem 3rem; }
+
+.section-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.card-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.03);
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ══════════════════════════════════════
+   HOME PAGE: HERO
+   ══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 3rem 4rem;
+  position: relative;
+}
+
+.hero-brandname {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.15s forwards;
+}
+
+.joshua-word {
+  letter-spacing: 0.03em;
+}
+
+.peters-word {
+  letter-spacing: normal;
+  padding-left: 0.22em;
+  display: inline-block;
+}
+
+.hero-dot {
+  display: inline-block;
+  width: 0.09em;
+  height: 0.09em;
+  background: var(--accent);
+  border-radius: 50%;
+  vertical-align: 0.04em;
+  margin-left: 0.06em;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+.hero-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(5rem, 14vw, 13rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+  color: var(--text);
+}
+
+.hero-tagline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 8.5vw, 7.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.45s forwards;
+}
+
+.tagline-highlight {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.02em 0.12em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hero-tagline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  max-width: 500px;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem; left: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+
+.scroll-line {
+  width: 36px; height: 1px;
+  background: var(--text-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--accent);
+  animation: scrollSlide 2s ease-in-out infinite;
+}
+
+@keyframes scrollSlide {
+  0% { left: -100%; }
+  50% { left: 0; }
+  100% { left: 100%; }
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.15rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee-track span {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0 1.8rem;
+  flex-shrink: 0;
+}
+
+.marquee-track span::before {
+  content: '◆';
+  margin-right: 1.8rem;
+  color: var(--accent);
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════
+   ANKORD MEDIA BENTO
+   ══════════════════════════════════════ */
+.featured {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 400px;
+  background: radial-gradient(ellipse 60% 100% at 25% 0%, rgba(200, 255, 0, 0.01) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  position: relative;
+}
+
+.featured-description {
+  max-width: 480px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.ankord-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.15rem;
+  position: relative;
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(200, 255, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Hero card */
+.bento-hero { grid-column: 1 / -1; }
+
+.bento-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 360px;
+}
+
+.bento-hero-visual {
+  background: linear-gradient(145deg, #0d1117 0%, #151b24 40%, #1a2332 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-hero-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 40% 50%, rgba(200, 255, 0, 0.03) 0%, transparent 60%);
+}
+
+.visual-stack {
+  position: relative; z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.play-icon {
+  width: 56px; height: 56px;
+  border: 2px solid rgba(200, 255, 0, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.bento-hero:hover .play-icon {
+  border-color: rgba(200, 255, 0, 0.4);
+  background: rgba(200, 255, 0, 0.05);
+}
+
+.play-icon svg {
+  width: 18px; height: 18px;
+  fill: var(--accent);
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+.visual-bar {
+  height: 2px; border-radius: 1px;
+  background: rgba(200, 255, 0, 0.12);
+}
+.visual-bar:nth-child(2) { width: 160px; }
+.visual-bar:nth-child(3) { width: 120px; opacity: 0.6; }
+.visual-bar:nth-child(4) { width: 80px; opacity: 0.35; }
+
+.bento-hero-content {
+  padding: 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bento-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.bento-hero-content h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.65rem;
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.bento-hero-content p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.stat-row {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.stat-number {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+/* Medium cards */
+.bento-md { grid-column: span 4; }
+
+.bento-md-visual {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bento-md-visual .mockup-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.08);
+  position: relative; z-index: 1;
+}
+
+.bento-md-body { padding: 1.15rem 1.35rem 1.35rem; }
+
+.bento-md-body h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.bento-md-body .card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Stat strip */
+.stat-strip {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+}
+
+.strip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.strip-card:hover {
+  border-color: rgba(200, 255, 0, 0.12);
+}
+
+.strip-icon {
+  font-size: 0.9rem;
+  margin-bottom: 0.85rem;
+  display: block;
+  opacity: 0.5;
+}
+
+.strip-number {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.strip-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ══════════════════════════════════════
+   PROJECTS
+   ══════════════════════════════════════ */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.35rem;
+  margin-top: 3rem;
+}
+
+.work-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.work-card:hover {
+  border-color: rgba(200, 255, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.work-visual {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-visual .mockup-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.08);
+}
+
+.wv-1 { background: linear-gradient(145deg, #170a2e 0%, #281860 50%, #4a24a0 100%); }
+.wv-2 { background: linear-gradient(145deg, #0a170a 0%, #163016 50%, #245024 100%); }
+.wv-3 { background: linear-gradient(145deg, #2a180a 0%, #45280c 50%, #7a4010 100%); }
+.wv-4 { background: linear-gradient(145deg, #1a0a1a 0%, #331633 50%, #4d224d 100%); }
+
+.work-body { padding: 1.15rem 1.35rem 1.35rem; }
+
+.work-body h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.work-body p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ══════════════════════════════════════
+   PHOTOGRAPHY
+   ══════════════════════════════════════ */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.photo-cell {
+  background: var(--bg-card);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.photo-cell:hover { opacity: 0.85; }
+
+.photo-cell::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.photo-cell .ph-label {
+  position: absolute;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+
+.photo-cell.wide { grid-column: span 2; }
+.photo-cell.wide::before { padding-top: 50%; }
+
+.photo-cell.tall { grid-row: span 2; }
+.photo-cell.tall::before { padding-top: 200%; }
+
+.pc-1 { background: linear-gradient(135deg, #1a1a22, #22222e); }
+.pc-2 { background: linear-gradient(135deg, #1e1a15, #2a2218); }
+.pc-3 { background: linear-gradient(135deg, #151a1e, #1a2228); }
+.pc-4 { background: linear-gradient(135deg, #1a1518, #261e22); }
+.pc-5 { background: linear-gradient(135deg, #14180f, #1e2416); }
+.pc-6 { background: linear-gradient(135deg, #1a1822, #24202e); }
+.pc-7 { background: linear-gradient(135deg, #181410, #241e16); }
+.pc-8 { background: linear-gradient(135deg, #10141a, #1a2028); }
+.pc-9 { background: linear-gradient(135deg, #1a1a1a, #222222); }
+.pc-10 { background: linear-gradient(135deg, #161218, #201a22); }
+
+/* ══════════════════════════════════════
+   AI VIDEO
+   ══════════════════════════════════════ */
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+  margin-top: 3rem;
+}
+
+.ai-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.ai-card:hover {
+  border-color: rgba(200, 255, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.ai-visual {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(145deg, #0a0d14 0%, #141a24 50%, #0d1118 100%);
+}
+
+.ai-visual .ai-play {
+  width: 40px; height: 40px;
+  border: 1.5px solid rgba(200, 255, 0, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-visual .ai-play svg {
+  width: 14px; height: 14px;
+  fill: var(--accent);
+  opacity: 0.4;
+  margin-left: 2px;
+}
+
+.ai-body { padding: 1rem 1.25rem 1.25rem; }
+
+.ai-body h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.ai-body p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════
+   CAPABILITIES
+   ══════════════════════════════════════ */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.cap-item {
+  background: var(--bg-warm);
+  padding: 2.25rem 1.75rem;
+  transition: background 0.3s ease;
+}
+
+.cap-item:hover { background: var(--bg-elevated); }
+
+.cap-icon {
+  font-size: 1.3rem;
+  margin-bottom: 1.1rem;
+  display: block;
+}
+
+.cap-item h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.08rem;
+  margin-bottom: 0.65rem;
+}
+
+.cap-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════
+   ABOUT PAGE
+   ══════════════════════════════════════ */
+.about-page {
+  padding-top: 7rem;
+  min-height: 100vh;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.about-text p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.about-credentials {
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+  margin-top: 0.5rem;
+}
+
+.about-credentials h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.cred-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.cred-item {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.cred-item::before {
+  content: '·';
+  color: var(--accent);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.cred-item strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.tools-section {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+}
+
+.tools-section h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tool-pill {
+  font-size: 0.7rem;
+  color: var(--text);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+
+.tool-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.about-visual { position: relative; }
+
+.about-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-photo-placeholder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, #0e0e10, #1a1a22, #12120f);
+  pointer-events: none;
+}
+
+.about-photo-placeholder.has-image::before {
+  display: none;
+}
+
+.about-photo-placeholder span {
+  position: relative; z-index: 1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.about-stamp {
+  position: absolute;
+  bottom: -0.75rem; right: -0.75rem;
+  background: var(--accent);
+  color: var(--bg);
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.4;
+  animation: rotate-slow 14s linear infinite;
+}
+
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════
+   CONTACT PAGE
+   ══════════════════════════════════════ */
+.contact-page {
+  padding-top: 7rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-inner {
+  max-width: 600px;
+  padding: 6rem 3rem;
+}
+
+.contact-heading {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.contact-heading em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.contact-body {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.contact-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 255, 0, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.contact-body a:hover {
+  border-color: var(--accent);
+}
+
+.contact-location {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════
+   VIDEO SHOWCASE
+   ══════════════════════════════════════ */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+}
+
+.video-card {
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+
+.video-card:hover {
+  border-color: rgba(200, 255, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: linear-gradient(145deg, #141418, #1c1c24, #18181e);
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.75);
+}
+
+.video-thumb img[src] {
+  background: linear-gradient(145deg, #141418, #1c1c24, #18181e);
+  color: transparent;
+  font-size: 0;
+}
+
+.video-card:hover .video-thumb img {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px; height: 48px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+}
+
+.video-card:hover .video-play-btn {
+  border-color: var(--accent);
+  background: rgba(200, 255, 0, 0.1);
+}
+
+.video-play-btn svg {
+  width: 16px; height: 16px;
+  fill: white;
+  margin-left: 2px;
+}
+
+.video-card:hover .video-play-btn svg {
+  fill: var(--accent);
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 8px; right: 8px;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  color: rgba(255,255,255,0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.video-info {
+  padding: 0.85rem 1.1rem 1rem;
+}
+
+.video-info h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.video-info p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* SHORTS */
+.shorts-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.shorts-scroll::-webkit-scrollbar { height: 3px; }
+.shorts-scroll::-webkit-scrollbar-track { background: transparent; }
+.shorts-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+.short-card {
+  flex-shrink: 0;
+  width: 180px;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.short-thumb {
+  position: relative;
+  aspect-ratio: 9/16;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #141418, #1c1c24, #18181e);
+  border: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+
+.short-card:hover .short-thumb {
+  border-color: rgba(200, 255, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.short-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  transition: transform 0.5s ease, filter 0.5s ease;
+  color: transparent;
+  font-size: 0;
+}
+
+.short-card:hover .short-thumb img {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.short-play {
+  width: 38px !important;
+  height: 38px !important;
+}
+
+.short-play svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+
+.short-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-content {
+  width: 90vw;
+  max-width: 1100px;
+  aspect-ratio: 16/9;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.active .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-content.vertical {
+  max-width: 400px;
+  aspect-ratio: 9/16;
+  max-height: 85vh;
+}
+
+/* Image Gallery Lightbox */
+.gallery-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.92); z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column;
+}
+.gallery-overlay.active { display: flex; }
+.gallery-img-wrap {
+  position: relative; max-width: 90vw; max-height: 80vh;
+}
+.gallery-img-wrap img {
+  max-width: 90vw; max-height: 80vh; object-fit: contain;
+  border-radius: 4px;
+}
+.gallery-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1.2rem; backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+.gallery-nav:hover { background: rgba(255,255,255,0.2); }
+.gallery-nav.prev { left: -60px; }
+.gallery-nav.next { right: -60px; }
+.gallery-close {
+  position: absolute; top: 24px; right: 24px;
+  color: #fff; font-size: 2rem; cursor: pointer; z-index: 10001;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+}
+.gallery-counter {
+  color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 1rem;
+  font-family: var(--sans);
+}
+@media (max-width: 768px) {
+  .gallery-nav.prev { left: 8px; }
+  .gallery-nav.next { right: 8px; }
+}
+
+.lightbox-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px; right: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .ankord-bento { grid-template-columns: repeat(6, 1fr); }
+  .bento-hero { grid-column: 1 / -1; }
+  .bento-hero-inner { grid-template-columns: 1fr; }
+  .bento-hero-visual { min-height: 200px; }
+  .bento-md { grid-column: span 3; }
+  .stat-strip { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .ai-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+  .photo-cell.wide { grid-column: span 1; }
+  .photo-cell.wide::before { padding-top: 100%; }
+  .about-layout { gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+
+  .nav-links {
+    position: fixed; inset: 0;
+    background: rgba(16, 15, 13, 0.97);
+    backdrop-filter: blur(30px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 150;
+  }
+
+  .nav-links.open { opacity: 1; pointer-events: all; }
+  .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
+  .hamburger { display: flex; }
+
+  section, .hero { padding: 4rem 1.5rem; }
+  .hero { padding-top: 7rem; }
+  .hero-scroll { left: 1.5rem; bottom: 2rem; }
+
+  .ankord-bento { grid-template-columns: 1fr; }
+  .bento-hero, .bento-md { grid-column: 1 / -1; }
+  .stat-strip { grid-column: 1 / -1; grid-template-columns: 1fr; }
+
+  .work-grid { grid-template-columns: 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .ai-grid { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-cell.tall { grid-row: span 1; }
+  .photo-cell.tall::before { padding-top: 100%; }
+
+  .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .about-visual { order: -1; }
+  .about-photo-placeholder { aspect-ratio: 4/3; }
+
+  .contact-inner { padding: 4rem 1.5rem; }
+
+  footer {
+    flex-direction: column; gap: 0.5rem;
+    text-align: center; padding: 1.5rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<div class="page-texture"></div>
+<div class="ambient-orb orb-1"></div>
+<div class="ambient-orb orb-2"></div>
+<div class="ambient-orb orb-3"></div>
+
+<div id="app">
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="navigateTo('home')">
+    <span class="logo-dot"></span>
+    NFA Studio
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="navigateTo('home'); closeMenu()" data-page="home">Work</a></li>
+    <li><a onclick="navigateTo('about'); closeMenu()" data-page="about">About</a></li>
+    <li><a onclick="navigateTo('contact'); closeMenu()" data-page="contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <label class="color-picker-wrap" title="Change accent color">
+      <input type="color" id="accentPicker" value="#c8ff00">
+      <span class="picker-swatch"></span>
+    </label>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ╔══════════════════════════════════════╗
+     ║         HOME / WORK PAGE            ║
+     ╚══════════════════════════════════════╝ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-brandname">Narrative First Approach Studio</p>
+    <h1 class="hero-name"><span class="joshua-word">Joshua</span><br><span class="peters-word">Peters</span><span class="hero-dot"></span></h1>
+    <p class="hero-tagline"><span class="tagline-highlight">Creative Director.</span><br>Producer.<br><em>Strategist.</em></p>
+    <p class="hero-sub">Strategy-led creative production. Vision through delivery.</p>
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span>Creative Direction</span>
+      <span>Video Production</span>
+      <span>Documentary</span>
+      <span>YouTube Growth</span>
+      <span>Brand Identity</span>
+      <span>Podcast Production</span>
+      <span>Social Content</span>
+      <span>Web3</span>
+      <span>AI Video</span>
+      <span>Influencer Campaigns</span>
+      <span>Creative Direction</span>
+      <span>Video Production</span>
+      <span>Documentary</span>
+      <span>YouTube Growth</span>
+      <span>Brand Identity</span>
+      <span>Podcast Production</span>
+      <span>Social Content</span>
+      <span>Web3</span>
+      <span>AI Video</span>
+      <span>Influencer Campaigns</span>
+    </div>
+  </div>
+
+  <!-- ANKORD MEDIA -->
+  <section class="featured">
+    <div class="featured-header reveal">
+      <div>
+        <p class="section-label">Featured / 3 Year Partnership</p>
+        <h2 class="section-title">Ankord Media</h2>
+      </div>
+      <p class="featured-description">As Creative Director at Milan Kordestani's concierge creative agency, I built and ran the full content engine: YouTube, podcast, shorts across every platform, book launches, influencer campaigns, documentary production, and paid ads. End to end, from strategy and pre-production through post and delivery, while leading a global creative team.</p>
+    </div>
+
+    <div class="ankord-bento">
+
+      <!-- HERO CARD -->
+      <div class="bento-card bento-hero reveal" onclick="openLightbox('NKNbcX87XMA')" style="cursor:pointer;">
+        <div class="bento-hero-inner">
+          <div class="bento-hero-visual" style="position:relative;">
+            <img src="https://img.youtube.com/vi/NKNbcX87XMA/maxresdefault.jpg" alt="Building a Founder's Media Machine" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.5);" loading="lazy">
+            <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;">
+              <svg viewBox="0 0 24 24" style="width:22px;height:22px;"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+          </div>
+          <div class="bento-hero-content">
+            <span class="bento-eyebrow">Milan Kordestani / Content Flywheel</span>
+            <h3>Building a Founder's Media Machine</h3>
+            <p>I launched Milan's YouTube channel from zero and scaled it to 75K+ subscribers in 18 months. Directed multi-cam podcast productions nationwide, then built the full distribution system: long-form cut into shorts pushed across YouTube, Instagram Reels, and TikTok. Produced direct marketing content for two published books, ran influencer campaigns, and supported public speaking engagements and his newsletter.</p>
+            <div class="stat-row">
+              <div class="stat-item">
+                <div class="stat-number">75K+</div>
+                <div class="stat-label">YouTube subscribers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">81K+</div>
+                <div class="stat-label">TikTok followers</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">3,000%</div>
+                <div class="stat-label">Engagement growth</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">35K+</div>
+                <div class="stat-label">Book sales driven</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="bento-card bento-md reveal" onclick="openLightbox('Zq_F8T-PnhY')" style="cursor:pointer;">
+        <div class="bento-md-visual" style="position:relative;">
+          <img src="https://img.youtube.com/vi/Zq_F8T-PnhY/maxresdefault.jpg" alt="The Underground Therapist" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" loading="lazy">
+          <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="bento-md-body">
+          <h4>The Underground Therapist</h4>
+          <p class="card-desc">Full documentary in development for The Doe / Narratives. 15 interviews, each a unique location and setup across the country. I led pre-production, directed all on-location shoots, and managed post-production across three editors on four continents. Sizzle reel complete.</p>
+          <div class="card-tags">
+            <span class="card-tag">Documentary</span>
+            <span class="card-tag">Multi-cam</span>
+            <span class="card-tag">In Development</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-md reveal" onclick="openLightbox('VnQqikR7OgA')" style="cursor:pointer;">
+        <div class="bento-md-visual" style="position:relative;">
+          <img src="https://img.youtube.com/vi/VnQqikR7OgA/maxresdefault.jpg" alt="TAZ AI Campaigns" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" loading="lazy">
+          <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="bento-md-body">
+          <h4>TAZ AI Campaigns</h4>
+          <p class="card-desc">I produced four AI-generated video campaigns. Wrote the scripts, directed AI video generation, edited, and delivered across platforms.</p>
+          <div class="card-tags">
+            <span class="card-tag">AI Video</span>
+            <span class="card-tag">Ad Campaign</span>
+            <span class="card-tag">Production</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-md reveal" onclick="openLightbox('PBy_v2lWdJw')" style="cursor:pointer;">
+        <div class="bento-md-visual" style="position:relative;">
+          <img src="https://img.youtube.com/vi/PBy_v2lWdJw/maxresdefault.jpg" alt="Author Brand + Book Marketing" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" loading="lazy">
+          <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="bento-md-body">
+          <h4>Author Brand + Book Marketing</h4>
+          <p class="card-desc">I produced direct marketing content for Milan's two published books. Ran targeted influencer campaigns, social content, public speaking promo, and newsletter support.</p>
+          <div class="card-tags">
+            <span class="card-tag">Marketing</span>
+            <span class="card-tag">Influencer</span>
+            <span class="card-tag">Author Brand</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAT STRIP -->
+      <div class="stat-strip">
+        <div class="strip-card reveal">
+          <span class="strip-icon">▶</span>
+          <div class="strip-number">0 → 75K</div>
+          <div class="strip-label">YouTube channel built from scratch, now monetized. Full pipeline from long-form to shorts across every platform.</div>
+        </div>
+        <div class="strip-card reveal">
+          <span class="strip-icon">◎</span>
+          <div class="strip-number">End to end</div>
+          <div class="strip-label">Full production ownership. Pre-production, multi-cam filming, audio, lighting, post-production, and delivery. Every project, every stage.</div>
+        </div>
+        <div class="strip-card reveal">
+          <span class="strip-icon">↗</span>
+          <div class="strip-number">35K+ sales</div>
+          <div class="strip-label">Books sold with support from influencer activations, social campaigns, and direct marketing content.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VIDEO SHOWCASE -->
+    <div class="video-showcase reveal" style="margin-top: 2.5rem;">
+      <p class="section-label" style="margin-bottom: 1.5rem;">Selected Work / Video</p>
+      <div class="video-grid">
+
+        <div class="video-card" onclick="openLightbox('vGjEKKBNodE')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/vGjEKKBNodE/maxresdefault.jpg" alt="Podcast interview" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">Podcast</span>
+          </div>
+          <div class="video-info">
+            <h4>Podcast at Zohan's House</h4>
+            <p>In-home podcast production. San Francisco. Multi-cam, natural light setup.</p>
+          </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('zfwl_tBM8FQ')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/zfwl_tBM8FQ/maxresdefault.jpg" alt="Professor interview" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">Interview</span>
+          </div>
+          <div class="video-info">
+            <h4>Professor Interview</h4>
+            <p>Clean studio interview. Multi-cam, professional lighting and audio.</p>
+          </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('Ek0bzD_4_sI')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/Ek0bzD_4_sI/maxresdefault.jpg" alt="NYC man on the street" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">Street</span>
+          </div>
+          <div class="video-info">
+            <h4>NYC Characters</h4>
+            <p>Man on the street interview. New York City. Run and gun production.</p>
+          </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('q2oQnTVPQ2Q')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/q2oQnTVPQ2Q/maxresdefault.jpg" alt="NYC man on the street 2" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">Street</span>
+          </div>
+          <div class="video-info">
+            <h4>NYC Characters II</h4>
+            <p>Man on the street interview. New York City. Guerrilla style.</p>
+          </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('gQQJ9ZEI52I')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/gQQJ9ZEI52I/maxresdefault.jpg" alt="CES Summer" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">Event</span>
+          </div>
+          <div class="video-info">
+            <h4>CES Summer Coverage</h4>
+            <p>Event coverage and short-form content. Fast turnaround production.</p>
+          </div>
+        </div>
+
+        <div class="video-card" onclick="openLightbox('E0-Kkn-4SBE')">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/E0-Kkn-4SBE/maxresdefault.jpg" alt="Keom Protocol Explainer" loading="lazy">
+            <div class="video-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+            <span class="video-duration">DeFi</span>
+          </div>
+          <div class="video-info">
+            <h4>Keom Protocol Explainer</h4>
+            <p>DeFi education content. Scripted, produced, and edited.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SHORTS -->
+      <div class="shorts-section reveal" style="margin-top: 2.5rem;">
+        <p class="section-label" style="margin-bottom: 1.5rem;">Shorts / Clips</p>
+        <div class="shorts-scroll">
+
+          <div class="short-card" onclick="openLightbox('gKj3iRAuJ8E')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/gKj3iRAuJ8E/oar2.jpg" alt="Book announcement short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Book Launch Creative</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('9_3HC-hrdG0')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/9_3HC-hrdG0/oar2.jpg" alt="Top performing short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Best Performing Short</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('c6bn6OvwyCo')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/c6bn6OvwyCo/oar2.jpg" alt="Short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Personal Favorite</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('5xUBq4V4jiI')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/5xUBq4V4jiI/oar2.jpg" alt="Big Think short with animation" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Big Think + Animation</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('SIni__XEB98')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/SIni__XEB98/oar2.jpg" alt="NYC man on the street short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">NYC Street</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('UzrQJw0qbi0')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/UzrQJw0qbi0/oar2.jpg" alt="Hook short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Hook</p>
+          </div>
+
+          <div class="short-card" onclick="openLightbox('QZiUoezXrmU')">
+            <div class="short-thumb">
+              <img src="https://img.youtube.com/vi/QZiUoezXrmU/oar2.jpg" alt="Short" loading="lazy">
+              <div class="video-play-btn short-play">
+                <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+              </div>
+            </div>
+            <p class="short-label">Clip</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS: WEB3 + FREELANCE -->
+  <section>
+    <div class="reveal">
+      <p class="section-label">Selected Projects</p>
+      <h2 class="section-title">Web3, Brand + Freelance</h2>
+      <p style="color: var(--text-muted); max-width: 520px; font-size: 0.92rem; line-height: 1.7;">Content production, community building, and creative direction across DeFi protocols, NFT projects, and independent brands.</p>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card reveal" onclick="openTipdropGallery()" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/tipdrop-og.png" alt="TipDrop" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>TipDrop</h3>
+          <p>A bar manager needed to kill the 4am group texts about tip sheets. I designed and built a mobile-first web app for two LA nightlife venues (Break Room 86 and Kiss Kiss Bang Bang) with era-specific branding, PIN-gated uploads, and instant staff access. Problem solved in one link.</p>
+          <div class="card-tags">
+            <span class="card-tag">Web App</span>
+            <span class="card-tag">UI/UX</span>
+            <span class="card-tag">Branding</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="window.open('https://www.mantismedicine.com/cbd-products','_blank')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/mantis-product.jpg" alt="Mantis Medicinals" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7);" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>Mantis Medicinals</h3>
+          <p>Creative Director. I designed and produced all creative assets: logo, brand identity, packaging, website, merch, and print collateral. Shaped social, PR, and community outreach.</p>
+          <div class="card-tags">
+            <span class="card-tag">Branding</span>
+            <span class="card-tag">Packaging</span>
+            <span class="card-tag">Web</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="openLightbox('BxD8RCerb4E')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="https://img.youtube.com/vi/BxD8RCerb4E/maxresdefault.jpg" alt="Keom Protocol Explainer" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" loading="lazy">
+          <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="work-body">
+          <h3>Keom <span style="color:var(--text-muted);font-family:var(--sans);font-size:0.65rem;font-weight:400;letter-spacing:0.04em;vertical-align:middle;">(formerly 0VIX)</span></h3>
+          <p>Content producer for Polygon's native money market, the first DeFi protocol deployed on zkEVM. I created DeFi education content and video tutorials for YouTube and Instagram.</p>
+          <div class="card-tags">
+            <span class="card-tag">DeFi</span>
+            <span class="card-tag">zkEVM</span>
+            <span class="card-tag">Video</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="openLightbox('m4f65WRJpnM')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="https://img.youtube.com/vi/m4f65WRJpnM/maxresdefault.jpg" alt="Fatties NFT" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6);" loading="lazy">
+          <div class="video-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="work-body">
+          <h3>Fatties NFT</h3>
+          <p>Marketing lead and community manager. I built and scaled a highly engaged community across Discord and Twitter, expanded the project's presence on Instagram and TikTok.</p>
+          <div class="card-tags">
+            <span class="card-tag">NFT</span>
+            <span class="card-tag">Marketing</span>
+            <span class="card-tag">Community</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="openEspitaGallery()" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/espita-storefront.jpg" alt="Espita Mezcaleria" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7);" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>Espita Mezcaleria</h3>
+          <p>I designed the full brand identity for DC's premier Oaxacan restaurant and mezcaleria. Logo, illustration, signage, menu system, and all print collateral.</p>
+          <div class="card-tags">
+            <span class="card-tag">Branding</span>
+            <span class="card-tag">Print</span>
+            <span class="card-tag">Restaurant</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="window.open('https://babysfirstbitcoin.com','_blank')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/bfb-og.png" alt="Baby's First Bitcoin" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>Baby's First Bitcoin</h3>
+          <p>Product concept, brand identity, and web design for a timelocked BTC gifting platform. The modern savings bond, reimagined for Bitcoin. Designed the full brand system including a certificate of gift generator.</p>
+          <div class="card-tags">
+            <span class="card-tag">Product</span>
+            <span class="card-tag">Bitcoin</span>
+            <span class="card-tag">Brand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="window.open('https://luckyde.com','_blank')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/luckyde-og.png" alt="Lucky De" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>Lucky De</h3>
+          <p>Brand identity and web design for a no-loss DeFi lottery. Your money always comes back. Developed the concept, character design, visual identity, and landing page.</p>
+          <div class="card-tags">
+            <span class="card-tag">Product</span>
+            <span class="card-tag">DeFi</span>
+            <span class="card-tag">Brand</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="window.open('https://bitman.space','_blank')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/bitman-og.jpg" alt="Bitman" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>Bitman.Space</h3>
+          <p>Interactive browser game built with AI tools. A Bitcoin-themed arcade experience inspired by retro gaming. Concept, design, and development.</p>
+          <div class="card-tags">
+            <span class="card-tag">Interactive</span>
+            <span class="card-tag">AI Built</span>
+            <span class="card-tag">Bitcoin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="window.open('https://rubricksdream.com','_blank')" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/rubricks-screenshot.png" alt="RuBricks Dream" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>RuBricks Dream</h3>
+          <p>Interactive puzzle game built with AI tools. A space-themed Rubik's cube experience with leaderboards and ambient visuals. Concept, design, and development.</p>
+          <div class="card-tags">
+            <span class="card-tag">Interactive</span>
+            <span class="card-tag">AI Built</span>
+            <span class="card-tag">Game</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" onclick="openGogoGallery()" style="cursor:pointer;">
+        <div class="work-visual" style="position:relative;overflow:hidden;">
+          <img src="images/gogo-dashboard.jpg" alt="GOGOcoin Dashboard" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7);" loading="lazy">
+        </div>
+        <div class="work-body">
+          <h3>GOGOcoin</h3>
+          <p>I handled content production and community management for a DeFi protocol on Polygon. Produced education content, video tutorials, meme campaigns, managed Discord and Twitter communities, and grew engagement and TVL.</p>
+          <div class="card-tags">
+            <span class="card-tag">DeFi</span>
+            <span class="card-tag">Content</span>
+            <span class="card-tag">Community</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section style="border-top: 1px solid var(--border);">
+    <div class="reveal">
+      <p class="section-label">Photography</p>
+      <h2 class="section-title">Through the lens</h2>
+      <p style="color: var(--text-muted); max-width: 480px; font-size: 0.92rem; line-height: 1.7;">Portraits, editorial, brand campaigns, and event coverage. Shot under the name <strong>BodhiFox Photography</strong>. Former White House Photography Office, Obama Administration.</p>
+    </div>
+
+    <div class="photo-grid reveal">
+      <div class="photo-cell wide pc-1" style="background:url('images/photo-15-desert.jpg') center/cover;"><span class="ph-label">Travel</span></div>
+      <div class="photo-cell pc-2" style="background:url('images/photo-11-fashion-bw.jpg') center top/cover;"><span class="ph-label">Fashion</span></div>
+      <div class="photo-cell tall pc-3" style="background:url('images/photo-01-obama.jpg') center/cover;"><span class="ph-label">White House</span></div>
+      <div class="photo-cell pc-4" style="background:url('images/photo-02-rally-flag.jpg') center/cover;"><span class="ph-label">Events</span></div>
+      <div class="photo-cell pc-5" style="background:url('images/photo-13-burlesque.jpg') center/cover;"><span class="ph-label">Performance</span></div>
+      <div class="photo-cell pc-6" style="background:url('images/photo-14-honduras.jpg') center top/cover;"><span class="ph-label">Documentary</span></div>
+      <div class="photo-cell wide pc-7" style="background:url('images/photo-03-interview.jpg') center/cover;"><span class="ph-label">Production</span></div>
+      <div class="photo-cell pc-8" style="background:url('images/photo-08-book-signing.jpg') center/cover;"><span class="ph-label">Book Promo</span></div>
+      <div class="photo-cell pc-9" style="background:url('images/photo-17-wedding.jpg') center/cover;"><span class="ph-label">Wedding</span></div>
+      <div class="photo-cell pc-10" style="background:url('images/photo-05-portrait-hat.jpg') center/cover;"><span class="ph-label">Portrait</span></div>
+    </div>
+  </section>
+
+  <!-- AI VIDEO -->
+  <section style="background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="reveal">
+      <p class="section-label">AI Video + Content</p>
+      <h2 class="section-title">Machine + human craft</h2>
+      <p style="color: var(--text-muted); max-width: 480px; font-size: 0.92rem; line-height: 1.7;">AI-generated video production, b-roll, and experimental content. Tools include Midjourney, Runway, LTX Studio, ElevenLabs, and Higgsfield.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-card reveal" onclick="openLightbox('t4m4ebYI9xU')" style="cursor:pointer;">
+        <div class="ai-visual" style="position:relative;overflow:hidden;">
+          <img src="https://img.youtube.com/vi/t4m4ebYI9xU/maxresdefault.jpg" alt="AI Music Video" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.5);" loading="lazy">
+          <div class="ai-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+        </div>
+        <div class="ai-body">
+          <h4>AI Music Video</h4>
+          <p>Full AI-generated music video. Runway, Midjourney, creative direction and editing.</p>
+        </div>
+      </div>
+      <div class="ai-card reveal" onclick="openLightbox('LxwUCKFrfFA')" style="cursor:pointer;">
+        <div class="ai-visual" style="position:relative;overflow:hidden;">
+          <img src="https://img.youtube.com/vi/LxwUCKFrfFA/maxresdefault.jpg" alt="TAZ AI Campaign" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.5);" loading="lazy">
+          <div class="ai-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+        </div>
+        <div class="ai-body">
+          <h4>TAZ AI / Campaign</h4>
+          <p>AI-generated video ad. Script, generation, editing, delivery.</p>
+        </div>
+      </div>
+      <div class="ai-card reveal" onclick="openLightbox('_FsxYM59_hY')" style="cursor:pointer;">
+        <div class="ai-visual" style="position:relative;overflow:hidden;">
+          <img src="https://img.youtube.com/vi/_FsxYM59_hY/oar2.jpg" alt="TAZ AI Short" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.5);" loading="lazy">
+          <div class="ai-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+        </div>
+        <div class="ai-body">
+          <h4>TAZ AI / Short</h4>
+          <p>AI-generated short-form content. Vertical format, social-first delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section>
+    <div class="reveal">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">What I do</h2>
+    </div>
+
+    <div class="cap-grid reveal">
+      <div class="cap-item">
+        <span class="cap-icon">◈</span>
+        <h3>Creative Direction</h3>
+        <p>Defining the visual and narrative vision for brands, founders, and campaigns from concept through delivery.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">▶</span>
+        <h3>Video Production</h3>
+        <p>Multi-cam productions, podcasts, ad campaigns, documentaries, social content. Pre-production through post and delivery.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">◐</span>
+        <h3>YouTube + Social Growth</h3>
+        <p>Channel strategy, content systems, shorts pipelines, and paid campaigns that drive subscribers and real engagement.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">△</span>
+        <h3>Brand Identity</h3>
+        <p>Logos, visual systems, packaging, and brand guidelines that make brands feel like themselves, only sharper.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">◉</span>
+        <h3>Web3 + Community</h3>
+        <p>Content production, community management, and growth strategy for DeFi protocols, DAOs, and NFT projects.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">⬡</span>
+        <h3>AI Video + Content</h3>
+        <p>AI-generated campaigns, b-roll, and creative content using Runway, Midjourney, ElevenLabs, and more.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">◇</span>
+        <h3>Photography</h3>
+        <p>Executive portraits, editorial, brand campaigns, and events. Former White House Photography Office.</p>
+      </div>
+      <div class="cap-item">
+        <span class="cap-icon">□</span>
+        <h3>Post-Production</h3>
+        <p>Editing, color, motion graphics, and multi-editor workflows built for speed, quality, and scale.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     ║           ABOUT PAGE                ║
+     ╚══════════════════════════════════════╝ -->
+<div class="page" id="page-about">
+  <section class="about-page">
+    <div class="reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">About me</h2>
+    </div>
+
+    <div class="about-layout">
+      <div class="about-text reveal">
+        <p><strong>Joshua Peters</strong> is a creative director, producer, and content strategist based in Los Angeles. He builds content operations from scratch, scales them, and leads the teams that run them.</p>
+
+        <p>The work is rooted in one idea: content only matters if someone actually watches it. That means strategy before cameras roll, systems that keep content moving after the shoot wraps, and equal attention to distribution and production.</p>
+
+        <p>For the past three years, Joshua has served as <strong>Creative Director at Ankord Media</strong>, where he built and ran the entire content operation for founder Milan Kordestani. YouTube, podcast, shorts, documentary, book launches, influencer campaigns, paid ads. Multi-cam productions directed nationwide, post-production managed across editors on four continents. Every project, end to end.</p>
+
+        <p>Before that, over a decade in <strong>Web3 and crypto</strong>, producing content and building communities for <strong>GOGOcoin</strong> and <strong>Keom (formerly 0VIX)</strong>, and leading marketing for <strong>Fatties NFT</strong>. Creative Director at <strong>Mantis Medicinals</strong>, owning the full brand from identity and packaging through social and PR.</p>
+
+        <p>Earlier in his career, Joshua worked in the <strong>White House Photography Office</strong> under the Obama Administration and shot professionally for <strong>Vail Resorts</strong>.</p>
+
+        <p>Currently open to creative leadership roles in content, brand, and marketing.</p>
+
+        <div class="tools-section">
+          <h4>Tools + Platforms</h4>
+          <div class="tools-list">
+            <span class="tool-pill">Premiere Pro</span>
+            <span class="tool-pill">Photoshop</span>
+            <span class="tool-pill">Illustrator</span>
+            <span class="tool-pill">Lightroom</span>
+            <span class="tool-pill">InDesign</span>
+            <span class="tool-pill">Figma</span>
+            <span class="tool-pill">Descript</span>
+            <span class="tool-pill">Frame.io</span>
+            <span class="tool-pill">Midjourney</span>
+            <span class="tool-pill">Runway</span>
+            <span class="tool-pill">ElevenLabs</span>
+            <span class="tool-pill">LTX Studio</span>
+            <span class="tool-pill">Higgsfield</span>
+            <span class="tool-pill">Asana</span>
+            <span class="tool-pill">Notion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-photo-placeholder has-image" style="border: none; padding: 0;">
+          <img src="images/josh-bts.jpg" alt="Joshua Peters on set" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     ║          CONTACT PAGE               ║
+     ╚══════════════════════════════════════╝ -->
+<div class="page" id="page-contact">
+  <section class="contact-page">
+    <div class="contact-inner">
+      <p class="section-label reveal">Get in touch</p>
+      <h2 class="contact-heading reveal">Let's <em>work</em><br>together.</h2>
+      <div class="contact-body reveal">
+        <p>Shoot me an email at <a href="/cdn-cgi/l/email-protection#642e0b170c1105290510100c01133401100116172409014a070b09"><span class="__cf_email__" data-cfemail="f7bd98849f8296ba9683839f9280a79283928584b79a92d994989a">[email&#160;protected]</span></a> and I'll get back to you.</p>
+        <p style="margin-top: 1rem;">Currently open to full-time roles and select freelance projects. Always interested in good creative problems.</p>
+      </div>
+      <p class="contact-location reveal">Los Angeles, CA</p>
+    </div>
+  </section>
+</div>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <iframe id="lightboxFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- FOOTER (shared) -->
+<footer>
+  <span>© 2026 NFA Studio</span>
+  <span>Los Angeles, CA</span>
+</footer>
+
+</div><!-- end #app -->
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── ROUTING ───
+function navigateTo(page) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    target.style.display = 'block';
+    // Force reflow
+    void target.offsetWidth;
+    target.classList.add('active');
+  }
+
+  // Update nav active states
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === page);
+  });
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Re-trigger reveal animations on new page
+  setTimeout(() => {
+    document.querySelectorAll('.page.active .reveal').forEach(el => {
+      observer.observe(el);
+    });
+  }, 50);
+}
+
+// ─── ACCENT COLOR PICKER ───
+const accentPicker = document.getElementById('accentPicker');
+const pickerSwatch = document.querySelector('.picker-swatch');
+
+accentPicker.addEventListener('input', (e) => {
+  const color = e.target.value;
+  document.documentElement.style.setProperty('--accent', color);
+  
+  // Update canvas particles to hint at new color
+  const r = parseInt(color.slice(1,3), 16);
+  const g = parseInt(color.slice(3,5), 16);
+  const b = parseInt(color.slice(5,7), 16);
+  particles.forEach(p => {
+    p.tint = { r, g, b };
+  });
+});
+
+// Make swatch clickable to open native picker
+pickerSwatch.addEventListener('click', () => {
+  accentPicker.click();
+});
+
+// ─── HAMBURGER ───
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+function closeMenu() {
+  hamburger.classList.remove('active');
+  navLinks.classList.remove('open');
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger cards
+document.querySelectorAll('.ankord-bento .bento-card, .ankord-bento .strip-card').forEach((c, i) => {
+  c.style.transitionDelay = `${i * 0.07}s`;
+});
+document.querySelectorAll('.work-grid .work-card').forEach((c, i) => {
+  c.style.transitionDelay = `${i * 0.07}s`;
+});
+document.querySelectorAll('.ai-grid .ai-card').forEach((c, i) => {
+  c.style.transitionDelay = `${i * 0.07}s`;
+});
+
+// ─── VIDEO LIGHTBOX ───
+const shortIds = ['9_3HC-hrdG0', 'c6bn6OvwyCo', '5xUBq4V4jiI', 'SIni__XEB98', 'UzrQJw0qbi0', 'QZiUoezXrmU', '_FsxYM59_hY', 'gKj3iRAuJ8E'];
+
+function openLightbox(videoId) {
+  const lightbox = document.getElementById('lightbox');
+  const frame = document.getElementById('lightboxFrame');
+  const content = document.querySelector('.lightbox-content');
+  
+  const isShort = shortIds.includes(videoId);
+  content.classList.toggle('vertical', isShort);
+  
+  frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+  const lightbox = document.getElementById('lightbox');
+  const frame = document.getElementById('lightboxFrame');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { frame.src = ''; }, 300);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// ─── BACKGROUND PARTICLES ───
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let animFrame;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.2 + 0.3;
+    this.speedX = (Math.random() - 0.5) * 0.15;
+    this.speedY = (Math.random() - 0.5) * 0.1 - 0.05;
+    this.opacity = Math.random() * 0.25 + 0.03;
+    this.fadeSpeed = Math.random() * 0.003 + 0.001;
+    this.phase = Math.random() * Math.PI * 2;
+    this.wobble = Math.random() * 0.3 + 0.1;
+  }
+  update() {
+    this.phase += 0.008;
+    this.x += this.speedX + Math.sin(this.phase) * this.wobble * 0.05;
+    this.y += this.speedY;
+    this.opacity += Math.sin(this.phase * 2) * this.fadeSpeed;
+    if (this.opacity < 0.01) this.opacity = 0.01;
+    if (this.opacity > 0.3) this.opacity = 0.3;
+    if (this.y < -10 || this.y > canvas.height + 10 || this.x < -10 || this.x > canvas.width + 10) {
+      this.reset();
+      this.y = canvas.height + 5;
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200, 195, 180, ${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+// Create particles (scale to screen)
+const particleCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 12000), 120);
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  animFrame = requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// Pause when tab not visible
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cancelAnimationFrame(animFrame);
+  } else {
+    animateParticles();
+  }
+});
+
+// ─── NAV AUTO-HIDE ───
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  const cur = window.pageYOffset;
+  nav.style.transform = (cur > lastScroll && cur > 100) ? 'translateY(-100%)' : 'translateY(0)';
+  lastScroll = cur;
+});
+
+// Set initial page
+navigateTo('home');
+</script>
+
+<!-- Image Gallery Overlay -->
+<div class="gallery-overlay" id="galleryOverlay" onclick="if(event.target===this)closeGallery()">
+  <div class="gallery-close" onclick="closeGallery()">✕</div>
+  <div class="gallery-img-wrap">
+    <div class="gallery-nav prev" onclick="galleryNav(-1)">‹</div>
+    <img id="galleryImg" src="" alt="Gallery image">
+    <div class="gallery-nav next" onclick="galleryNav(1)">›</div>
+  </div>
+  <div class="gallery-counter" id="galleryCounter"></div>
+</div>
+
+<script>
+let galleryImages = [];
+let galleryIndex = 0;
+
+function openGallery(images) {
+  galleryImages = images;
+  galleryIndex = 0;
+  updateGallery();
+  document.getElementById('galleryOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+  document.getElementById('galleryOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function galleryNav(dir) {
+  galleryIndex = (galleryIndex + dir + galleryImages.length) % galleryImages.length;
+  updateGallery();
+}
+
+function updateGallery() {
+  document.getElementById('galleryImg').src = galleryImages[galleryIndex];
+  document.getElementById('galleryCounter').textContent = (galleryIndex + 1) + ' / ' + galleryImages.length;
+}
+
+function openTipdropGallery() {
+  openGallery([
+    'images/tipdrop-og.png',
+    'images/tipdrop-br86.png',
+    'images/tipdrop-kkbb.png',
+    'images/tipdrop-pin.png'
+  ]);
+}
+
+function openEspitaGallery() {
+  openGallery([
+    'images/espita-storefront.jpg',
+    'images/espita-logo.jpg',
+    'images/espita-menu-1.jpg',
+    'images/espita-drink.jpg'
+  ]);
+}
+
+function openGogoGallery() {
+  openGallery([
+    'images/gogo-dashboard.jpg',
+    'images/gogo-instagram.jpg',
+    'images/gogo-say-anything.jpg',
+    'images/gogo-raising-bar.jpg',
+    'images/gogo-easy.jpg'
+  ]);
+}
+
+document.addEventListener('keydown', (e
