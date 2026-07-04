@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kind Words · Mantis Medicinals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EC;
+    --cream-deep:#E8E4DC;
+    --lavender-mist:#E8DFF0;
+    --botanical-purple:#724E8A;
+    --midnight-plum:#281828;
+    --mantis-green:#2D5A2D;
+    --sage:#6B8A5A;
+    --blueberry:#3A5A8A;
+    --gold:#B69A54;
+    --rose:#F3DDD6;
+    --sage-tint:#EAF0E4;
+    --ink:#33283B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  /* ---------- wallpaper edges ---------- */
+  .wallpaper{position:relative;}
+  .wallpaper::before,.wallpaper::after{
+    content:"";
+    position:absolute;top:0;bottom:0;width:22vw;max-width:340px;
+    background-image:url("../assets/botanicals/directional-v2-04.png");
+    background-size:100% auto;background-repeat:repeat-y;
+    mix-blend-mode:multiply;
+    opacity:.5;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wallpaper::before{
+    left:0;
+    -webkit-mask-image:linear-gradient(to right,black 20%,transparent 100%);
+    mask-image:linear-gradient(to right,black 20%,transparent 100%);
+  }
+  .wallpaper::after{
+    right:0;transform:scaleX(-1);
+    -webkit-mask-image:linear-gradient(to right,black 20%,transparent 100%);
+    mask-image:linear-gradient(to right,black 20%,transparent 100%);
+  }
+  /* ---------- type helpers ---------- */
+  .script{font-family:'Pinyon Script',cursive;font-weight:400;}
+  .caps{font-family:'Cinzel',serif;letter-spacing:.32em;text-transform:uppercase;}
+  .fell{font-family:'IM Fell English',serif;font-style:italic;}
+  /* ---------- gold rules ---------- */
+  .gold-rule{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin:0 auto;
+  }
+  .gold-rule::before,.gold-rule::after{
+    content:"";height:1px;width:70px;
+    background:linear-gradient(to right,transparent,var(--gold));
+  }
+  .gold-rule::after{background:linear-gradient(to left,transparent,var(--gold));}
+  .gold-double{
+    border-top:1px solid var(--gold);
+    position:relative;
+    margin:0 auto;width:180px;
+  }
+  .gold-double::after{
+    content:"";position:absolute;left:12px;right:12px;top:3px;height:1px;background:var(--gold);opacity:.6;
+  }
+  /* ---------- nav ---------- */
+  nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 48px;
+    border-bottom:1px solid rgba(182,154,84,.35);
+    background:rgba(245,242,236,.92);
+  }
+  nav .brand{
+    font-family:'Pinyon Script',cursive;
+    font-size:34px;color:var(--botanical-purple);
+    text-decoration:none;line-height:1;
+  }
+  nav ul{display:flex;gap:34px;list-style:none;align-items:center;}
+  nav ul a{
+    font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  nav ul a:hover{color:var(--botanical-purple);}
+  nav .cart{
+    border:1px solid var(--gold);
+    padding:9px 22px;color:var(--mantis-green);
+  }
+  /* ---------- buttons ---------- */
+  .btn{
+    font-family:'Cinzel',serif;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;
+    text-decoration:none;padding:17px 40px;display:inline-block;
+  }
+  .btn-primary{background:var(--botanical-purple);color:var(--cream);}
+  .btn-primary:hover{background:var(--midnight-plum);}
+  .btn-ghost{border:1px solid var(--gold);color:var(--mantis-green);}
+  /* ---------- page head ---------- */
+  .page-head{
+    position:relative;z-index:1;
+    text-align:center;
+    padding:72px 24px 56px;
+  }
+  .page-head .eyebrow{
+    font-size:12px;color:var(--mantis-green);
+    margin-bottom:24px;
+  }
+  .page-head h1{
+    font-family:'Pinyon Script',cursive;
+    font-size:clamp(56px,7.5vw,100px);
+    color:var(--botanical-purple);
+    font-weight:400;line-height:1.05;
+    margin-bottom:12px;
+  }
+  .page-head .support{
+    font-size:clamp(20px,1.9vw,24px);
+    max-width:620px;margin:0 auto;
+  }
+  .page-head .fell{color:var(--sage);font-size:18px;display:block;margin-top:14px;}
+  /* ---------- section shell ---------- */
+  section{position:relative;z-index:1;}
+  /* ---------- testimonial grid ---------- */
+  .kind-words{padding:20px 24px 96px;}
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+    max-width:1080px;margin:0 auto;
+  }
+  .testi-grid.pair{
+    grid-template-columns:repeat(2,1fr);max-width:760px;margin-top:26px;
+  }
+  .testi{
+    border:1px solid var(--gold);position:relative;
+    padding:38px 30px 32px;background:#FBFAF6;text-align:center;
+    display:flex;flex-direction:column;
+  }
+  .testi::after{content:"";position:absolute;inset:5px;border:1px solid rgba(182,154,84,.4);pointer-events:none;}
+  .testi .glyph{
+    font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);
+    display:block;margin-bottom:14px;
+  }
+  .testi p{
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:18px;line-height:1.55;margin-bottom:20px;
+  }
+  .testi cite{
+    font-family:'Cinzel',serif;font-style:normal;font-size:10.5px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--sage);
+    margin-top:auto;
+  }
+  /* ---------- quote band ---------- */
+  .quote-band{
+    background:var(--lavender-mist);
+    text-align:center;padding:78px 24px;
+  }
+  .quote-band p{
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:clamp(24px,2.6vw,32px);color:var(--botanical-purple);
+    max-width:720px;margin:0 auto;line-height:1.4;
+  }
+  .quote-band cite{
+    font-family:'Cinzel',serif;font-style:normal;font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--mantis-green);
+    display:block;margin-top:26px;
+  }
+  .quote-band .gold-double{margin-top:30px;}
+  /* ---------- CTA ---------- */
+  .cta{
+    background:var(--cream-deep);
+    text-align:center;padding:84px 24px;
+  }
+  .cta h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(32px,3.6vw,44px);color:var(--midnight-plum);margin-bottom:14px;
+  }
+  .cta p{opacity:.8;margin-bottom:32px;}
+  /* ---------- footer ---------- */
+  footer{background:var(--midnight-plum);color:#C9BFD1;padding:70px 48px 40px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:44px;max-width:1160px;margin:0 auto 50px;}
+  footer .brand{font-family:'Pinyon Script',cursive;font-size:38px;color:var(--cream);display:block;margin-bottom:14px;line-height:1;}
+  footer .tag{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;opacity:.75;}
+  footer h5{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#CBBE93;margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{color:#C9BFD1;text-decoration:none;font-family:'Inter',sans-serif;font-size:13.5px;}
+  footer ul a:hover{color:var(--cream);}
+  .badges{display:flex;gap:14px;margin-top:8px;}
+  .badge{
+    border:1px solid rgba(203,190,147,.5);padding:10px 14px;
+    font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#CBBE93;text-align:center;line-height:1.7;
+  }
+  .legal{
+    max-width:1160px;margin:0 auto;border-top:1px solid rgba(201,191,209,.2);padding-top:28px;
+    font-family:'Inter',sans-serif;font-size:11.5px;line-height:1.7;opacity:.6;
+  }
+  .legal p{margin-bottom:8px;}
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .testi-grid{grid-template-columns:1fr;max-width:480px;}
+    .testi-grid.pair{grid-template-columns:1fr;max-width:480px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .wallpaper::before,.wallpaper::after{opacity:.25;width:30vw;}
+  }
+  @media (max-width:640px){
+    nav{padding:18px 20px;}
+    nav ul{display:none;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">Mantis Medicinals</a>
+  <ul>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="shop.html">Seltzer</a></li>
+    <li><a href="#">Our Story</a></li>
+    <li><a href="lab-results.html">Lab Results</a></li>
+    <li><a href="#">Find Us</a></li>
+    <li><a class="cart" href="#">Cart · 0</a></li>
+  </ul>
+</nav>
+
+<header class="page-head wallpaper">
+  <span class="eyebrow caps gold-rule">From the Garden List</span>
+  <h1>Kind Words</h1>
+  <p class="support">Notes from the people who keep our small farm growing, in their own words.</p>
+  <span class="fell">Lightly edited for length and clarity.</span>
+</header>
+
+<section class="kind-words wallpaper">
+  <div class="testi-grid">
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"Your tinctures are the best. They have been part of my daily routine through a hard year."</p>
+      <cite>Lisa</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"The body oil is a total game changer. It is the first thing I reach for after a long day."</p>
+      <cite>Samantha</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"I have tried everything out there. This is the only brand I keep coming back to."</p>
+      <cite>Fay</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"My wife swears by the 400 tincture. You can tell the quality from the first drop."</p>
+      <cite>Ryan</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"I carry the salve with me every single day. Everyone I share it with asks where to get it."</p>
+      <cite>Kevin</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"You can taste the love in everything they make."</p>
+      <cite>Sarah, Atlantic Farms</cite>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <p>"It truly is a miracle. Our customers ask for Mantis by name."</p>
+  <cite>Mainely High Dispensary</cite>
+  <div class="gold-double"></div>
+</section>
+
+<section class="kind-words wallpaper" style="padding-top:90px;">
+  <div class="testi-grid pair" style="margin-top:0;">
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"The seltzer is the first CBD drink that actually tastes like something I would order on purpose."</p>
+      <cite>Portland, ME</cite>
+    </div>
+    <div class="testi">
+      <span class="glyph">❦</span>
+      <p>"You can taste that someone actually grew this. Nothing about it feels mass-made."</p>
+      <cite>Belfast, ME</cite>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Taste it for yourself.</h2>
+  <p>Every product on the shelf started as a seed in Montville, Maine.</p>
+  <a class="btn btn-primary" href="shop.html">Shop the Garden</a>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand">Mantis Medicinals</span>
+      <p class="tag">Grown in living soil · Hand crafted · Higher standards</p>
+      <div class="badges">
+        <span class="badge">MOFGA<br>Certified Organic</span>
+        <span class="badge">Maine<br>Made</span>
+      </div>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="shop.html">Botanical Seltzer</a></li>
+        <li><a href="shop.html">Gummies</a></li>
+        <li><a href="shop.html">Tinctures &amp; Oils</a></li>
+        <li><a href="shop.html">Salves &amp; Body</a></li>
+        <li><a href="shop.html">Merch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="lab-results.html">Lab Results</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Find Us</a></li>
+        <li><a href="#">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#">Montville, Maine</a></li>
+        <li><a href="#">hello@mantismedicinals.com</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>Must be 21 or older to purchase. © 2026 Mantis Medicinals, LLC · Montville, Maine · Privacy · Terms · Shipping &amp; Returns</p>
+  </div>
+</footer>
+
+</body>
+</html>

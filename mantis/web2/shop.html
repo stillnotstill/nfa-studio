@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Shop the Garden · Mantis Medicinals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;500&family=IM+Fell+English:ital@1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EC;
+    --cream-warm:#F8F6F3;
+    --lavender-mist:#E8DFF0;
+    --botanical-purple:#724E8A;
+    --midnight-plum:#281828;
+    --mantis-green:#2D5A2D;
+    --sage:#6B8A5A;
+    --blueberry:#3A5A8A;
+    --rose:#F0DCD4;
+    --sage-tint:#E9EFE3;
+    --gold:#B69A54;
+    --ink:#2E2434;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:15.5px;font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Cormorant Garamond',serif;}
+  .caps{font-family:'Cinzel',serif;letter-spacing:.34em;text-transform:uppercase;}
+  /* ---------- nav ---------- */
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:30px 64px;
+  }
+  nav .brand{
+    font-family:'Pinyon Script',cursive;font-size:30px;
+    color:var(--botanical-purple);text-decoration:none;line-height:1;
+  }
+  nav ul{display:flex;gap:40px;list-style:none;align-items:center;}
+  nav ul a{
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  nav ul a:hover{color:var(--botanical-purple);}
+  nav .cart{
+    background:var(--midnight-plum);color:var(--cream);
+    padding:11px 26px;border-radius:100px;
+  }
+  /* ---------- buttons ---------- */
+  .btn{
+    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;
+  }
+  .btn-solid{
+    background:var(--midnight-plum);color:var(--cream);
+    padding:19px 46px;border-radius:100px;
+  }
+  .btn-solid:hover{background:var(--botanical-purple);}
+  .add{
+    font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--midnight-plum);color:var(--cream);
+    padding:10px 22px;border-radius:100px;text-decoration:none;display:inline-block;white-space:nowrap;
+  }
+  .add:hover{background:var(--botanical-purple);}
+  /* ---------- page head ---------- */
+  .page-head{text-align:center;max-width:840px;margin:0 auto;padding:56px 24px 54px;}
+  .page-head .eyebrow{font-size:11px;color:var(--sage);display:block;margin-bottom:28px;}
+  .page-head h1{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(48px,5.6vw,80px);line-height:1.03;letter-spacing:-.01em;
+    color:var(--midnight-plum);margin-bottom:22px;
+  }
+  .page-head h1 em{font-style:italic;color:var(--botanical-purple);}
+  .page-head p{max-width:520px;margin:0 auto;font-size:16px;opacity:.8;}
+  /* ---------- filter bar ---------- */
+  .filterbar{
+    display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+    max-width:940px;margin:0 auto;padding:0 24px 78px;
+  }
+  .pill{
+    font-family:'Inter',sans-serif;font-size:11.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+    padding:11px 24px;border:1px solid rgba(40,24,40,.18);border-radius:100px;
+  }
+  .pill:hover{border-color:var(--botanical-purple);color:var(--botanical-purple);}
+  .pill.active{background:var(--midnight-plum);color:var(--cream);border-color:var(--midnight-plum);}
+  /* ---------- featured seltzer ---------- */
+  .flavors{max-width:1440px;margin:0 auto;padding:0 64px 110px;}
+  .flavors-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:10px;}
+  .flavors-head h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:44px;color:var(--midnight-plum);}
+  .flavors-head .meta{
+    font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);
+  }
+  .flavors .lede{max-width:480px;font-size:15px;opacity:.75;margin-bottom:44px;}
+  .flavor-band{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .fcard{
+    border-radius:22px;overflow:hidden;position:relative;
+    padding:36px 30px 0;height:540px;
+    display:flex;flex-direction:column;
+    transition:transform .3s ease;
+  }
+  .fcard:hover{transform:translateY(-6px);}
+  .fcard.blueberry{background:linear-gradient(180deg,var(--lavender-mist),#DCD0E8);}
+  .fcard.hibiscus{background:linear-gradient(180deg,var(--rose),#EACFC4);}
+  .fcard.mint{background:linear-gradient(180deg,var(--sage-tint),#D8E4CC);}
+  .fcard.sampler{background:linear-gradient(180deg,var(--lavender-mist) 0%,var(--rose) 52%,var(--sage-tint) 100%);}
+  .fcard .no{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--ink);opacity:.55;margin-bottom:4px;}
+  .fcard .cat{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink);opacity:.6;display:block;margin-bottom:10px;}
+  .fcard h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:29px;line-height:1.05;margin-bottom:8px;color:var(--midnight-plum);}
+  .fcard p{font-size:13.5px;opacity:.72;margin-bottom:14px;max-width:210px;}
+  .fcard .buy{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;}
+  .fcard .price{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;color:var(--midnight-plum);}
+  .fcard img.can{
+    margin:auto auto 0;display:block;
+    height:230px;object-fit:cover;object-position:center 26%;
+    border-radius:14px 14px 0 0;
+    box-shadow:0 -14px 40px -18px rgba(40,24,40,.4);
+  }
+  .fcard img.botanical{
+    margin:auto auto 0;display:block;width:88%;
+    height:220px;object-fit:contain;
+    mix-blend-mode:multiply;opacity:.9;
+  }
+  /* ---------- catalog grid ---------- */
+  .catalog{max-width:1440px;margin:0 auto;padding:0 64px 120px;}
+  .catalog h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:44px;color:var(--midnight-plum);margin-bottom:10px;}
+  .catalog .lede{max-width:480px;font-size:15px;opacity:.75;margin-bottom:44px;}
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .p-card{
+    background:#fff;border-radius:18px;padding:16px 16px 28px;
+    border:1px solid rgba(40,24,40,.06);
+    display:flex;flex-direction:column;
+    transition:box-shadow .3s ease;
+  }
+  .p-card:hover{box-shadow:0 24px 44px -24px rgba(40,24,40,.25);}
+  .p-visual{
+    height:190px;border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    margin-bottom:22px;text-align:center;padding:10px;
+  }
+  .p-visual .word{font-family:'Pinyon Script',cursive;font-size:42px;line-height:1;}
+  .p-visual .sub{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.72;}
+  .p-visual.botanical{background:var(--cream-warm);padding:0;}
+  .p-visual.botanical img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;opacity:.9;}
+  .v-lav{background:var(--lavender-mist);color:var(--botanical-purple);}
+  .v-blue{background:#DFE6F1;color:var(--blueberry);}
+  .v-sage{background:var(--sage-tint);color:var(--mantis-green);}
+  .v-rose{background:var(--rose);color:var(--midnight-plum);}
+  .v-plum{background:var(--midnight-plum);color:var(--lavender-mist);}
+  .v-green{background:var(--mantis-green);color:var(--sage-tint);}
+  .p-body{padding:0 12px;display:flex;flex-direction:column;flex:1;}
+  .p-cat{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--sage);margin-bottom:8px;}
+  .p-body h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;line-height:1.15;color:var(--midnight-plum);margin-bottom:6px;}
+  .p-body .note{font-size:13px;opacity:.7;margin-bottom:18px;}
+  .p-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .p-price{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;color:var(--midnight-plum);}
+  /* ---------- proof strip ---------- */
+  .proof{
+    background:var(--cream-warm);
+    border-top:1px solid rgba(182,154,84,.28);border-bottom:1px solid rgba(182,154,84,.28);
+    padding:34px 64px;
+  }
+  .proof-inner{
+    max-width:1240px;margin:0 auto;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .proof-item{
+    font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mantis-green);
+    display:flex;align-items:center;gap:12px;
+  }
+  .proof-item span{color:var(--gold);font-size:14px;}
+  /* ---------- footer ---------- */
+  footer{padding:74px 64px 44px;}
+  .foot-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;
+    max-width:1440px;margin:0 auto 54px;
+  }
+  footer .brand{font-family:'Pinyon Script',cursive;font-size:36px;color:var(--botanical-purple);display:block;margin-bottom:12px;line-height:1;}
+  footer .tag{font-family:'IM Fell English',serif;font-style:italic;font-size:14.5px;opacity:.65;max-width:260px;}
+  footer h5{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{color:var(--ink);opacity:.75;text-decoration:none;font-size:13.5px;}
+  footer ul a:hover{opacity:1;color:var(--botanical-purple);}
+  .legal{
+    max-width:1440px;margin:0 auto;
+    border-top:1px solid rgba(40,24,40,.1);padding-top:26px;
+    font-size:11px;line-height:1.7;opacity:.55;
+  }
+  .legal p{margin-bottom:6px;}
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .flavor-band{grid-template-columns:repeat(2,1fr);}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    nav{padding:22px 24px;}
+    nav ul{display:none;}
+    .page-head{padding:36px 24px 40px;}
+    .filterbar{padding-bottom:56px;}
+    .flavors,.catalog{padding-left:24px;padding-right:24px;}
+    .flavor-band,.cat-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto;}
+    .proof{padding:26px 24px;}
+    .proof-inner{flex-direction:column;gap:14px;}
+    footer{padding:60px 24px 40px;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">Mantis Medicinals</a>
+  <ul>
+    <li><a href="shop.html">Seltzer</a></li>
+    <li><a href="shop.html">Shop All</a></li>
+    <li><a href="#">Our Story</a></li>
+    <li><a href="lab-results.html">Lab Results</a></li>
+    <li><a class="cart" href="#">Cart · 0</a></li>
+  </ul>
+</nav>
+
+<header class="page-head">
+  <span class="eyebrow caps">The Whole Apothecary · Grown in Montville, Maine</span>
+  <h1>Shop the <em>garden.</em></h1>
+  <p>Everything here starts in living soil on Katrina's farm. Small batches, organic herbs, and a published lab result behind every single one.</p>
+</header>
+
+<div class="filterbar" role="navigation" aria-label="Product categories">
+  <a class="pill active" href="#">All</a>
+  <a class="pill" href="#">Drinks</a>
+  <a class="pill" href="#">Gummies</a>
+  <a class="pill" href="#">Tinctures &amp; Oils</a>
+  <a class="pill" href="#">Salves &amp; Body</a>
+  <a class="pill" href="#">Tea</a>
+  <a class="pill" href="#">Bath</a>
+  <a class="pill" href="#">Merch</a>
+</div>
+
+<section class="flavors">
+  <div class="flavors-head">
+    <h2>The Botanical Seltzer</h2>
+    <span class="meta">20mg Broad Spectrum CBD · 12 fl oz · Non-Detect THC</span>
+  </div>
+  <p class="lede">Our newest pour. Three flavors from the garden, plus a sampler so you don't have to choose.</p>
+  <div class="flavor-band">
+    <div class="fcard blueberry">
+      <span class="no">No. 1</span>
+      <span class="cat">Drinks</span>
+      <h3>Blueberry Lavender</h3>
+      <p>Maine's berry meets the calm one.</p>
+      <div class="buy">
+        <span class="price">$4</span>
+        <a class="add" href="#">Add to Cart</a>
+      </div>
+      <img class="can" src="../assets/cans/blueberry_front_real.png" alt="Blueberry Lavender Botanical Seltzer can">
+    </div>
+    <div class="fcard hibiscus">
+      <span class="no">No. 2</span>
+      <span class="cat">Drinks</span>
+      <h3>Hibiscus Lemon</h3>
+      <p>Bright, floral, a little sunshine.</p>
+      <div class="buy">
+        <span class="price">$4</span>
+        <a class="add" href="#">Add to Cart</a>
+      </div>
+      <img class="can" src="../assets/cans/hibiscus_front_real.png" alt="Hibiscus Lemon Botanical Seltzer can">
+    </div>
+    <div class="fcard mint">
+      <span class="no">No. 3</span>
+      <span class="cat">Drinks</span>
+      <h3>Lime &amp; Mint</h3>
+      <p>Cool, green, straight off the stem.</p>
+      <div class="buy">
+        <span class="price">$4</span>
+        <a class="add" href="#">Add to Cart</a>
+      </div>
+      <img class="can" src="../assets/cans/mintlime_front_real.png" alt="Lime and Mint Botanical Seltzer can">
+    </div>
+    <div class="fcard sampler">
+      <span class="no">No. 1, 2 &amp; 3</span>
+      <span class="cat">Drinks</span>
+      <h3>The Garden Sampler</h3>
+      <p>Mixed 4-pack. All three flavors, one cold box.</p>
+      <div class="buy">
+        <span class="price">$15</span>
+        <a class="add" href="#">Add to Cart</a>
+      </div>
+      <img class="botanical" src="../assets/botanicals/bouquet-v3-05.png" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="catalog">
+  <h2>Everything else we make.</h2>
+  <p class="lede">The seltzer is the newest thing from the farm, not the first. These have been earning their keep for years.</p>
+  <div class="cat-grid">
+
+    <div class="p-card">
+      <div class="p-visual v-blue">
+        <span class="word">Sleep</span>
+        <span class="sub">CBD + CBN Gummies</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Gummies</span>
+        <h4>Sleep Gummy · 10 ct</h4>
+        <p class="note">20mg CBD and 20mg CBN per gummy, made with wild organic Maine blueberry.</p>
+        <div class="p-row">
+          <span class="p-price">$24</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-lav">
+        <span class="word">Sleep</span>
+        <span class="sub">CBD + CBN Oil</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Tinctures &amp; Oils</span>
+        <h4>Sleep Oil</h4>
+        <p class="note">300mg CBD and 300mg CBN in an organic MCT base.</p>
+        <div class="p-row">
+          <span class="p-price">$34</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-sage">
+        <span class="word">Tincture</span>
+        <span class="sub">Full Spectrum · 400mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Tinctures &amp; Oils</span>
+        <h4>CBD Tincture 400mg</h4>
+        <p class="note">Full spectrum extract in organic MCT. The daily workhorse.</p>
+        <div class="p-row">
+          <span class="p-price">$30</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-blue">
+        <span class="word">Pets</span>
+        <span class="sub">Salmon Oil · 300mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Pet</span>
+        <h4>Pet Tincture 300mg</h4>
+        <p class="note">Wild Alaskan salmon oil base with a graduated dropper for easy dosing.</p>
+        <div class="p-row">
+          <span class="p-price">$30</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual botanical">
+        <img src="../assets/botanicals/bouquet-v3-05.png" alt="">
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Salves &amp; Body</span>
+        <h4>CBD Body Oil 350mg</h4>
+        <p class="note">Thirteen herbs solar-infused in organic jojoba and olive oil.</p>
+        <div class="p-row">
+          <span class="p-price">$24</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-rose">
+        <span class="word">Miracle</span>
+        <span class="sub">The Original · 350mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Salves &amp; Body</span>
+        <h4>Miracle Salve 350mg · 2 oz</h4>
+        <p class="note">Local beeswax and 13 organic healing herbs. The product that started it all.</p>
+        <div class="p-row">
+          <span class="p-price">$30</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual botanical">
+        <img src="../assets/botanicals/bouquet-v3-05.png" alt="">
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Tea</span>
+        <h4>Herbal Tea Satchel 300mg</h4>
+        <p class="note">Chamomile, lemon balm, peppermint, tulsi, rose, and lavender.</p>
+        <div class="p-row">
+          <span class="p-price">$10</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-sage">
+        <span class="word">Tea</span>
+        <span class="sub">Jar · 600mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Tea</span>
+        <h4>Herbal Tea Jar 600mg</h4>
+        <p class="note">The same garden blend, 20 to 40 servings deep.</p>
+        <div class="p-row">
+          <span class="p-price">$18</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-lav">
+        <span class="word">Soak</span>
+        <span class="sub">Bath · 350mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Bath</span>
+        <h4>Miracle Soak 350mg</h4>
+        <p class="note">Epsom salt with rose, lavender, and calendula from the garden.</p>
+        <div class="p-row">
+          <span class="p-price">$24</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-rose">
+        <span class="word">Soak</span>
+        <span class="sub">Single · 70mg</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Bath</span>
+        <h4>Bath Soak Single 70mg</h4>
+        <p class="note">One tub, one cotton tea bag. Zero cleanup.</p>
+        <div class="p-row">
+          <span class="p-price">$8</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-plum">
+        <span class="word">Mantis</span>
+        <span class="sub">Hemp · Embroidered</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Merch</span>
+        <h4>Hemp Mantis Hat</h4>
+        <p class="note">Custom embroidered on a hemp crown. Farm uniform.</p>
+        <div class="p-row">
+          <span class="p-price">$32</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card">
+      <div class="p-visual v-green">
+        <span class="word">Maine</span>
+        <span class="sub">Merino Wool</span>
+      </div>
+      <div class="p-body">
+        <span class="p-cat">Merch</span>
+        <h4>Merino Wool Beanie</h4>
+        <p class="note">Merino wool with a leather patch. Built for Maine winters.</p>
+        <div class="p-row">
+          <span class="p-price">$24</span>
+          <a class="add" href="#">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-inner">
+    <span class="proof-item"><span>✦</span> Grown in Living Soil</span>
+    <span class="proof-item"><span>✦</span> MOFGA Certified Organic</span>
+    <span class="proof-item"><span>✦</span> Small Batch · Hand Crafted</span>
+    <span class="proof-item"><span>✦</span> Lab Tested, Every Batch</span>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand">Mantis Medicinals</span>
+      <p class="tag">Grown in living soil · Hand crafted · Higher standards</p>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="shop.html">Botanical Seltzer</a></li>
+        <li><a href="shop.html">Gummies</a></li>
+        <li><a href="shop.html">Tinctures &amp; Oils</a></li>
+        <li><a href="shop.html">Salves &amp; Body</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="lab-results.html">Lab Results</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#">Montville, Maine</a></li>
+        <li><a href="#">hello@mantismedicinals.com</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>Must be 21 or older to purchase. © 2026 Mantis Medicinals, LLC · Montville, Maine · Privacy · Terms · Shipping &amp; Returns</p>
+  </div>
+</footer>
+
+</body>
+</html>

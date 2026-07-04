@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mantis Medicinals · Botanical CBD Seltzer, Grown in Maine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EC;
+    --cream-warm:#F8F6F3;
+    --lavender-mist:#E8DFF0;
+    --botanical-purple:#724E8A;
+    --midnight-plum:#281828;
+    --mantis-green:#2D5A2D;
+    --sage:#6B8A5A;
+    --blueberry:#3A5A8A;
+    --rose-deep:#C26D5C;
+    --gold:#B69A54;
+    --ink:#2E2434;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;line-height:1.55;
+    overflow-x:hidden;
+  }
+  .caps{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;}
+  .fell{font-family:'IM Fell English',serif;font-style:italic;}
+  /* ---------- masthead ---------- */
+  .masthead{
+    text-align:center;
+    padding:34px 24px 22px;
+    border-bottom:1px double var(--gold);
+    position:relative;
+  }
+  .masthead .est{
+    position:absolute;left:48px;top:50%;transform:translateY(-50%);
+    font-family:'IM Fell English',serif;font-style:italic;font-size:14px;opacity:.6;
+  }
+  .masthead .cart{
+    position:absolute;right:48px;top:50%;transform:translateY(-50%);
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--mantis-green);text-decoration:none;
+    border:1px solid var(--gold);padding:10px 20px;
+  }
+  .masthead .brand{
+    font-family:'Pinyon Script',cursive;font-size:52px;color:var(--botanical-purple);
+    text-decoration:none;line-height:1;display:block;margin-bottom:14px;
+  }
+  .masthead ul{
+    display:flex;gap:36px;list-style:none;justify-content:center;
+  }
+  .masthead ul a{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  .masthead ul a:hover{color:var(--botanical-purple);}
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.1fr .9fr;
+    min-height:78vh;position:relative;overflow:hidden;
+    border-bottom:1px solid rgba(182,154,84,.4);
+  }
+  .hero-left{
+    padding:9vh 5vw 9vh 64px;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;z-index:2;
+  }
+  .hero-left .kicker{
+    font-size:11px;color:var(--mantis-green);margin-bottom:30px;display:flex;align-items:center;gap:16px;
+  }
+  .hero-left .kicker::before{content:"";width:56px;height:1px;background:var(--gold);}
+  .hero-left h1{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(54px,5.8vw,86px);line-height:1.04;color:var(--midnight-plum);
+    margin-bottom:26px;
+  }
+  .hero-left h1 .script{
+    font-family:'Pinyon Script',cursive;font-weight:400;
+    color:var(--botanical-purple);font-size:1.18em;display:block;line-height:.95;
+  }
+  .hero-left p{max-width:430px;font-size:20px;opacity:.85;margin-bottom:14px;}
+  .hero-left .fell{color:var(--sage);margin-bottom:44px;}
+  .btn{
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;padding:17px 38px;
+  }
+  .btn-solid{background:var(--midnight-plum);color:var(--cream);}
+  .btn-solid:hover{background:var(--botanical-purple);}
+  .btn-frame{border:1px solid var(--gold);color:var(--mantis-green);margin-left:16px;}
+  .hero-right{position:relative;}
+  .hero-right img.photo{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  }
+  .hero-right .caption{
+    position:absolute;bottom:24px;right:24px;z-index:3;
+    background:rgba(245,242,236,.92);border:1px solid var(--gold);
+    padding:12px 20px;
+    font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--ink);
+  }
+  .hero .botanical-bleed{
+    position:absolute;left:-140px;bottom:-120px;width:560px;z-index:1;
+    mix-blend-mode:multiply;opacity:.35;transform:rotate(8deg);
+    pointer-events:none;
+  }
+  /* ---------- ticker ---------- */
+  .ticker{
+    border-bottom:1px solid rgba(182,154,84,.4);
+    padding:18px 0;overflow:hidden;white-space:nowrap;
+    background:var(--cream-warm);text-align:center;
+  }
+  .ticker span{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mantis-green);
+    padding:0 34px;
+  }
+  .ticker .sep{color:var(--gold);}
+  /* ---------- flavor editorial rows ---------- */
+  .flavor-row{
+    display:grid;grid-template-columns:1fr 1fr;
+    max-width:1340px;margin:0 auto;
+    padding:110px 64px;gap:70px;align-items:center;
+    position:relative;
+  }
+  .flavor-row.reverse .visual{order:2;}
+  .flavor-row.reverse .copy{order:1;}
+  .flavor-row .visual{position:relative;}
+  .flavor-row .visual .photo-frame{
+    position:relative;
+    box-shadow:0 34px 70px -30px rgba(40,24,40,.45);
+  }
+  .flavor-row .visual .photo-frame img{
+    display:block;width:100%;height:560px;object-fit:cover;object-position:center 24%;
+  }
+  .flavor-row .visual .photo-frame::after{
+    content:"";position:absolute;inset:10px;border:1px solid rgba(245,242,236,.85);pointer-events:none;
+  }
+  .flavor-row .bignum{
+    position:absolute;top:-72px;left:-30px;z-index:2;
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:150px;line-height:1;color:var(--gold);opacity:.55;
+  }
+  .flavor-row .copy .no{font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold);display:block;margin-bottom:14px;}
+  .flavor-row .copy h2{
+    font-family:'Cormorant Garamond',serif;font-weight:400;
+    font-size:clamp(42px,4.6vw,64px);line-height:1.02;margin-bottom:20px;
+  }
+  .flavor-row.one h2{color:var(--blueberry);}
+  .flavor-row.two h2{color:var(--rose-deep);}
+  .flavor-row.three h2{color:var(--mantis-green);}
+  .flavor-row .copy h2 em{font-style:italic;}
+  .flavor-row .copy p{max-width:420px;opacity:.85;margin-bottom:16px;}
+  .flavor-row .copy .notes{
+    font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink);opacity:.65;display:block;margin:26px 0 32px;line-height:2.2;
+  }
+  .flavor-row .copy a.shop{
+    font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--botanical-purple);text-decoration:none;
+    border-bottom:1px solid var(--gold);padding-bottom:6px;
+  }
+  .flavor-row .side-botanical{
+    position:absolute;width:340px;mix-blend-mode:multiply;opacity:.3;z-index:0;pointer-events:none;
+  }
+  .flavor-row.one .side-botanical{right:-120px;top:-60px;}
+  .flavor-row.two .side-botanical{left:-140px;bottom:-40px;transform:scaleX(-1) rotate(-6deg);}
+  .flavor-row.three .side-botanical{right:-130px;bottom:-70px;rotate:12deg;}
+  hr.gold{
+    border:none;height:1px;width:220px;margin:0 auto;
+    background:linear-gradient(to right,transparent,var(--gold),transparent);
+    position:relative;
+  }
+  /* ---------- dark story band ---------- */
+  .story{
+    background:var(--midnight-plum);color:var(--cream);
+    padding:130px 64px;position:relative;overflow:hidden;
+  }
+  .story .inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;}
+  .story .kicker{font-size:11px;color:#CBBE93;display:block;margin-bottom:26px;}
+  .story h2{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(38px,4.6vw,60px);line-height:1.16;margin-bottom:28px;
+  }
+  .story h2 .script{font-family:'Pinyon Script',cursive;color:#C9B8DD;font-size:1.25em;}
+  .story p{max-width:620px;margin:0 auto 20px;font-size:20px;opacity:.85;}
+  .story .fell{color:#CBBE93;display:block;margin:34px 0 40px;font-size:22px;}
+  .story .btn-frame{border-color:#CBBE93;color:var(--cream);margin-left:0;}
+  .story .glow{
+    position:absolute;width:900px;height:900px;border-radius:50%;
+    background:radial-gradient(circle,rgba(114,78,138,.5),transparent 60%);
+    bottom:-500px;left:50%;transform:translateX(-50%);
+  }
+  /* ---------- apothecary shelf (family) ---------- */
+  .shelf{padding:120px 64px;max-width:1340px;margin:0 auto;}
+  .shelf-head{text-align:center;margin-bottom:64px;}
+  .shelf-head .kicker{font-size:11px;color:var(--gold);display:block;margin-bottom:16px;}
+  .shelf-head h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:48px;color:var(--midnight-plum);}
+  .shelf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--gold);}
+  .shelf-item{
+    padding:48px 30px 42px;text-align:center;
+    border-right:1px solid rgba(182,154,84,.5);
+    position:relative;
+  }
+  .shelf-item:last-child{border-right:none;}
+  .shelf-item .no{font-family:'IM Fell English',serif;font-style:italic;font-size:14px;color:var(--gold);display:block;margin-bottom:20px;}
+  .shelf-item h4{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--midnight-plum);margin-bottom:12px;line-height:1.7;}
+  .shelf-item p{font-size:16.5px;opacity:.78;margin-bottom:22px;}
+  .shelf-item a{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--botanical-purple);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px;
+  }
+  /* ---------- testimonials ---------- */
+  .testimonials{padding:0 64px 120px;max-width:1340px;margin:0 auto;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .testi{
+    border:1px solid var(--gold);position:relative;
+    padding:44px 34px 36px;background:var(--cream-warm);text-align:center;
+  }
+  .testi::after{content:"";position:absolute;inset:6px;border:1px solid rgba(182,154,84,.4);pointer-events:none;}
+  .testi .mark{font-family:'IM Fell English',serif;font-size:44px;color:var(--gold);line-height:0;display:block;margin-bottom:24px;}
+  .testi p{font-family:'IM Fell English',serif;font-style:italic;font-size:18.5px;line-height:1.55;margin-bottom:20px;}
+  .testi cite{font-family:'Cinzel',serif;font-style:normal;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);}
+  .testimonials .more{display:block;text-align:center;margin-top:44px;}
+  .testimonials .more a{
+    font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--botanical-purple);text-decoration:none;
+    border-bottom:1px solid var(--gold);padding-bottom:6px;
+  }
+  /* ---------- signup ---------- */
+  .signup{
+    border-top:1px double var(--gold);
+    padding:96px 24px;text-align:center;
+    background:var(--lavender-mist);
+  }
+  .signup h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;color:var(--midnight-plum);margin-bottom:8px;}
+  .signup .fell{color:var(--botanical-purple);display:block;margin-bottom:36px;}
+  .signup form{display:flex;justify-content:center;max-width:480px;margin:0 auto;}
+  .signup input{
+    flex:1;padding:17px 22px;font-family:'Inter',sans-serif;font-size:14px;font-weight:300;
+    border:1px solid var(--gold);border-right:none;background:var(--cream);outline:none;color:var(--ink);
+  }
+  .signup button{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    background:var(--midnight-plum);color:var(--cream);border:none;padding:17px 32px;cursor:pointer;
+  }
+  .signup button:hover{background:var(--botanical-purple);}
+  /* ---------- footer ---------- */
+  footer{background:var(--midnight-plum);color:#C9BFD1;padding:74px 64px 44px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:44px;max-width:1240px;margin:0 auto 50px;}
+  footer .brand{font-family:'Pinyon Script',cursive;font-size:40px;color:var(--cream);display:block;margin-bottom:14px;line-height:1;}
+  footer .tag{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;opacity:.7;max-width:280px;}
+  footer h5{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#CBBE93;margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{color:#C9BFD1;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;}
+  footer ul a:hover{color:var(--cream);}
+  .legal{
+    max-width:1240px;margin:0 auto;border-top:1px solid rgba(201,191,209,.2);padding-top:28px;
+    font-family:'Inter',sans-serif;font-size:11px;font-weight:300;line-height:1.8;opacity:.6;
+  }
+  .legal p{margin-bottom:8px;}
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .hero{grid-template-columns:1fr;}
+    .hero-right{height:430px;order:-1;}
+    .hero-left{padding:54px 32px;}
+    .flavor-row{grid-template-columns:1fr;gap:40px;padding:80px 32px;}
+    .flavor-row.reverse .visual{order:1;}
+    .flavor-row.reverse .copy{order:2;}
+    .flavor-row .bignum{font-size:100px;top:-50px;left:0;}
+    .shelf{padding:90px 32px;}
+    .shelf-grid{grid-template-columns:1fr 1fr;}
+    .shelf-item:nth-child(2){border-right:none;}
+    .shelf-item:nth-child(1),.shelf-item:nth-child(2){border-bottom:1px solid rgba(182,154,84,.5);}
+    .testimonials{padding:0 32px 90px;}
+    .testi-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .masthead .est{display:none;}
+  }
+  @media (max-width:640px){
+    .masthead .cart{position:static;transform:none;display:inline-block;margin-top:14px;}
+    .masthead ul{flex-wrap:wrap;gap:18px;}
+    .shelf-grid{grid-template-columns:1fr;}
+    .shelf-item{border-right:none;border-bottom:1px solid rgba(182,154,84,.5);}
+    .shelf-item:last-child{border-bottom:none;}
+    .signup form{flex-direction:column;gap:12px;}
+    .signup input{border-right:1px solid var(--gold);}
+    footer{padding:60px 28px 40px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .btn-frame{margin-left:0;margin-top:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="est">est. Montville, Maine</span>
+  <a class="brand" href="index.html">Mantis Medicinals</a>
+  <ul>
+    <li><a href="shop.html">Seltzer</a></li>
+    <li><a href="shop.html">Shop All</a></li>
+    <li><a href="#">Our Story</a></li>
+    <li><a href="lab-results.html">Lab Results</a></li>
+    <li><a href="#">Find Us</a></li>
+  </ul>
+  <a class="cart" href="#">Cart · 0</a>
+</header>
+
+<section class="hero">
+  <img class="botanical-bleed" src="../assets/botanicals/bouquet-v3-05.png" alt="">
+  <div class="hero-left">
+    <span class="kicker caps">Botanical CBD Seltzer</span>
+    <h1>Plant medicine,<span class="script">poured over ice.</span></h1>
+    <p>Sparkling botanical infusion crafted in small batches in Montville, Maine. 20mg broad spectrum CBD.</p>
+    <span class="fell">Enjoy chilled. Best experienced during moments of pause.</span>
+    <div>
+      <a class="btn btn-solid" href="shop.html">Shop the Seltzer</a>
+      <a class="btn btn-frame" href="#">Find a Store</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="photo" src="../assets/cans/blueberry_front_real.png" alt="Blueberry Lavender Botanical Seltzer">
+    <span class="caption">No. 1 · Blueberry &amp; Lavender</span>
+  </div>
+</section>
+
+<div class="ticker">
+  <span>Grown in Living Soil</span><span class="sep">❦</span><span>MOFGA Certified Organic</span><span class="sep">❦</span><span>Small Batch · Hand Crafted</span><span class="sep">❦</span><span>Lab Tested, Every Batch</span><span class="sep">❦</span><span>Made in Maine</span>
+</div>
+
+<section class="flavor-row one">
+  <img class="side-botanical" src="../assets/botanicals/directional-01.png" alt="">
+  <div class="visual">
+    <span class="bignum">No.1</span>
+    <div class="photo-frame">
+      <img src="../assets/cans/blueberry_front_real.png" alt="Blueberry Lavender can among lavender">
+    </div>
+  </div>
+  <div class="copy">
+    <span class="no">The first pour</span>
+    <h2>Blueberry <em>&amp;</em> Lavender</h2>
+    <p>Maine's berry meets the calm one. Wild blueberry rounded out with a whisper of lavender, never soapy, never sweet.</p>
+    <span class="notes">Tasting notes · Wild berry · Soft florals · Cold marble morning</span>
+    <a class="shop" href="shop.html">Shop No. 1</a>
+  </div>
+</section>
+
+<hr class="gold">
+
+<section class="flavor-row two reverse">
+  <img class="side-botanical" src="../assets/botanicals/directional-02.png" alt="">
+  <div class="visual">
+    <span class="bignum">No.2</span>
+    <div class="photo-frame">
+      <img src="../assets/cans/hibiscus_front_real.png" alt="Hibiscus Lemon can in lavender field">
+    </div>
+  </div>
+  <div class="copy">
+    <span class="no">The bright one</span>
+    <h2>Hibiscus <em>&amp;</em> Lemon</h2>
+    <p>Bright, floral, a little sunshine. Tart hibiscus petals and real lemon, the garden's answer to an aperitif.</p>
+    <span class="notes">Tasting notes · Tart petals · Sun-warm citrus · Golden hour</span>
+    <a class="shop" href="shop.html">Shop No. 2</a>
+  </div>
+</section>
+
+<hr class="gold">
+
+<section class="flavor-row three">
+  <img class="side-botanical" src="../assets/botanicals/directional-v2-04.png" alt="">
+  <div class="visual">
+    <span class="bignum">No.3</span>
+    <div class="photo-frame">
+      <img src="../assets/cans/mintlime_front_real.png" alt="Lime and Mint can at sunset">
+    </div>
+  </div>
+  <div class="copy">
+    <span class="no">The cool one</span>
+    <h2>Lime <em>&amp;</em> Mint</h2>
+    <p>Cool, green, straight off the stem. Garden mint and fresh lime, somewhere between a mojito and a deep breath.</p>
+    <span class="notes">Tasting notes · Crushed mint · Fresh lime · Evening porch</span>
+    <a class="shop" href="shop.html">Shop No. 3</a>
+  </div>
+</section>
+
+<section class="story">
+  <div class="glow"></div>
+  <div class="inner">
+    <span class="kicker caps">Our Story</span>
+    <h2>Female-founded. Farm-grown.<br><span class="script">Maine-made.</span></h2>
+    <p>Katrina has grown in living soil since 2010. Every product starts in her Montville garden, raised like a garden, not a commodity, and tested batch by batch.</p>
+    <span class="fell">"We believe plant medicine should feel gentle, honest, and beautifully made."</span>
+    <a class="btn btn-frame" href="#">Meet the Farm</a>
+  </div>
+</section>
+
+<section class="shelf">
+  <div class="shelf-head">
+    <span class="kicker caps">The Apothecary</span>
+    <h2>Beyond the can.</h2>
+  </div>
+  <div class="shelf-grid">
+    <div class="shelf-item">
+      <span class="no">i.</span>
+      <h4>Gummies</h4>
+      <p>Daily calm, one Maine blueberry at a time.</p>
+      <a href="shop.html">Shop Gummies</a>
+    </div>
+    <div class="shelf-item">
+      <span class="no">ii.</span>
+      <h4>Tinctures &amp; Oils</h4>
+      <p>Broad spectrum drops, from the dropper to the day.</p>
+      <a href="shop.html">Shop Tinctures</a>
+    </div>
+    <div class="shelf-item">
+      <span class="no">iii.</span>
+      <h4>Salves &amp; Body</h4>
+      <p>The miracle salve that started it all, plus body oil and soaks.</p>
+      <a href="shop.html">Shop Topicals</a>
+    </div>
+    <div class="shelf-item">
+      <span class="no">iv.</span>
+      <h4>Tea &amp; Merch</h4>
+      <p>Herbal blends and hats we're honestly quite proud of.</p>
+      <a href="shop.html">Shop All</a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="testi-grid">
+    <div class="testi">
+      <span class="mark">"</span>
+      <p>The seltzer is the first CBD drink that actually tastes like something I would order on purpose.</p>
+      <cite>Portland, ME</cite>
+    </div>
+    <div class="testi">
+      <span class="mark">"</span>
+      <p>You can taste the love in everything they make.</p>
+      <cite>Sarah, Atlantic Farms</cite>
+    </div>
+    <div class="testi">
+      <span class="mark">"</span>
+      <p>You can taste that someone actually grew this. Nothing about it feels mass-made.</p>
+      <cite>Belfast, ME</cite>
+    </div>
+  </div>
+  <span class="more"><a href="testimonials.html">Read More Kind Words</a></span>
+</section>
+
+<section class="signup">
+  <h2>Join the garden list.</h2>
+  <span class="fell">First-sip discounts, new flavors, no spam.</span>
+  <form onsubmit="return false">
+    <input type="email" placeholder="your@email.com" aria-label="Email address">
+    <button type="submit">Sign Up</button>
+  </form>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand">Mantis Medicinals</span>
+      <p class="tag">Grown in living soil · Hand crafted · Higher standards</p>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="shop.html">Botanical Seltzer</a></li>
+        <li><a href="shop.html">Gummies</a></li>
+        <li><a href="shop.html">Tinctures &amp; Oils</a></li>
+        <li><a href="shop.html">Salves &amp; Body</a></li>
+        <li><a href="shop.html">Merch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="lab-results.html">Lab Results</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#">Montville, Maine</a></li>
+        <li><a href="#">hello@mantismedicinals.com</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>Must be 21 or older to purchase. © 2026 Mantis Medicinals, LLC · Montville, Maine · Privacy · Terms · Shipping &amp; Returns</p>
+  </div>
+</footer>
+
+</body>
+</html>
