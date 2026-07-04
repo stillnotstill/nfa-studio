@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAFE ONE™ | Non-Alcoholic Social Tonic</title>
+<meta name="description" content="Good company. Clear mind. Three flavors, one limited edition, four seats. Always make the last one a safe one.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SAFE ONE. Non-Alcoholic Social Tonic.">
+<meta property="og:description" content="Good company. Clear mind. Always make the last one a safe one.">
+<meta property="og:image" content="https://nfa.studio/SafeOne/assets/can-john-margarita.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SAFE ONE. Non-Alcoholic Social Tonic.">
+<meta name="twitter:description" content="Good company. Clear mind. Always make the last one a safe one.">
+<meta name="twitter:image" content="https://nfa.studio/SafeOne/assets/can-john-margarita.jpg">
+<meta name="theme-color" content="#EFE7D6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23EFE7D6'/%3E%3Ccircle%20cx='32'%20cy='32'%20r='12'%20fill='%23171512'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#EFE7D6;
+  --cream-deep:#E9DFC7;
+  --paper:#F7F2E5;
+  --ink:#171512;
+  --soft:rgba(23,21,18,.66);
+  --faint:rgba(23,21,18,.46);
+  --line:rgba(23,21,18,.16);
+  --line-strong:rgba(23,21,18,.32);
+  --red:#C0402B;
+  --blue:#2F6BAC;
+  --green:#7DA033;
+  --green-bright:#93B644;
+  --lime:#97BC41;
+  --orange:#E08434;
+  --cream-soft:rgba(239,231,214,.74);
+  --cream-faint:rgba(239,231,214,.52);
+  --line-cream:rgba(239,231,214,.22);
+  --anton:'Anton','Arial Narrow',sans-serif;
+  --inter:'Inter',-apple-system,'Helvetica Neue',Helvetica,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--inter);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+ol,ul{list-style:none}
+::selection{background:var(--ink);color:var(--cream)}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:10px 16px;font-size:.8rem;text-decoration:none}
+.skip:focus{left:12px;top:12px}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(239,231,214,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-family:var(--anton);font-size:1.06rem;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.brand .tm-s{font-family:var(--inter);font-weight:700;font-size:.5em;vertical-align:top;margin-left:2px}
+.top-cat{font-size:.6rem;font-weight:700;letter-spacing:.3em;color:var(--soft)}
+.top-dots{display:none;gap:7px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%}
+.dr{background:var(--red)}.db{background:var(--blue)}.dg{background:var(--green)}
+@media (max-width:620px){.top-cat{display:none}.top-dots{display:flex}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(72px,13vh,150px) 0 clamp(60px,10vh,120px);text-align:center}
+.kicker{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.4vw,20px);font-size:clamp(.6rem,1.7vw,.76rem);font-weight:700;letter-spacing:.32em;color:var(--soft)}
+.k-line{width:clamp(26px,6vw,64px);height:1px;background:var(--line-strong)}
+.mark{font-family:var(--anton);font-weight:400;font-size:clamp(5.2rem,28vw,16.5rem);line-height:.85;letter-spacing:.015em;margin-top:clamp(22px,4vh,40px);text-transform:uppercase}
+.mark .tm{display:inline-block;font-family:var(--inter);font-weight:700;font-size:.09em;letter-spacing:.06em;vertical-align:top;transform:translateY(.5em);margin-left:.08em}
+.hero-dot{width:clamp(22px,3.4vw,40px);height:clamp(22px,3.4vw,40px);border-radius:50%;background:var(--ink);margin:clamp(24px,4.5vh,44px) auto 0}
+.hero-tag{margin-top:clamp(22px,4vh,38px);font-size:clamp(.78rem,2.3vw,1.02rem);font-weight:700;letter-spacing:.3em}
+.hero-trio{margin-top:clamp(30px,5vh,52px);display:flex;justify-content:center;gap:13px}
+.hero-note{margin-top:16px;font-size:.6rem;font-weight:600;letter-spacing:.3em;color:var(--faint)}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--ink);overflow:hidden;padding:13px 0}
+.mq-track{display:flex;width:max-content;animation:mq 34s linear infinite}
+.mq-group{display:flex;align-items:center;flex:none}
+.mq-item{display:flex;align-items:center;flex:none}
+.mq-txt{font-family:var(--anton);color:var(--cream);font-size:clamp(1.02rem,2.6vw,1.55rem);letter-spacing:.09em;white-space:nowrap;padding:0 clamp(16px,2.4vw,26px);text-transform:uppercase}
+.mq-dot{width:.5em;height:.5em;border-radius:50%;flex:none}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- shared section bits ---------- */
+.sec{padding:clamp(80px,11vw,144px) 0}
+.label{display:flex;align-items:center;gap:11px;font-size:.66rem;font-weight:700;letter-spacing:.3em;color:var(--soft);text-transform:uppercase}
+.label::after{content:"";flex:1;height:1px;background:var(--line);margin-left:10px}
+.lab-dot{width:9px;height:9px;border-radius:50%;flex:none}
+.h2{font-family:var(--anton);font-weight:400;font-size:clamp(2.5rem,6.8vw,4.7rem);line-height:.96;letter-spacing:.012em;margin-top:clamp(22px,3.6vw,38px);text-transform:uppercase}
+.sub{margin-top:16px;font-size:clamp(.95rem,1.4vw,1.05rem);font-weight:500;color:var(--soft)}
+.body{font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.75;color:var(--soft)}
+
+/* ---------- lineup ---------- */
+.cans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,30px);margin-top:clamp(38px,5vw,64px)}
+@media (max-width:800px){.cans{grid-template-columns:min(330px,100%);justify-content:center}}
+.can{position:relative;border-radius:20px;border:1px solid var(--line);padding:clamp(26px,3vw,34px) 22px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:480px;transition:transform .35s ease,box-shadow .35s ease}
+.can:hover{transform:translateY(-8px);box-shadow:0 26px 50px rgba(23,21,18,.14)}
+.can-cream{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0) 36%),#EAE0C7}
+.can-paper{background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0) 36%),#F8F4E9}
+.can-ink{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0) 36%),#1A1714;color:var(--cream);border-color:rgba(23,21,18,.55)}
+.can-cat{font-size:.55rem;font-weight:700;letter-spacing:.26em;line-height:1.9;color:var(--faint);border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);padding:7px 12px;text-transform:uppercase}
+.can-ink .can-cat{color:var(--cream-faint);border-color:var(--line-cream)}
+.can-mark{font-family:var(--anton);font-weight:400;font-size:clamp(2.7rem,3.4vw,3.2rem);line-height:.88;letter-spacing:.02em;margin-top:clamp(22px,2.8vw,30px);text-transform:uppercase}
+.can-mark .tm{display:inline-block;font-family:var(--inter);font-weight:700;font-size:.5rem;vertical-align:top;transform:translateY(.45em);margin-left:2px}
+.can-dot{width:24px;height:24px;border-radius:50%;margin-top:clamp(22px,2.8vw,30px)}
+.can-flavor{font-size:.78rem;font-weight:800;letter-spacing:.18em;margin-top:clamp(18px,2.4vw,26px);text-transform:uppercase}
+.can-rule{width:26px;height:2px;margin-top:14px}
+.can-lcb{font-size:.6rem;font-weight:700;letter-spacing:.24em;color:var(--faint);margin-top:13px}
+.can-oz{font-size:.58rem;font-weight:600;letter-spacing:.2em;color:var(--faint);margin-top:auto;padding-top:28px}
+.can-ink .can-lcb,.can-ink .can-oz{color:var(--cream-faint)}
+
+/* ---------- limited edition ---------- */
+.limited{background:var(--lime)}
+.limited .label{color:rgba(23,21,18,.74)}
+.limited .label::after{background:rgba(23,21,18,.28)}
+.lim-grid{display:grid;gap:clamp(30px,5vw,56px);grid-template-areas:'head' 'media' 'body'}
+@media (min-width:900px){.lim-grid{grid-template-columns:1.05fr .95fr;grid-template-areas:'head media' 'body media';align-items:center;column-gap:clamp(48px,6vw,88px)}}
+.lim-head{grid-area:head}
+.lim-media{grid-area:media}
+.lim-body{grid-area:body}
+.jm{font-size:clamp(3rem,10vw,6.6rem)}
+.jm-flavor{margin-top:20px;font-size:clamp(.78rem,1.9vw,.95rem);font-weight:800;letter-spacing:.32em}
+.lim-body .body{max-width:46ch;color:rgba(23,21,18,.82)}
+.lim-spec{margin-top:20px;font-size:.62rem;font-weight:700;letter-spacing:.26em;color:rgba(23,21,18,.64)}
+.lim-imgwrap{position:relative}
+.lim-imgwrap img{width:100%;border-radius:18px;box-shadow:0 34px 70px rgba(23,21,18,.28)}
+.burst{position:absolute;top:-26px;right:-12px;width:clamp(138px,17vw,192px);aspect-ratio:1;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;transform:rotate(-9deg);transition:transform .4s ease;font-size:clamp(.54rem,1.3vw,.65rem);font-weight:800;letter-spacing:.13em;line-height:1.55;text-transform:uppercase;clip-path:polygon(50.00% 0.00%, 56.49% 9.01%, 65.45% 2.45%, 68.84% 13.02%, 79.39% 9.55%, 79.35% 20.65%, 90.45% 20.61%, 86.98% 31.16%, 97.55% 34.55%, 90.99% 43.51%, 100.00% 50.00%, 90.99% 56.49%, 97.55% 65.45%, 86.98% 68.84%, 90.45% 79.39%, 79.35% 79.35%, 79.39% 90.45%, 68.84% 86.98%, 65.45% 97.55%, 56.49% 90.99%, 50.00% 100.00%, 43.51% 90.99%, 34.55% 97.55%, 31.16% 86.98%, 20.61% 90.45%, 20.65% 79.35%, 9.55% 79.39%, 13.02% 68.84%, 2.45% 65.45%, 9.01% 56.49%, 0.00% 50.00%, 9.01% 43.51%, 2.45% 34.55%, 13.02% 31.16%, 9.55% 20.61%, 20.65% 20.65%, 20.61% 9.55%, 31.16% 13.02%, 34.55% 2.45%, 43.51% 9.01%)}
+.lim-imgwrap:hover .burst{transform:rotate(-3deg)}
+
+/* ---------- clown room ---------- */
+.club{background:var(--ink);color:var(--cream)}
+.checker{height:20px;background:repeating-conic-gradient(var(--ink) 0% 25%,var(--cream) 0% 50%);background-size:20px 20px}
+.club-in{padding:clamp(74px,10vw,124px) 0}
+.club .label{color:var(--cream-soft)}
+.club .label::after{background:var(--line-cream)}
+.club-grid{display:grid;gap:clamp(44px,7vw,84px);margin-top:clamp(26px,4vw,46px)}
+@media (min-width:940px){.club-grid{grid-template-columns:1.02fr .98fr;column-gap:clamp(48px,6vw,90px)}}
+.club .body{color:var(--cream-soft);max-width:52ch;margin-top:clamp(20px,3vw,30px)}
+.club .strong{color:var(--cream);font-weight:600}
+.club-photo img{width:100%;border-radius:14px;border:1px solid var(--line-cream);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.plaque{margin-top:18px}
+.plaque-t{font-size:.62rem;font-weight:700;letter-spacing:.26em;color:var(--cream-soft);text-transform:uppercase}
+.plaque-s{font-size:.6rem;font-weight:600;letter-spacing:.22em;color:var(--cream-faint);margin-top:7px;line-height:1.9;text-transform:uppercase}
+.rules-h{font-size:.66rem;font-weight:700;letter-spacing:.32em;color:var(--orange)}
+.rules{margin-top:12px}
+.rules li{display:flex;align-items:baseline;gap:20px;padding:clamp(18px,2.6vw,26px) 0;border-top:1px solid var(--line-cream)}
+.rules li:last-child{border-bottom:1px solid var(--line-cream)}
+.r-num{font-size:.68rem;font-weight:700;letter-spacing:.2em;color:var(--orange);flex:none}
+.r-txt{font-family:var(--anton);font-size:clamp(2.1rem,6.6vw,3.7rem);line-height:1;letter-spacing:.015em}
+/* ---------- performance claims ---------- */
+.claims-list{margin-top:clamp(30px,4.5vw,50px)}
+.claims-list li{display:flex;align-items:baseline;gap:20px;padding:clamp(18px,2.6vw,26px) 0;border-top:1px solid var(--line)}
+.claims-list li:last-child{border-bottom:1px solid var(--line)}
+.c-chip{width:13px;height:13px;border-radius:2px;background:repeating-conic-gradient(var(--ink) 0% 25%,transparent 0% 50%);background-size:6.5px 6.5px;outline:1px solid var(--line-strong);flex:none}
+.c-txt{font-family:var(--anton);font-size:clamp(1.9rem,6vw,3.5rem);line-height:1.06;letter-spacing:.015em;text-transform:uppercase}
+.claims-fine{margin-top:22px;font-size:.66rem;font-weight:600;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+
+/* ---------- campaign archive ---------- */
+.art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.8vw,36px);margin-top:clamp(38px,5vw,62px)}
+@media (max-width:840px){.art-grid{grid-template-columns:min(430px,100%);justify-content:center}}
+.art-img{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.art-img img{width:100%;transition:transform .6s ease}
+.art:hover .art-img img{transform:scale(1.03)}
+.art-title{font-family:var(--anton);font-size:1.5rem;letter-spacing:.02em;margin-top:18px;text-transform:uppercase}
+.art-meta{font-size:.58rem;font-weight:700;letter-spacing:.24em;color:var(--faint);margin-top:7px}
+.art-note{font-size:.92rem;color:var(--soft);margin-top:9px}
+.arch-note{margin-top:clamp(44px,6vw,68px);padding-top:24px;border-top:1px solid var(--line);text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.28em;color:var(--soft);text-transform:uppercase}
+
+/* ---------- testimonials ---------- */
+.quotes{background:var(--cream-deep);border-top:1px solid var(--line)}
+.q-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,4vw,52px);margin-top:clamp(38px,5vw,62px)}
+@media (max-width:840px){.q-grid{grid-template-columns:1fr;max-width:520px}}
+.q{border-top:2px solid var(--ink);padding-top:24px}
+.q .dot{width:13px;height:13px}
+.q blockquote{margin-top:18px;font-size:clamp(1.12rem,1.7vw,1.32rem);line-height:1.5;font-weight:600}
+.q figcaption{margin-top:15px;font-size:.62rem;font-weight:700;letter-spacing:.26em;color:var(--soft)}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink);color:var(--cream);padding:clamp(74px,10vw,124px) 0 42px}
+.values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,28px);text-align:center}
+.val svg{width:38px;height:38px;margin:0 auto;display:block}
+.val p{margin-top:15px;font-size:.58rem;font-weight:700;letter-spacing:.26em;color:var(--cream-soft)}
+.foot-rule{height:1px;background:var(--line-cream);margin:clamp(46px,6vw,66px) 0}
+.foot-tag{font-family:var(--anton);text-align:center;font-size:clamp(1.65rem,5vw,3.2rem);line-height:1.12;letter-spacing:.02em;text-transform:uppercase}
+.foot-sponsor{text-align:center;margin-top:clamp(28px,4vw,40px);font-size:.6rem;font-weight:700;letter-spacing:.3em;color:var(--cream-faint);text-transform:uppercase}
+.fine{margin:clamp(38px,5vw,56px) auto 0;max-width:660px;text-align:center}
+.fine p{font-size:.72rem;line-height:1.7;color:rgba(239,231,214,.55);margin-top:10px}
+.foot-base{margin-top:clamp(46px,6vw,66px);padding-top:24px;border-top:1px solid var(--line-cream);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:.6rem;font-weight:700;letter-spacing:.24em;color:var(--cream-faint)}
+@media (max-width:560px){.foot-base{justify-content:center;text-align:center}}
+
+/* ---------- toys ---------- */
+#scrollflag{position:fixed;top:0;left:0;width:100%;height:5px;z-index:60;background:repeating-linear-gradient(90deg,var(--ink) 0 9px,var(--cream) 9px 18px);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.hero{position:relative;overflow:hidden}
+.bubbles{position:absolute;inset:0;pointer-events:none}
+.bub{position:absolute;bottom:-24px;border:1.5px solid var(--line-strong);border-radius:50%;opacity:0;animation:rise 10s linear infinite}
+@keyframes rise{0%{transform:translateY(0)}8%{opacity:.5}92%{opacity:.3}100%{transform:translateY(-92vh);opacity:0}}
+.hero-dot{border:0;padding:0;cursor:pointer;display:block;transition:transform .15s ease}
+.hero-dot:active{transform:scale(.88)}
+.marquee:hover .mq-track{animation-duration:7s}
+.burst{cursor:pointer}
+.burst.spin{animation:burstspin .8s cubic-bezier(.3,.1,.3,1)}
+@keyframes burstspin{from{transform:rotate(-9deg)}to{transform:rotate(351deg)}}
+.cf{position:fixed;border-radius:50%;pointer-events:none;z-index:99}
+.enter-btn{margin-top:clamp(30px,4vw,44px);font-family:var(--anton);font-weight:400;font-size:clamp(1.25rem,2.8vw,1.8rem);letter-spacing:.06em;text-transform:uppercase;background:var(--cream);color:var(--ink);border:0;padding:16px 32px;border-radius:12px;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;display:inline-block}
+.enter-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.enter-btn:disabled{cursor:wait}
+.enter-note{margin-top:14px;font-size:.64rem;font-weight:700;letter-spacing:.26em;color:var(--cream-soft);text-transform:uppercase;min-height:1.4em}
+.enter-fine{margin-top:22px;font-size:.6rem;font-weight:600;letter-spacing:.2em;color:var(--cream-faint);line-height:2.1;text-transform:uppercase;max-width:46ch}
+
+/* ---------- motion ---------- */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.6,.2,1);transition-delay:var(--d,0ms)}
+[data-reveal].on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  .mq-track{animation:none}
+  .can,.art-img img,.burst{transition:none}
+  .bub,.cf{display:none}
+  .burst.spin{animation:none}
+  .hero-dot,.enter-btn{transition:none}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div id="scrollflag" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top">SAFE ONE<span class="tm-s">™</span></a>
+    <span class="top-cat">NON-ALCOHOLIC SOCIAL TONIC</span>
+    <span class="top-dots" aria-hidden="true"><i class="dot dr"></i><i class="dot db"></i><i class="dot dg"></i></span>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="SAFE ONE. Non-alcoholic social tonic.">
+    <div class="bubbles" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker" data-reveal><span class="k-line"></span>NON-ALCOHOLIC SOCIAL TONIC<span class="k-line"></span></p>
+      <h1 class="mark" data-reveal style="--d:.08s">SAFE<br>ONE<span class="tm">™</span></h1>
+      <button class="hero-dot" data-reveal style="--d:.16s" type="button" aria-label="Crack one open"></button>
+      <p class="hero-tag" data-reveal style="--d:.24s">GOOD COMPANY. CLEAR MIND.</p>
+      <p class="hero-trio" data-reveal style="--d:.32s" aria-hidden="true"><i class="dot dr"></i><i class="dot db"></i><i class="dot dg"></i></p>
+      <p class="hero-note" data-reveal style="--d:.4s">THREE FLAVORS. ONE ROOM. FOUR SEATS.</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-track">
+      <div class="mq-group">
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dr"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot db"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dg"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dr"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot db"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dg"></i></span>
+      </div>
+      <div class="mq-group">
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dr"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot db"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dg"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dr"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot db"></i></span>
+        <span class="mq-item"><span class="mq-txt">Always make the last one a safe one</span><i class="mq-dot dg"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINEUP -->
+  <section class="sec" id="lineup" aria-labelledby="lineup-h">
+    <div class="wrap">
+      <p class="label" data-reveal><span class="lab-dot" style="background:var(--red)"></span>THE LINEUP</p>
+      <h2 class="h2" id="lineup-h" data-reveal>Three ways to crack a safe one.</h2>
+      <p class="sub" data-reveal>Serve cold. Depart on time.</p>
+      <div class="cans">
+        <article class="can can-cream" data-reveal>
+          <p class="can-cat">Non-Alcoholic<br>Social Tonic</p>
+          <p class="can-mark">SAFE<br>ONE<span class="tm">™</span></p>
+          <span class="can-dot" style="background:var(--red)" aria-hidden="true"></span>
+          <h3 class="can-flavor" style="color:var(--red)">Citrus &amp; Hibiscus</h3>
+          <span class="can-rule" style="background:var(--red)" aria-hidden="true"></span>
+          <p class="can-lcb">LIGHT. CRISP. BALANCED.</p>
+          <p class="can-oz">12 FL OZ (355 ML)</p>
+        </article>
+        <article class="can can-paper" data-reveal style="--d:.1s">
+          <p class="can-cat">Non-Alcoholic<br>Social Tonic</p>
+          <p class="can-mark">SAFE<br>ONE<span class="tm">™</span></p>
+          <span class="can-dot" style="background:var(--blue)" aria-hidden="true"></span>
+          <h3 class="can-flavor" style="color:var(--blue)">Cucumber &amp; Mint</h3>
+          <span class="can-rule" style="background:var(--blue)" aria-hidden="true"></span>
+          <p class="can-lcb">LIGHT. CRISP. BALANCED.</p>
+          <p class="can-oz">12 FL OZ (355 ML)</p>
+        </article>
+        <article class="can can-ink" data-reveal style="--d:.2s">
+          <p class="can-cat">Non-Alcoholic<br>Social Tonic</p>
+          <p class="can-mark">SAFE<br>ONE<span class="tm">™</span></p>
+          <span class="can-dot" style="background:var(--green-bright)" aria-hidden="true"></span>
+          <h3 class="can-flavor" style="color:var(--green-bright)">Ginger &amp; Lime</h3>
+          <span class="can-rule" style="background:var(--green-bright)" aria-hidden="true"></span>
+          <p class="can-lcb">LIGHT. CRISP. BALANCED.</p>
+          <p class="can-oz">12 FL OZ (355 ML)</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIMITED EDITION -->
+  <section class="limited sec" id="limited" aria-labelledby="jm-h">
+    <div class="wrap lim-grid">
+      <div class="lim-head">
+        <p class="label" data-reveal><span class="lab-dot" style="background:var(--ink)"></span>LIMITED EDITION</p>
+        <h2 class="h2 jm" id="jm-h" data-reveal>John<br>Margarita</h2>
+        <p class="jm-flavor" data-reveal>LIME &bull; AGAVE &bull; SALT</p>
+      </div>
+      <figure class="lim-media" data-reveal>
+        <div class="lim-imgwrap">
+          <img src="./assets/can-john-margarita.jpg" alt="SAFE ONE John Margarita limited edition can in lime green. A vintage clown raises a margarita. The burst reads absolutely no alcohol in the Clown Room." width="1343" height="1600" loading="lazy" decoding="async">
+          <p class="burst" role="button" tabindex="0" aria-label="Honk"><span>Absolutely no alcohol in the Clown Room.</span></p>
+        </div>
+      </figure>
+      <div class="lim-body">
+        <p class="body" data-reveal>Commemorates our founder&rsquo;s relocation to New York, where he reports the parties are better.</p>
+        <p class="lim-spec" data-reveal>12 FL OZ (355 ML). WHILE SUPPLIES LAST.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE -->
+  <section class="sec" id="performance" aria-labelledby="perf-h">
+    <div class="wrap">
+      <p class="label" data-reveal><span class="c-chip" aria-hidden="true"></span>PERFORMANCE</p>
+      <h2 class="h2" id="perf-h" data-reveal>Now with plant protein.</h2>
+      <p class="sub" data-reveal>Engineered for the finish line.</p>
+      <ul class="claims-list">
+        <li data-reveal><span class="c-chip" aria-hidden="true"></span><span class="c-txt">Gluten free.</span></li>
+        <li data-reveal style="--d:.1s"><span class="c-chip" aria-hidden="true"></span><span class="c-txt">Caffeine free.</span></li>
+        <li data-reveal style="--d:.2s"><span class="c-chip" aria-hidden="true"></span><span class="c-txt"><span id="xcount">10X</span> more hydrating than yucky alcohol.*</span></li>
+      </ul>
+      <p class="claims-fine" data-reveal>*Verified by an independent panel of four.</p>
+    </div>
+  </section>
+
+  <!-- THE CLOWN ROOM -->
+  <section class="club" aria-labelledby="club-h">
+    <div class="checker" aria-hidden="true"></div>
+    <div class="wrap club-in">
+      <p class="label" data-reveal><span class="lab-dot" style="background:var(--orange)"></span>THE SAFE ONE OPEN</p>
+      <div class="club-grid">
+        <div>
+          <h2 class="h2" id="club-h" data-reveal>Play<br>the founder.</h2>
+          <p class="body" data-reveal>The SAFE ONE Open. One winner receives one game of chess against the founder, at the handmade table, in the Clown Room, Los Angeles. Orange walls. Green chairs. The founder plays white. The game ends when it ends.</p>
+          <p class="body strong" data-reveal>Membership remains closed. Winners visit.</p>
+          <p class="rules-h" data-reveal style="margin-top:clamp(34px,5vw,52px)">HOUSE RULES</p>
+          <ol class="rules">
+            <li data-reveal><span class="r-num">01</span><span class="r-txt">No phones.</span></li>
+            <li data-reveal style="--d:.1s"><span class="r-num">02</span><span class="r-txt">No alcohol.</span></li>
+            <li data-reveal style="--d:.2s"><span class="r-num">03</span><span class="r-txt">Four seats.</span></li>
+          </ol>
+          <button class="enter-btn" id="enterBtn" type="button" data-reveal>ENTER THE OPEN</button>
+          <p class="enter-note" id="enterNote" aria-live="polite"></p>
+          <p class="enter-fine" data-reveal>No purchase necessary. One entry per person. Checkmate is final. Travel is not provided.</p>
+        </div>
+        <figure class="club-photo" data-reveal>
+          <img src="./assets/clown-room-john.jpg" alt="John at the handmade checkered table in the Clown Room, considering the board. Orange walls. A green chair waits." width="1280" height="1600" loading="lazy" decoding="async">
+          <figcaption class="plaque">
+            <p class="plaque-t">Your opponent. Undefeated at home.</p>
+            <p class="plaque-s">Archival print. Photographed before the passage of Rule 02.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="checker" aria-hidden="true"></div>
+  </section>
+
+  <!-- CAMPAIGN ARCHIVE -->
+  <section class="sec" id="archive" aria-labelledby="arch-h">
+    <div class="wrap">
+      <p class="label" data-reveal><span class="lab-dot" style="background:var(--blue)"></span>CAMPAIGN ARCHIVE</p>
+      <h2 class="h2" id="arch-h" data-reveal>Three eras. One message.</h2>
+      <p class="sub" data-reveal>Selections from the permanent collection.</p>
+      <div class="art-grid">
+        <figure class="art" data-reveal>
+          <div class="art-img"><img src="./assets/poster-drive-safe-bar.jpg" alt="Drive Safe poster. A John Margarita can stands on a bar beside a salted glass. Always make the last one a safe one." width="1073" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>
+            <p class="art-title">Drive Safe</p>
+            <p class="art-meta">CONTEMPORARY &bull; BARROOM PHOTOGRAPHY</p>
+            <p class="art-note">From the Last Call series.</p>
+          </figcaption>
+        </figure>
+        <figure class="art" data-reveal style="--d:.1s">
+          <div class="art-img"><img src="./assets/poster-drive-save-zine.jpg" alt="Drive Save poster. Concert crowds, car keys, and one John Margarita can arranged on crumpled paper." width="1073" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>
+            <p class="art-title">Drive Save</p>
+            <p class="art-meta">UNDATED &bull; XEROX AND ADHESIVE</p>
+            <p class="art-note">Recovered from a venue restroom.</p>
+          </figcaption>
+        </figure>
+        <figure class="art" data-reveal style="--d:.2s">
+          <div class="art-img"><img src="./assets/poster-drive-save-retro.jpg" alt="Drive Save print advertisement attributed to the 1960s. A bar scene, vintage cars, and the John Margarita can." width="1073" height="1600" loading="lazy" decoding="async"></div>
+          <figcaption>
+            <p class="art-title">Drive Save</p>
+            <p class="art-meta">ATTRIBUTED TO THE 1960S &bull; OFFSET LITHOGRAPH</p>
+            <p class="art-note">The message predates the beverage.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="arch-note" data-reveal>Our television commercial, THE SAVE, airs during the penalty shootout.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="quotes sec" aria-labelledby="q-h">
+    <div class="wrap">
+      <p class="label" data-reveal><span class="lab-dot" style="background:var(--ink)"></span>TESTIMONIALS</p>
+      <h2 class="h2" id="q-h" data-reveal>On the record.</h2>
+      <div class="q-grid">
+        <figure class="q" data-reveal>
+          <span class="dot dg" aria-hidden="true"></span>
+          <blockquote>&ldquo;They will never move here.&rdquo;</blockquote>
+          <figcaption>JOHN &bull; NEW YORK</figcaption>
+        </figure>
+        <figure class="q" data-reveal style="--d:.1s">
+          <span class="dot db" aria-hidden="true"></span>
+          <blockquote>&ldquo;It tastes like being able to drive home.&rdquo;</blockquote>
+          <figcaption>CAM &bull; LOS ANGELES</figcaption>
+        </figure>
+        <figure class="q" data-reveal style="--d:.2s">
+          <span class="dot dr" aria-hidden="true"></span>
+          <blockquote>&ldquo;Staying safe never tasted so good.&rdquo;</blockquote>
+          <figcaption>JOSH &bull; LOS ANGELES</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="values">
+      <div class="val" data-reveal>
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="9" fill="#EFE7D6"/></svg>
+        <p>MINDFUL CHOICE</p>
+      </div>
+      <div class="val" data-reveal style="--d:.1s">
+        <svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="#EFE7D6" stroke-width="1.6"><circle cx="20" cy="20" r="13"/><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="3" fill="#EFE7D6" stroke="none"/></svg>
+        <p>SOCIALLY CONNECTED</p>
+      </div>
+      <div class="val" data-reveal style="--d:.2s">
+        <svg viewBox="0 0 40 40" aria-hidden="true" stroke="#EFE7D6" stroke-width="1.6" stroke-linecap="round"><circle cx="20" cy="20" r="4.5" fill="#EFE7D6" stroke="none"/><line x1="20" y1="11" x2="20" y2="5"/><line x1="20" y1="29" x2="20" y2="35"/><line x1="11" y1="20" x2="5" y2="20"/><line x1="29" y1="20" x2="35" y2="20"/><line x1="26.4" y1="13.6" x2="30.6" y2="9.4"/><line x1="26.4" y1="26.4" x2="30.6" y2="30.6"/><line x1="13.6" y1="13.6" x2="9.4" y2="9.4"/><line x1="13.6" y1="26.4" x2="9.4" y2="30.6"/></svg>
+        <p>FEEL GOOD FUNCTION</p>
+      </div>
+    </div>
+    <div class="foot-rule" aria-hidden="true"></div>
+    <p class="foot-tag" data-reveal>Safe to choose. Safe to be you.</p>
+    <p class="foot-sponsor" data-reveal>Proud hydration partner of the penalty shootout.</p>
+    <div class="fine" data-reveal>
+      <p>SAFE ONE contains no alcohol. Effects may include winning the evening and remembering it.</p>
+      <p>No identification is required to crack a safe one.</p>
+      <p>Membership inquiries regarding the Clown Room are not accepted. The four seats are taken.</p>
+      <p>SAFE ONE and the dot are trademarks. The clown is a likeness of no one.</p>
+    </div>
+    <div class="foot-base">
+      <p>&copy; 2026 SAFE ONE. ALL RIGHTS RESERVED.</p>
+      <p>A DIVISION OF THE CLOWN ROOM.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll reveals */
+  var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
+  if(rm||!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on')});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  }
+
+  /* checkered flag scroll progress */
+  var flag=document.getElementById('scrollflag');
+  if(flag){
+    var onS=function(){
+      var h=document.documentElement;
+      var max=h.scrollHeight-h.clientHeight;
+      flag.style.transform='scaleX('+(max>0?h.scrollTop/max:0)+')';
+    };
+    window.addEventListener('scroll',onS,{passive:true});
+    onS();
+  }
+
+  /* synthesized audio, user clicks only, no files */
+  var AC=null;
+  function ctx(){
+    if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C();}
+    if(AC&&AC.state==='suspended')AC.resume();
+    return AC;
+  }
+  function fizz(){
+    var c=ctx();if(!c)return;
+    var t=c.currentTime;
+    var o=c.createOscillator(),og=c.createGain();
+    o.type='triangle';
+    o.frequency.setValueAtTime(950,t);
+    o.frequency.exponentialRampToValueAtTime(150,t+.06);
+    og.gain.setValueAtTime(.32,t);
+    og.gain.exponentialRampToValueAtTime(.0001,t+.09);
+    o.connect(og);og.connect(c.destination);
+    o.start(t);o.stop(t+.1);
+    var d=1.5,b=c.createBuffer(1,Math.floor(c.sampleRate*d),c.sampleRate),ch=b.getChannelData(0);
+    for(var i=0;i<ch.length;i++){ch[i]=(Math.random()*2-1)*Math.pow(1-i/ch.length,2);}
+    var s=c.createBufferSource();s.buffer=b;
+    var f=c.createBiquadFilter();f.type='highpass';f.frequency.value=3400;
+    var g=c.createGain();
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.exponentialRampToValueAtTime(.2,t+.05);
+    g.gain.exponentialRampToValueAtTime(.0001,t+d);
+    s.connect(f);f.connect(g);g.connect(c.destination);
+    s.start(t);
+  }
+  function honk(){
+    var c=ctx();if(!c)return;
+    var t=c.currentTime;
+    [222,280].forEach(function(fr){
+      var o=c.createOscillator(),g=c.createGain();
+      o.type='square';
+      o.frequency.setValueAtTime(fr,t);
+      o.frequency.setValueAtTime(fr*.93,t+.16);
+      g.gain.setValueAtTime(.0001,t);
+      g.gain.exponentialRampToValueAtTime(.11,t+.02);
+      g.gain.setValueAtTime(.11,t+.28);
+      g.gain.exponentialRampToValueAtTime(.0001,t+.4);
+      o.connect(g);g.connect(c.destination);
+      o.start(t);o.stop(t+.45);
+    });
+  }
+
+  /* brand dot confetti */
+  var COLORS=['#C0402B','#2F6BAC','#7DA033','#EFE7D6'];
+  function burstDots(x,y,n){
+    if(rm)return;
+    for(var i=0;i<n;i++){
+      (function(idx){
+        var s=document.createElement('span');
+        s.className='cf';
+        var sz=6+Math.random()*9;
+        s.style.width=sz+'px';s.style.height=sz+'px';
+        s.style.left=x+'px';s.style.top=y+'px';
+        s.style.background=COLORS[idx%COLORS.length];
+        document.body.appendChild(s);
+        var ang=Math.random()*Math.PI*2,dist=90+Math.random()*230;
+        var dx=Math.cos(ang)*dist,dy=Math.sin(ang)*dist-170;
+        var anim=s.animate(
+          [{transform:'translate(-50%,-50%) translate(0px,0px)',opacity:1},
+           {transform:'translate(-50%,-50%) translate('+dx+'px,'+(dy+300)+'px)',opacity:0}],
+          {duration:1000+Math.random()*700,easing:'cubic-bezier(.15,.6,.3,1)'});
+        anim.onfinish=function(){s.remove()};
+        setTimeout(function(){if(s.parentNode)s.remove()},2400);
+      })(i);
+    }
+  }
+
+  /* the hero dot cracks one open */
+  var hd=document.querySelector('.hero-dot');
+  if(hd)hd.addEventListener('click',function(){
+    fizz();
+    var r=hd.getBoundingClientRect();
+    burstDots(r.left+r.width/2,r.top+r.height/2,26);
+  });
+
+  /* the clown honks */
+  var bu=document.querySelector('.burst');
+  function honkSpin(){
+    honk();
+    if(rm)return;
+    bu.classList.remove('spin');
+    void bu.offsetWidth;
+    bu.classList.add('spin');
+  }
+  if(bu){
+    bu.addEventListener('click',honkSpin);
+    bu.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();honkSpin();}
+    });
+  }
+
+  /* ambient carbonation */
+  var bw=document.querySelector('.bubbles');
+  if(bw&&!rm){
+    for(var i=0;i<14;i++){
+      var b=document.createElement('span');
+      b.className='bub';
+      var sz=4+Math.random()*11;
+      b.style.width=sz+'px';b.style.height=sz+'px';
+      b.style.left=(Math.random()*100)+'%';
+      b.style.animationDuration=(7+Math.random()*9)+'s';
+      b.style.animationDelay=(Math.random()*12)+'s';
+      bw.appendChild(b);
+    }
+  }
+
+  /* the science counts up */
+  var xc=document.getElementById('xcount');
+  if(xc&&!rm&&'IntersectionObserver' in window){
+    var xdone=false;
+    var xo=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting&&!xdone){
+          xdone=true;xo.disconnect();
+          var n=0;
+          var tm=setInterval(function(){
+            n++;xc.textContent=n+'X';
+            if(n>=10)clearInterval(tm);
+          },95);
+        }
+      });
+    },{threshold:.6});
+    xo.observe(xc);
+  }
+
+  /* the open */
+  var eb=document.getElementById('enterBtn'),en=document.getElementById('enterNote'),clicks=0;
+  if(eb)eb.addEventListener('click',function(){
+    clicks++;
+    if(clicks===1){
+      eb.disabled=true;
+      eb.textContent='SUBMITTING.';
+      setTimeout(function(){eb.textContent='VERIFYING OPENING THEORY.';},700);
+      setTimeout(function(){
+        eb.textContent='ENTRY RECEIVED.';
+        eb.disabled=false;
+        en.textContent='You will not be contacted.';
+        var r=eb.getBoundingClientRect();
+        burstDots(r.left+r.width/2,r.top+r.height/2,34);
+      },1800);
+    }else if(clicks===2){
+      en.textContent='Additional entries do not improve your chances.';
+    }else{
+      en.textContent='The panel has seen enough.';
+    }
+  });
+
+  /* leave the tab, get reminded */
+  var t0=document.title;
+  document.addEventListener('visibilitychange',function(){
+    document.title=document.hidden?'STAY SAFE.':t0;
+  });
+})();
+</script>
+</body>
+</html>
