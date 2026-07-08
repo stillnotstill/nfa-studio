@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact · Mantis Medicinals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EC;
+    --cream-warm:#F8F6F3;
+    --lavender-mist:#E8DFF0;
+    --botanical-purple:#724E8A;
+    --midnight-plum:#281828;
+    --mantis-green:#2D5A2D;
+    --sage:#6B8A5A;
+    --blueberry:#3A5A8A;
+    --rose-deep:#C26D5C;
+    --gold:#B69A54;
+    --ink:#2E2434;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;line-height:1.55;
+    overflow-x:hidden;
+  }
+  .caps{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;}
+  .fell{font-family:'IM Fell English',serif;font-style:italic;}
+  /* ---------- masthead ---------- */
+  .masthead{
+    text-align:center;
+    padding:34px 24px 22px;
+    border-bottom:1px double var(--gold);
+    position:relative;
+  }
+  .masthead .est{
+    position:absolute;left:48px;top:50%;transform:translateY(-50%);
+    font-family:'IM Fell English',serif;font-style:italic;font-size:14px;opacity:.6;
+  }
+  .masthead .cart{
+    position:absolute;right:48px;top:50%;transform:translateY(-50%);
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--mantis-green);text-decoration:none;
+    border:1px solid var(--gold);padding:10px 20px;
+  }
+  .masthead .brand{
+    font-family:'Pinyon Script',cursive;font-size:52px;color:var(--botanical-purple);
+    text-decoration:none;line-height:1;display:block;margin-bottom:14px;
+  }
+  .masthead ul{
+    display:flex;gap:36px;list-style:none;justify-content:center;
+  }
+  .masthead ul a{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  .masthead ul a:hover{color:var(--botanical-purple);}
+  /* ---------- buttons ---------- */
+  .btn{
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;padding:17px 38px;
+  }
+  .btn-solid{background:var(--midnight-plum);color:var(--cream);}
+  .btn-solid:hover{background:var(--botanical-purple);}
+  .btn-frame{border:1px solid var(--gold);color:var(--mantis-green);margin-left:16px;}
+  /* ---------- page head ---------- */
+  .page-head{
+    max-width:1340px;margin:0 auto;
+    padding:96px 64px 24px;position:relative;
+  }
+  .page-head .kicker{
+    font-size:11px;color:var(--mantis-green);margin-bottom:26px;display:flex;align-items:center;gap:16px;
+  }
+  .page-head .kicker::before{content:"";width:56px;height:1px;background:var(--gold);}
+  .page-head h1{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(52px,5.4vw,80px);line-height:1.04;color:var(--midnight-plum);
+  }
+  .page-head h1 .script{
+    font-family:'Pinyon Script',cursive;font-weight:400;
+    color:var(--botanical-purple);font-size:1.1em;
+  }
+  .page-head .fell{color:var(--sage);display:block;margin-top:16px;font-size:20px;max-width:520px;}
+  .corner-botanical{
+    position:absolute;top:-30px;right:-150px;width:480px;
+    mix-blend-mode:multiply;opacity:.3;transform:rotate(-8deg);
+    pointer-events:none;z-index:0;
+  }
+  /* ---------- contact grid ---------- */
+  .contact-wrap{
+    max-width:1340px;margin:0 auto;
+    padding:44px 64px 110px;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:70px;
+    align-items:start;position:relative;z-index:1;
+  }
+  .contact-form .no{
+    font-family:'IM Fell English',serif;font-style:italic;font-size:17px;color:var(--gold);
+    display:block;margin-bottom:24px;
+  }
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block;
+    font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--mantis-green);margin-bottom:10px;
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%;padding:16px 20px;
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:300;
+    border:1px solid var(--gold);background:var(--cream-warm);
+    color:var(--ink);outline:none;border-radius:0;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{border-color:var(--botanical-purple);}
+  .field select{
+    appearance:none;-webkit-appearance:none;cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B69A54' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 20px center;
+    padding-right:48px;
+  }
+  .field textarea{min-height:170px;resize:vertical;}
+  .contact-form button{
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+    background:var(--midnight-plum);color:var(--cream);border:none;
+    padding:17px 38px;cursor:pointer;
+  }
+  .contact-form button:hover{background:var(--botanical-purple);}
+  /* ---------- details card ---------- */
+  .details-card{
+    border:1px solid var(--gold);position:relative;
+    background:var(--cream-warm);
+    padding:52px 42px 46px;text-align:center;
+  }
+  .details-card::after{content:"";position:absolute;inset:6px;border:1px solid rgba(182,154,84,.4);pointer-events:none;}
+  .details-card .no{
+    font-family:'IM Fell English',serif;font-style:italic;font-size:15px;color:var(--gold);
+    display:block;margin-bottom:18px;
+  }
+  .details-card h3{
+    font-family:'Pinyon Script',cursive;font-weight:400;font-size:40px;
+    color:var(--botanical-purple);line-height:1;margin-bottom:8px;
+  }
+  .details-card .place{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--mantis-green);display:block;margin-bottom:30px;
+  }
+  .details-card dl{margin-bottom:30px;}
+  .details-card dt{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:6px;
+  }
+  .details-card dd{margin:0 0 22px;}
+  .details-card dd a{
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--gold);padding-bottom:3px;
+  }
+  .details-card dd a:hover{color:var(--botanical-purple);}
+  .details-card .garden-note{
+    font-family:'IM Fell English',serif;font-style:italic;font-size:17px;
+    color:var(--sage);max-width:300px;margin:0 auto;line-height:1.6;
+    border-top:1px solid rgba(182,154,84,.5);padding-top:26px;
+  }
+  /* ---------- wholesale ---------- */
+  .wholesale{padding:0 64px 90px;max-width:1340px;margin:0 auto;}
+  .wholesale-frame{
+    border:1px solid var(--gold);position:relative;
+    background:var(--lavender-mist);
+    padding:84px 48px 76px;text-align:center;
+  }
+  .wholesale-frame::after{content:"";position:absolute;inset:8px;border:1px solid rgba(182,154,84,.5);pointer-events:none;}
+  .wholesale-frame .kicker{font-size:11px;color:var(--mantis-green);display:block;margin-bottom:18px;}
+  .wholesale-frame h2{
+    font-family:'Cormorant Garamond',serif;font-weight:400;
+    font-size:clamp(38px,4.4vw,56px);line-height:1.06;color:var(--midnight-plum);
+    margin-bottom:22px;
+  }
+  .wholesale-frame h2 .script{font-family:'Pinyon Script',cursive;color:var(--botanical-purple);font-size:1.15em;}
+  .wholesale-frame p{max-width:560px;margin:0 auto 14px;opacity:.85;font-size:20px;}
+  .wholesale-frame .fell{color:var(--botanical-purple);display:block;margin:8px 0 38px;font-size:19px;}
+  /* ---------- press ---------- */
+  .press{
+    max-width:1340px;margin:0 auto;
+    padding:0 64px 120px;text-align:center;
+  }
+  .press .kicker{font-size:10.5px;color:var(--gold);display:block;margin-bottom:14px;}
+  .press p{max-width:480px;margin:0 auto;opacity:.85;}
+  .press a{
+    color:var(--botanical-purple);text-decoration:none;
+    border-bottom:1px solid var(--gold);padding-bottom:3px;
+  }
+  .press a:hover{color:var(--midnight-plum);}
+  /* ---------- footer ---------- */
+  footer{background:var(--midnight-plum);color:#C9BFD1;padding:74px 64px 44px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:44px;max-width:1240px;margin:0 auto 50px;}
+  footer .brand{font-family:'Pinyon Script',cursive;font-size:40px;color:var(--cream);display:block;margin-bottom:14px;line-height:1;}
+  footer .tag{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;opacity:.7;max-width:280px;}
+  footer h5{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#CBBE93;margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{color:#C9BFD1;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;}
+  footer ul a:hover{color:var(--cream);}
+  .legal{
+    max-width:1240px;margin:0 auto;border-top:1px solid rgba(201,191,209,.2);padding-top:28px;
+    font-family:'Inter',sans-serif;font-size:11px;font-weight:300;line-height:1.8;opacity:.6;
+  }
+  .legal p{margin-bottom:8px;}
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .page-head{padding:70px 32px 18px;}
+    .corner-botanical{width:340px;right:-120px;top:-10px;}
+    .contact-wrap{grid-template-columns:1fr;gap:54px;padding:36px 32px 90px;}
+    .wholesale{padding:0 32px 70px;}
+    .press{padding:0 32px 100px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .masthead .est{display:none;}
+  }
+  @media (max-width:640px){
+    .masthead .cart{position:static;transform:none;display:inline-block;margin-top:14px;}
+    .masthead ul{flex-wrap:wrap;gap:18px;}
+    .page-head{padding:56px 24px 14px;}
+    .corner-botanical{width:260px;right:-110px;top:0;opacity:.22;}
+    .contact-wrap{padding:30px 24px 70px;gap:44px;}
+    .details-card{padding:44px 26px 40px;}
+    .wholesale{padding:0 24px 60px;}
+    .wholesale-frame{padding:60px 26px 54px;}
+    .press{padding:0 24px 84px;}
+    footer{padding:60px 28px 40px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .btn-frame{margin-left:0;margin-top:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="est">est. Montville, Maine</span>
+  <a class="brand" href="index.html">Mantis Medicinals</a>
+  <ul>
+    <li><a href="product-seltzer.html">Seltzer</a></li>
+    <li><a href="shop.html">Shop All</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="lab-results.html">Lab Results</a></li>
+    <li><a href="find-us.html">Find Us</a></li>
+  </ul>
+  <a class="cart" href="#">Cart · 0</a>
+</header>
+
+<section class="page-head">
+  <img class="corner-botanical" src="../assets/botanicals/bouquet-v3-05.png" alt="">
+  <span class="kicker caps">Contact</span>
+  <h1>Say <span class="script">hello.</span></h1>
+  <span class="fell">Questions, kind words, wholesale inquiries. The garden gate is open.</span>
+</section>
+
+<section class="contact-wrap">
+
+  <div class="contact-form">
+    <span class="no">Write to the farm</span>
+    <form onsubmit="return false">
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="First and last">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com">
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject">
+          <option>General</option>
+          <option>Wholesale inquiry</option>
+          <option>Press</option>
+          <option>Stockist question</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="What can we help with?"></textarea>
+      </div>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <aside class="details-card">
+    <span class="no">Where to find us</span>
+    <h3>Mantis Medicinals</h3>
+    <span class="place">Montville, Maine</span>
+    <dl>
+      <dt>Email</dt>
+      <!-- hello@mantismedicinals.com is a placeholder email pending branded email setup -->
+      <dd><a href="mailto:hello@mantismedicinals.com">hello@mantismedicinals.com</a></dd>
+      <dt>Instagram</dt>
+      <dd><a href="#">@mantismedicine</a></dd>
+    </dl>
+    <p class="garden-note">The farm is a working garden, so replies usually come within a couple of days. Worth the wait, we promise.</p>
+  </aside>
+
+</section>
+
+<section class="wholesale">
+  <div class="wholesale-frame">
+    <span class="kicker caps">Wholesale</span>
+    <h2>Carry Mantis <span class="script">in your store.</span></h2>
+    <p>Small-batch, MOFGA-certified organic botanical seltzer and wellness goods, made for the post-November hemp shelf. Line sheet available on request.</p>
+    <span class="fell">Grown in living soil, packaged to sell itself.</span>
+    <a class="btn btn-solid" href="mailto:hello@mantismedicinals.com?subject=Wholesale%20inquiry">Request the Line Sheet</a>
+  </div>
+</section>
+
+<section class="press">
+  <span class="kicker caps">Press &amp; Media</span>
+  <p>For press and media, write to <a href="mailto:hello@mantismedicinals.com?subject=Press">hello@mantismedicinals.com</a> with the subject line Press.</p>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand">Mantis Medicinals</span>
+      <p class="tag">Grown in living soil · Hand crafted · Higher standards</p>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="shop.html">Botanical Seltzer</a></li>
+        <li><a href="shop.html">Gummies</a></li>
+        <li><a href="shop.html">Tinctures &amp; Oils</a></li>
+        <li><a href="shop.html">Salves &amp; Body</a></li>
+        <li><a href="shop.html">Merch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="lab-results.html">Lab Results</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#">Montville, Maine</a></li>
+        <li><a href="contact.html">hello@mantismedicinals.com</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>Must be 21 or older to purchase. © 2026 Mantis Medicinals, LLC · Montville, Maine · Privacy · Terms · Shipping &amp; Returns</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FAQ · Mantis Medicinals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EC;
+    --cream-warm:#F8F6F3;
+    --lavender-mist:#E8DFF0;
+    --botanical-purple:#724E8A;
+    --midnight-plum:#281828;
+    --mantis-green:#2D5A2D;
+    --sage:#6B8A5A;
+    --blueberry:#3A5A8A;
+    --rose-deep:#C26D5C;
+    --gold:#B69A54;
+    --ink:#2E2434;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;line-height:1.55;
+    overflow-x:hidden;
+  }
+  .caps{font-family:'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;}
+  .fell{font-family:'IM Fell English',serif;font-style:italic;}
+  /* ---------- masthead ---------- */
+  .masthead{
+    text-align:center;
+    padding:34px 24px 22px;
+    border-bottom:1px double var(--gold);
+    position:relative;
+  }
+  .masthead .est{
+    position:absolute;left:48px;top:50%;transform:translateY(-50%);
+    font-family:'IM Fell English',serif;font-style:italic;font-size:14px;opacity:.6;
+  }
+  .masthead .cart{
+    position:absolute;right:48px;top:50%;transform:translateY(-50%);
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--mantis-green);text-decoration:none;
+    border:1px solid var(--gold);padding:10px 20px;
+  }
+  .masthead .brand{
+    font-family:'Pinyon Script',cursive;font-size:52px;color:var(--botanical-purple);
+    text-decoration:none;line-height:1;display:block;margin-bottom:14px;
+  }
+  .masthead ul{
+    display:flex;gap:36px;list-style:none;justify-content:center;
+  }
+  .masthead ul a{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;
+  }
+  .masthead ul a:hover{color:var(--botanical-purple);}
+  /* ---------- buttons ---------- */
+  .btn{
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;padding:17px 38px;
+  }
+  .btn-solid{background:var(--midnight-plum);color:var(--cream);}
+  .btn-solid:hover{background:var(--botanical-purple);}
+  .btn-frame{border:1px solid var(--gold);color:var(--mantis-green);margin-left:16px;}
+  /* ---------- page header ---------- */
+  .page-head{
+    text-align:center;
+    padding:110px 24px 84px;
+    position:relative;overflow:hidden;
+    border-bottom:1px solid rgba(182,154,84,.4);
+  }
+  .page-head .botanical-bleed{
+    position:absolute;right:-150px;top:-90px;width:520px;
+    mix-blend-mode:multiply;opacity:.28;transform:rotate(-8deg);
+    pointer-events:none;
+  }
+  .page-head .botanical-bleed.left{
+    right:auto;left:-160px;top:auto;bottom:-130px;width:480px;
+    transform:scaleX(-1) rotate(6deg);
+  }
+  .page-head .kicker{
+    font-size:11px;color:var(--mantis-green);
+    display:inline-flex;align-items:center;gap:16px;margin-bottom:26px;
+  }
+  .page-head .kicker::before,
+  .page-head .kicker::after{content:"";width:56px;height:1px;background:var(--gold);}
+  .page-head h1{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(46px,5.6vw,78px);line-height:1.06;color:var(--midnight-plum);
+    margin-bottom:20px;position:relative;z-index:2;
+  }
+  .page-head h1 .script{
+    font-family:'Pinyon Script',cursive;font-weight:400;
+    color:var(--botanical-purple);font-size:1.15em;display:block;line-height:1;
+  }
+  .page-head .fell{color:var(--sage);font-size:20px;display:block;position:relative;z-index:2;}
+  /* ---------- faq body ---------- */
+  .faq{
+    max-width:860px;margin:0 auto;
+    padding:40px 32px 120px;position:relative;
+  }
+  .faq-group{margin-top:80px;position:relative;}
+  .group-head{text-align:center;margin-bottom:44px;}
+  .group-head .no{
+    font-family:'IM Fell English',serif;font-style:italic;font-size:16px;
+    color:var(--gold);display:block;margin-bottom:12px;
+  }
+  .group-head h2{
+    font-family:'Cinzel',serif;font-weight:500;font-size:20px;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--midnight-plum);
+  }
+  .group-head hr.gold{margin-top:22px;}
+  hr.gold{
+    border:none;height:1px;width:220px;margin:0 auto;
+    background:linear-gradient(to right,transparent,var(--gold),transparent);
+  }
+  details{
+    border:1px solid var(--gold);
+    background:var(--cream-warm);
+    position:relative;
+    margin-bottom:18px;
+  }
+  details::after{
+    content:"";position:absolute;inset:6px;
+    border:1px solid rgba(182,154,84,.35);pointer-events:none;
+  }
+  summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:baseline;gap:18px;
+    padding:26px 66px 26px 30px;
+    position:relative;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary .num{
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:16px;color:var(--gold);flex-shrink:0;min-width:26px;
+  }
+  summary .q{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:24px;line-height:1.25;color:var(--midnight-plum);
+  }
+  summary .mark{
+    position:absolute;right:28px;top:50%;transform:translateY(-50%);
+    font-family:'IM Fell English',serif;font-style:italic;
+    font-size:26px;line-height:1;color:var(--gold);
+    transition:transform .25s ease;
+  }
+  details[open] summary .mark{transform:translateY(-50%) rotate(45deg);}
+  details[open] summary .q{color:var(--botanical-purple);}
+  summary:hover .q{color:var(--botanical-purple);}
+  .answer{
+    padding:0 66px 30px 74px;
+  }
+  .answer p{
+    font-size:19px;opacity:.85;max-width:640px;margin-bottom:14px;
+  }
+  .answer p:last-child{margin-bottom:0;}
+  .answer a{
+    color:var(--botanical-purple);text-decoration:none;
+    border-bottom:1px solid var(--gold);padding-bottom:2px;
+  }
+  .answer .fell{color:var(--sage);}
+  .faq .side-botanical{
+    position:absolute;width:320px;mix-blend-mode:multiply;opacity:.22;
+    z-index:-1;pointer-events:none;
+  }
+  .faq .side-botanical.a{right:-260px;top:520px;transform:rotate(10deg);}
+  .faq .side-botanical.b{left:-280px;top:1400px;transform:scaleX(-1) rotate(-4deg);}
+  /* ---------- signup ---------- */
+  .signup{
+    border-top:1px double var(--gold);
+    padding:96px 24px;text-align:center;
+    background:var(--lavender-mist);
+  }
+  .signup h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:42px;color:var(--midnight-plum);margin-bottom:8px;}
+  .signup .fell{color:var(--botanical-purple);display:block;margin-bottom:36px;}
+  .signup form{display:flex;justify-content:center;max-width:480px;margin:0 auto;}
+  .signup input{
+    flex:1;padding:17px 22px;font-family:'Inter',sans-serif;font-size:14px;font-weight:300;
+    border:1px solid var(--gold);border-right:none;background:var(--cream);outline:none;color:var(--ink);
+  }
+  .signup button{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    background:var(--midnight-plum);color:var(--cream);border:none;padding:17px 32px;cursor:pointer;
+  }
+  .signup button:hover{background:var(--botanical-purple);}
+  /* ---------- footer ---------- */
+  footer{background:var(--midnight-plum);color:#C9BFD1;padding:74px 64px 44px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:44px;max-width:1240px;margin:0 auto 50px;}
+  footer .brand{font-family:'Pinyon Script',cursive;font-size:40px;color:var(--cream);display:block;margin-bottom:14px;line-height:1;}
+  footer .tag{font-family:'IM Fell English',serif;font-style:italic;font-size:15px;opacity:.7;max-width:280px;}
+  footer h5{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#CBBE93;margin-bottom:18px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{color:#C9BFD1;text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:300;}
+  footer ul a:hover{color:var(--cream);}
+  .legal{
+    max-width:1240px;margin:0 auto;border-top:1px solid rgba(201,191,209,.2);padding-top:28px;
+    font-family:'Inter',sans-serif;font-size:11px;font-weight:300;line-height:1.8;opacity:.6;
+  }
+  .legal p{margin-bottom:8px;}
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .masthead .est{display:none;}
+  }
+  @media (max-width:640px){
+    .masthead .cart{position:static;transform:none;display:inline-block;margin-top:14px;}
+    .masthead ul{flex-wrap:wrap;gap:18px;}
+    .page-head{padding:70px 24px 56px;}
+    .faq{padding:10px 20px 90px;}
+    .faq-group{margin-top:64px;}
+    summary{padding:22px 54px 22px 20px;gap:12px;}
+    summary .q{font-size:21px;}
+    summary .mark{right:20px;}
+    .answer{padding:0 24px 26px 52px;}
+    .signup form{flex-direction:column;gap:12px;}
+    .signup input{border-right:1px solid var(--gold);}
+    footer{padding:60px 28px 40px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .btn-frame{margin-left:0;margin-top:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="est">est. Montville, Maine</span>
+  <a class="brand" href="index.html">Mantis Medicinals</a>
+  <ul>
+    <li><a href="product-seltzer.html">Seltzer</a></li>
+    <li><a href="shop.html">Shop All</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="lab-results.html">Lab Results</a></li>
+    <li><a href="find-us.html">Find Us</a></li>
+  </ul>
+  <a class="cart" href="#">Cart · 0</a>
+</header>
+
+<section class="page-head">
+  <img class="botanical-bleed" src="../assets/botanicals/directional-01.png" alt="">
+  <img class="botanical-bleed left" src="../assets/botanicals/bouquet-v3-05.png" alt="">
+  <span class="kicker caps">FAQ</span>
+  <h1>Questions,<span class="script">answered honestly.</span></h1>
+  <span class="fell">If we grew it, brewed it, or canned it, we're happy to talk about it.</span>
+</section>
+
+<main class="faq">
+  <img class="side-botanical a" src="../assets/botanicals/directional-02.png" alt="">
+  <img class="side-botanical b" src="../assets/botanicals/directional-v2-04.png" alt="">
+
+  <section class="faq-group">
+    <div class="group-head">
+      <span class="no">Part One</span>
+      <h2>The Plant</h2>
+      <hr class="gold">
+    </div>
+
+    <details>
+      <summary><span class="num">i.</span><span class="q">What is broad spectrum CBD?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>The hemp plant makes more than just CBD. Broad spectrum keeps the plant's supporting botanicals, the terpenes and minor cannabinoids that naturally grow alongside it, while the THC is removed to non-detectable levels.</p>
+        <p>In plain terms: everything we love about the plant stays in the can, and the part people worry about doesn't.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">ii.</span><span class="q">Will it get me high?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>No. Broad spectrum means the THC has been removed to non-detectable levels. You get the calm ritual, not a buzz.</p>
+        <p class="fell">Pour it over ice at lunch. You'll still be sharp for the two o'clock.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">iii.</span><span class="q">How much CBD is in each can?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>20mg of broad spectrum CBD in every 12oz can.</p>
+        <p>Everyone's routine is their own, so start where it feels right for you. We make the seltzer. The ritual is yours.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">iv.</span><span class="q">Is it lab tested?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Every batch, by an independent third-party lab. The results are published on our <a href="lab-results.html">Lab Results</a> page, and the QR code on every can points straight there.</p>
+        <p>Scan it, read it, and know exactly what's in your glass.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="faq-group">
+    <div class="group-head">
+      <span class="no">Part Two</span>
+      <h2>The Craft</h2>
+      <hr class="gold">
+    </div>
+
+    <details>
+      <summary><span class="num">i.</span><span class="q">Where is it made?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Everything starts in living soil in Montville, Maine, MOFGA Certified Organic. The botanicals are brewed like a tea, then finished like a craft beverage: carbonated, canned, and sent out in small batches.</p>
+        <p class="fell">Farm first, beverage second. That order matters to us.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">ii.</span><span class="q">What does it taste like?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Like the garden, honestly. Real botanicals and barely any sugar.</p>
+        <p>Blueberry &amp; Lavender is soft and berry-forward. Hibiscus &amp; Lemon is bright and a little tart. Lime &amp; Mint is cool and green, straight off the stem.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">iii.</span><span class="q">Is the packaging recyclable?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Yes. Our seltzer comes in aluminum cans, one of the most recyclable materials there is, and we're committed to keeping plastic out of our packaging.</p>
+        <p>Rinse it, bin it, feel fine about it.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="faq-group">
+    <div class="group-head">
+      <span class="no">Part Three</span>
+      <h2>Orders</h2>
+      <hr class="gold">
+    </div>
+
+    <details>
+      <summary><span class="num">i.</span><span class="q">Where do you ship?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Most US states. A few states restrict hemp CBD shipments, and checkout will confirm whether we can reach your address. Right now Tennessee, Idaho, and Hawaii are excluded.</p>
+        <p class="fell">We wish it were otherwise, Hawaii.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">ii.</span><span class="q">How should I store it?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Cold and out of the sun, like any good seltzer. The fridge is its happy place. Just don't leave it on a hot dashboard in July.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">iii.</span><span class="q">Is there an age requirement?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Yes. You must be 21 or older to purchase. It keeps things simple and honest for everyone, and yes, we check.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">iv.</span><span class="q">Do you offer wholesale?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>We do. If you run a shop, café, or market and want Mantis on your shelves, <a href="contact.html">reach out here</a> and tell us about your place.</p>
+        <p class="fell">We love meeting fellow purveyors.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="num">v.</span><span class="q">When is subscribe &amp; save coming?</span><span class="mark">+</span></summary>
+      <div class="answer">
+        <p>Soon. We're building it slowly so it's actually worth subscribing to. Join the garden list below and you'll be the first to know when it opens.</p>
+      </div>
+    </details>
+  </section>
+</main>
+
+<section class="signup">
+  <h2>Join the garden list.</h2>
+  <span class="fell">First-sip discounts, new flavors, no spam.</span>
+  <form onsubmit="return false">
+    <input type="email" placeholder="your@email.com" aria-label="Email address">
+    <button type="submit">Sign Up</button>
+  </form>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <span class="brand">Mantis Medicinals</span>
+      <p class="tag">Grown in living soil · Hand crafted · Higher standards</p>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="shop.html">Botanical Seltzer</a></li>
+        <li><a href="shop.html">Gummies</a></li>
+        <li><a href="shop.html">Tinctures &amp; Oils</a></li>
+        <li><a href="shop.html">Salves &amp; Body</a></li>
+        <li><a href="shop.html">Merch</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <ul>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="lab-results.html">Lab Results</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Wholesale</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="#">Montville, Maine</a></li>
+        <li><a href="contact.html">hello@mantismedicinals.com</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>Must be 21 or older to purchase. © 2026 Mantis Medicinals, LLC · Montville, Maine · Privacy · Terms · Shipping &amp; Returns</p>
+  </div>
+</footer>
+
+</body>
+</html>
