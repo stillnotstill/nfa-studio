@@ -1,0 +1,512 @@
+/* ======================================================================
+   MANTIS MEDICINALS — Farmers-Market Craft
+   Kraft paper, marker/script accents, rubber-stamp & price-tag motifs
+   ====================================================================== */
+
+:root{
+  --kraft:      #d8bd94;   /* base kraft paper */
+  --kraft-lt:   #e7d3ac;   /* lighter kraft */
+  --kraft-dk:   #c4a878;   /* deeper kraft */
+  --panel:      #f6efe1;   /* clean off-white panel for copy */
+  --ink:        #2b241a;   /* near-black warm ink */
+  --ink-soft:   #4a3f2e;
+  --green:      #3c5137;   /* farm green */
+  --green-dk:   #2b3b28;
+  --berry:      #6b3a52;   /* muted berry/hibiscus */
+  --blue:       #3a5470;   /* blueberry */
+  --lime:       #6c7d38;   /* lime/mint */
+  --rust:       #b4552e;   /* marker orange-red accent */
+  --cream:      #f9f3e7;
+  --tag:        #efe4cb;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'Archivo', 'Helvetica Neue', sans-serif;
+  color:var(--ink);
+  background:var(--kraft);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+.grain-def{ position:absolute; width:0; height:0; }
+
+/* seamless grain over the whole page */
+.grain-overlay{
+  position:fixed; inset:0; z-index:9999;
+  pointer-events:none;
+  filter:url(#paperGrain);
+  opacity:.55;
+  mix-blend-mode:multiply;
+}
+
+img{ display:block; max-width:100%; }
+
+.script{
+  font-family:'Caveat', cursive;
+  font-weight:700;
+  color:var(--rust);
+  line-height:.9;
+}
+
+/* ---------- shared bits ---------- */
+.btn{
+  display:inline-block;
+  font-family:'Archivo', sans-serif;
+  font-weight:700;
+  font-size:.86rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:.85em 1.5em;
+  border:2.5px solid var(--ink);
+  border-radius:2px;
+  transition:transform .12s ease, background .12s ease, color .12s ease;
+}
+.btn-ink{ background:var(--ink); color:var(--cream); box-shadow:4px 4px 0 rgba(43,36,26,.25); }
+.btn-ink:hover{ transform:translate(-1px,-1px); background:var(--rust); border-color:var(--rust); }
+.btn-ghost{ background:transparent; color:var(--ink); }
+.btn-ghost:hover{ background:var(--ink); color:var(--cream); }
+
+/* rubber-stamp label */
+.stamp-label{
+  display:inline-block;
+  font-family:'Archivo', sans-serif;
+  font-weight:800;
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--rust);
+  border:2px solid var(--rust);
+  border-radius:40px;
+  padding:.35em 1em;
+  transform:rotate(-2deg);
+  opacity:.9;
+}
+.stamp-label.light{ color:#e9c98f; border-color:#e9c98f; }
+
+.section-h2{
+  font-family:'Archivo', sans-serif;
+  font-weight:800;
+  font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin:.4em 0 .3em;
+}
+.section-h2 .script{
+  font-size:1.28em;
+  display:inline-block;
+  margin-top:.06em;
+}
+.section-h2.light{ color:var(--cream); }
+.section-h2.light .script{ color:#e9c98f; }
+
+/* torn/rough photo frame */
+.photo-frame{
+  background:var(--cream);
+  padding:12px;
+  border:1.5px solid rgba(43,36,26,.18);
+  box-shadow:6px 8px 0 rgba(43,36,26,.16);
+  transform:rotate(-1.2deg);
+}
+.photo-frame img{ width:100%; }
+
+/* ======================================================================
+   NAV
+   ====================================================================== */
+.nav{
+  position:sticky; top:0; z-index:100;
+  background:var(--kraft-lt);
+  border-bottom:3px solid var(--ink);
+}
+.nav-inner{
+  max-width:1240px; margin:0 auto;
+  padding:.7rem 2rem;
+  display:flex; align-items:center; gap:1.5rem;
+}
+.nav-logo img{ height:40px; width:auto; }
+.nav-links{
+  margin-left:auto;
+  display:flex; gap:1.6rem;
+}
+.nav-links a{
+  font-family:'Archivo', sans-serif;
+  font-weight:600;
+  font-size:.9rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:var(--ink);
+  text-decoration:none;
+  position:relative;
+}
+.nav-links a:hover{ color:var(--rust); }
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-4px;
+  width:0; height:2px; background:var(--rust); transition:width .18s ease;
+}
+.nav-links a:hover::after{ width:100%; }
+
+/* price-tag styled button */
+.nav-tag{
+  position:relative;
+  background:var(--tag);
+  border:2px solid var(--ink);
+  color:var(--ink);
+  font-family:'Kalam', cursive;
+  font-weight:700;
+  font-size:.9rem;
+  text-decoration:none;
+  padding:.5em 1em .5em 1.7em;
+  transform:rotate(-2deg);
+  clip-path:polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+}
+.nav-tag:hover{ background:var(--rust); color:var(--cream); }
+.nav-tag-hole{
+  position:absolute; left:6px; top:50%; transform:translateY(-50%);
+  width:8px; height:8px; border-radius:50%;
+  background:var(--kraft-lt); border:1.5px solid var(--ink);
+}
+
+/* ======================================================================
+   HERO
+   ====================================================================== */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(255,255,255,.18), transparent 45%),
+    var(--kraft);
+  padding:3.2rem 2rem 4rem;
+  overflow:hidden;
+}
+.hero-grid{
+  max-width:1240px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:3.5rem; align-items:center;
+}
+.eyebrow{
+  font-family:'Kalam', cursive;
+  font-weight:700;
+  color:var(--green);
+  font-size:1rem;
+  margin-bottom:.6rem;
+  letter-spacing:.01em;
+}
+.hero-h1{
+  font-family:'Archivo', sans-serif;
+  font-weight:800;
+  font-size:clamp(3rem, 6.2vw, 5.4rem);
+  line-height:.96;
+  letter-spacing:-.02em;
+}
+.hero-h1 .script{
+  font-size:1.14em;
+  display:inline-block;
+  margin:.02em 0;
+  transform:rotate(-2deg);
+}
+.hero-body{
+  font-size:1.12rem;
+  color:var(--ink-soft);
+  max-width:30rem;
+  margin:1.4rem 0 1.8rem;
+}
+.hero-cta{ display:flex; gap:1rem; flex-wrap:wrap; }
+.hand-note{
+  font-family:'Caveat', cursive;
+  font-weight:600;
+  font-size:1.35rem;
+  color:var(--green);
+  margin-top:1.5rem;
+  transform:rotate(-1.5deg);
+}
+
+.hero-photo{ position:relative; }
+.hero-photo .photo-frame{ transform:rotate(1.4deg); }
+
+/* price tag on hero photo */
+.pricetag{
+  position:absolute;
+  bottom:-22px; left:-28px;
+  background:var(--berry);
+  color:var(--cream);
+  padding:.7em 1.2em .7em 1.9em;
+  transform:rotate(-8deg);
+  clip-path:polygon(20px 0, 100% 0, 100% 100%, 20px 100%, 0 50%);
+  box-shadow:4px 5px 0 rgba(43,36,26,.28);
+  text-align:center;
+}
+.pricetag-hole{
+  position:absolute; left:8px; top:50%; transform:translateY(-50%);
+  width:10px; height:10px; border-radius:50%;
+  background:var(--kraft); border:2px solid var(--cream);
+}
+.pricetag-line1{
+  display:block; font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:1.5rem; line-height:1;
+}
+.pricetag-line2{
+  display:block; font-family:'Kalam',cursive; font-size:.78rem;
+  letter-spacing:.04em; opacity:.92;
+}
+
+/* hero stamp badge */
+.hero-stamp{
+  position:absolute; top:34px; right:38px;
+  width:118px; height:118px; z-index:5;
+  transform:rotate(9deg);
+  opacity:.9;
+}
+.hero-stamp svg{ width:100%; height:100%; }
+.stamp-ring{ fill:none; stroke:var(--rust); stroke-width:2.5; }
+.stamp-ring.thin{ stroke-width:1.2; }
+.stamp-top, .stamp-bot{
+  fill:var(--rust); font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:9.4px; letter-spacing:1.6px;
+}
+.stamp-mid{
+  fill:var(--rust); font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:15px; text-anchor:middle; letter-spacing:.5px;
+}
+
+/* ======================================================================
+   TICKER STRIP
+   ====================================================================== */
+.ticker{
+  background:var(--ink);
+  color:var(--cream);
+  border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  overflow:hidden;
+  padding:.7rem 0;
+}
+.ticker-track{
+  display:flex; align-items:center; gap:1.4rem;
+  white-space:nowrap;
+  font-family:'Archivo',sans-serif; font-weight:700;
+  font-size:.9rem; letter-spacing:.14em; text-transform:uppercase;
+  animation:slide 28s linear infinite;
+}
+.ticker .dot{ color:var(--rust); font-size:.8rem; }
+@keyframes slide{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+/* ======================================================================
+   FLAVORS
+   ====================================================================== */
+.flavors{
+  background:var(--kraft-lt);
+  padding:4.5rem 2rem 5rem;
+}
+.section-head{ max-width:1240px; margin:0 auto 2.8rem; text-align:center; }
+.section-head .section-h2{ margin-top:.5rem; }
+.section-sub{
+  font-size:1.05rem; color:var(--ink-soft); max-width:34rem; margin:.4rem auto 0;
+}
+
+.flavor-row{
+  max-width:1240px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem;
+}
+.flavor-card{
+  background:var(--panel);
+  border:2.5px solid var(--ink);
+  border-radius:3px;
+  box-shadow:7px 8px 0 rgba(43,36,26,.18);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .15s ease;
+}
+.flavor-card:nth-child(1){ transform:rotate(-1deg); }
+.flavor-card:nth-child(3){ transform:rotate(1deg); }
+.flavor-card:hover{ transform:translateY(-5px) rotate(0deg); }
+.fc-photo{ position:relative; }
+.fc-photo img{ width:100%; height:280px; object-fit:cover; object-position:center 30%; }
+.fc-body{ padding:1.4rem 1.5rem 1.7rem; position:relative; }
+.fc-no{
+  font-family:'Kalam',cursive; font-weight:700;
+  color:var(--rust); font-size:1rem;
+}
+.fc-name{
+  font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:1.6rem; line-height:1; margin:.25rem 0 .55rem;
+}
+.fc-desc{ font-size:.98rem; color:var(--ink-soft); margin-bottom:1.1rem; }
+.fc-mg{
+  display:inline-block;
+  font-family:'Archivo',sans-serif; font-weight:700;
+  font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--cream); background:var(--green);
+  padding:.4em .8em; border-radius:2px;
+}
+/* colored top rule per card */
+.fc-blue .fc-photo{ border-bottom:6px solid var(--blue); }
+.fc-red  .fc-photo{ border-bottom:6px solid var(--berry); }
+.fc-green .fc-photo{ border-bottom:6px solid var(--lime); }
+
+/* ======================================================================
+   PANTRY (dark green farm-stand shelf)
+   ====================================================================== */
+.pantry{
+  background:var(--green-dk);
+  padding:4.5rem 2rem 5rem;
+  position:relative;
+}
+.pantry-head{
+  max-width:1240px; margin:0 auto 2.8rem;
+  display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
+  flex-wrap:wrap;
+}
+.pantry-sub{
+  font-size:1.05rem; color:#d8e0cf; max-width:26rem;
+}
+.pantry-grid{
+  max-width:1240px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.8rem;
+}
+.pantry-item{
+  background:var(--cream);
+  border:2px solid var(--ink);
+  border-radius:3px;
+  padding:12px 12px 0;
+  box-shadow:5px 6px 0 rgba(0,0,0,.28);
+}
+.pi-photo img{ width:100%; height:230px; object-fit:cover; border-radius:2px; }
+.pantry-item h4{
+  font-family:'Kalam',cursive; font-weight:700;
+  font-size:1.15rem; color:var(--ink);
+  text-align:center; padding:.7rem .5rem .9rem;
+}
+
+/* ======================================================================
+   STORY
+   ====================================================================== */
+.story{
+  background:var(--kraft);
+  padding:4.5rem 2rem 5rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:3.5rem;
+  align-items:center;
+  max-width:100%;
+}
+.story-photo{ position:relative; max-width:520px; margin-left:auto; }
+.story-photo .photo-frame{ transform:rotate(-1.6deg); }
+.photo-frame.tape{ position:relative; }
+.photo-frame.tape::before,
+.photo-frame.tape::after{
+  content:""; position:absolute; z-index:3;
+  width:90px; height:26px;
+  background:rgba(233,201,143,.65);
+  border:1px dashed rgba(43,36,26,.25);
+}
+.photo-frame.tape::before{ top:-12px; left:30px; transform:rotate(-6deg); }
+.photo-frame.tape::after{ bottom:-12px; right:30px; transform:rotate(-4deg); }
+.story-copy{ max-width:34rem; }
+.story-body{
+  font-size:1.08rem; color:var(--ink-soft); margin:0 0 1.1rem;
+}
+.story-copy .btn{ margin-top:.6rem; }
+
+/* ======================================================================
+   FIND IN MAINE
+   ====================================================================== */
+.find{
+  background:var(--kraft-dk);
+  padding:5rem 2rem;
+}
+.find-card{
+  max-width:760px; margin:0 auto;
+  background:var(--panel);
+  border:3px solid var(--ink);
+  border-radius:4px;
+  box-shadow:9px 10px 0 rgba(43,36,26,.22);
+  padding:3.2rem 2.5rem 3rem;
+  text-align:center;
+  position:relative;
+}
+.stamp-big{
+  width:130px; height:130px; margin:0 auto 1rem;
+  transform:rotate(-6deg); opacity:.92;
+}
+.stamp-big svg{ width:100%; height:100%; }
+.stamp-top.big, .stamp-bot.big{ font-size:9.6px; letter-spacing:1.3px; }
+.stamp-mid.big{ font-size:19px; }
+.find-h2{
+  font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:clamp(2.2rem,4.5vw,3.2rem); line-height:1; margin-bottom:.6rem;
+}
+.find-h2 .script{ font-size:1.24em; display:inline-block; }
+.find-body{
+  font-size:1.08rem; color:var(--ink-soft);
+  max-width:34rem; margin:0 auto 1.8rem;
+}
+.find-cta{ display:flex; align-items:center; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
+.find-soon{
+  font-family:'Kalam',cursive; font-weight:700;
+  color:var(--rust); font-size:1rem;
+}
+
+/* ======================================================================
+   FOOTER
+   ====================================================================== */
+.footer{
+  background:var(--green-dk);
+  color:var(--cream);
+  padding:3.5rem 2rem 1.5rem;
+}
+.footer-inner{
+  max-width:1240px; margin:0 auto;
+  display:flex; justify-content:space-between; gap:3rem; flex-wrap:wrap;
+  padding-bottom:2.2rem;
+  border-bottom:1px solid rgba(249,243,231,.18);
+}
+.footer-brand img{ height:44px; margin-bottom:1rem; }
+.footer-brand p{ max-width:22rem; color:#cdd6c4; font-size:.98rem; }
+.footer-cols{ display:flex; gap:4rem; }
+.footer-cols h5{
+  font-family:'Archivo',sans-serif; font-weight:800;
+  font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+  color:#e9c98f; margin-bottom:.8rem;
+}
+.footer-cols a{
+  display:block; color:#cdd6c4; text-decoration:none;
+  font-size:.95rem; margin-bottom:.45rem;
+}
+.footer-cols a:hover{ color:var(--cream); }
+.footer-bottom{
+  max-width:1240px; margin:1.4rem auto 0;
+  display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  font-size:.82rem; color:#a9b3a0; letter-spacing:.02em;
+}
+
+/* ======================================================================
+   RESPONSIVE
+   ====================================================================== */
+@media (max-width:960px){
+  .hero-grid{ grid-template-columns:1fr; gap:2.5rem; }
+  .hero-stamp{ width:90px; height:90px; top:18px; right:20px; }
+  .flavor-row{ grid-template-columns:1fr; max-width:460px; }
+  .flavor-card, .flavor-card:nth-child(1), .flavor-card:nth-child(3){ transform:rotate(0deg); }
+  .fc-photo img{ height:320px; }
+  .pantry-grid{ grid-template-columns:repeat(2,1fr); }
+  .story{ grid-template-columns:1fr; gap:3rem; }
+  .story-photo{ margin:0 auto; }
+}
+
+@media (max-width:640px){
+  .nav-inner{ flex-wrap:wrap; gap:.8rem; padding:.7rem 1.2rem; }
+  .nav-links{ order:3; width:100%; margin-left:0; justify-content:space-between; gap:.9rem; }
+  .nav-links a{ font-size:.78rem; }
+  .nav-tag{ margin-left:auto; }
+  .hero{ padding:2.4rem 1.3rem 3rem; }
+  .hero-h1{ font-size:clamp(2.6rem,12vw,3.6rem); }
+  .pricetag{ left:auto; right:-6px; bottom:-18px; }
+  .flavors, .pantry, .story, .find{ padding-left:1.3rem; padding-right:1.3rem; }
+  .pantry-grid{ grid-template-columns:1fr; max-width:380px; margin-inline:auto; }
+  .pantry-head{ flex-direction:column; align-items:flex-start; }
+  .find-card{ padding:2.4rem 1.4rem; }
+  .footer-inner{ flex-direction:column; gap:2rem; }
+  .footer-cols{ gap:3rem; }
+  .footer-bottom{ flex-direction:column; }
+}

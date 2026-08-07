@@ -1,0 +1,381 @@
+/* ================================================================
+   MANTIS MEDICINALS — Photo Immersive Documentary
+   Full-bleed photography leads. Type only on clean zones.
+   ================================================================ */
+
+:root{
+  --ink:#14170f;          /* near-black warm */
+  --ink-2:#20261a;
+  --paper:#f4f1e9;        /* warm off-white panel */
+  --paper-2:#ebe6da;
+  --moss:#33421f;         /* deep organic green */
+  --moss-deep:#1c2411;
+  --line:rgba(20,23,15,.16);
+  --line-light:rgba(255,255,255,.28);
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Seamless grain overlay */
+.grain{
+  position:fixed;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:9999;opacity:.045;mix-blend-mode:multiply;
+}
+
+/* ---------- shared bits ---------- */
+.kicker{
+  display:inline-block;
+  font-family:var(--sans);
+  font-size:.72rem;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--moss);
+  margin-bottom:1.4rem;
+}
+.kicker--light{color:rgba(255,255,255,.82)}
+
+.frame-cap{
+  position:absolute;left:0;bottom:0;
+  font-family:var(--sans);font-size:.66rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:rgba(20,23,15,.62);
+  padding:.55rem .95rem;backdrop-filter:blur(2px);
+}
+.frame-cap--dark{background:rgba(20,23,15,.72)}
+
+.btn{
+  display:inline-block;font-family:var(--sans);
+  font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;
+  padding:1rem 1.9rem;border-radius:2px;transition:.25s;
+}
+.btn--ink{background:var(--ink);color:var(--paper)}
+.btn--ink:hover{background:var(--moss)}
+.btn--outline{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn--outline:hover{background:#fff;color:var(--ink)}
+.btn--ghost{
+  border:1px solid rgba(255,255,255,.3);
+  color:rgba(255,255,255,.72);cursor:default;
+}
+
+/* ================================================================
+   NAV
+   ================================================================ */
+.nav{
+  position:absolute;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem clamp(1.4rem,4vw,3.4rem);
+}
+.nav::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,16,8,.5),rgba(12,16,8,0));
+}
+.nav>*{position:relative}
+.nav__logo img{width:auto;height:38px;object-fit:contain}
+.nav__links{display:flex;gap:2.4rem}
+.nav__links a{
+  font-size:.76rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.86);
+  text-decoration:none;transition:.2s;
+}
+.nav__links a:hover{color:#fff}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero{
+  position:relative;height:100vh;max-height:920px;min-height:640px;overflow:hidden;
+  display:grid;grid-template-columns:0.95fr 1.05fr;
+  background:var(--moss-deep);
+}
+.hero__text{
+  position:relative;z-index:5;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(3rem,7vw,5.5rem) clamp(1.6rem,5vw,4rem);
+  background:var(--moss-deep);
+}
+.hero__head{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(3rem,6vw,5.6rem);line-height:.96;
+  letter-spacing:-.02em;color:#fff;margin-bottom:1.8rem;
+}
+.hero__sub{
+  font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.65;font-weight:300;
+  color:rgba(255,255,255,.88);max-width:42ch;
+}
+.hero__meta{
+  margin-top:auto;padding-top:2.6rem;
+  font-size:.72rem;line-height:1.7;letter-spacing:.02em;
+  color:rgba(255,255,255,.6);
+}
+.hero__meta span{
+  display:block;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  font-size:.64rem;color:rgba(255,255,255,.8);margin-bottom:.4rem;
+}
+.hero__media{position:relative;overflow:hidden}
+.hero__bg{position:absolute;inset:0;object-position:center 62%}
+
+/* ================================================================
+   STATEMENT PANEL (clean zone)
+   ================================================================ */
+.statement{
+  background:var(--paper);
+  padding:clamp(4.5rem,9vw,7.5rem) clamp(1.6rem,6vw,4rem);
+  text-align:center;
+}
+.statement__lede{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.4;
+  letter-spacing:-.01em;color:var(--ink);
+  max-width:22ch;margin:0 auto 1.8rem;
+}
+.statement__meta{
+  font-size:.74rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--moss);
+}
+
+/* ================================================================
+   SELTZER
+   ================================================================ */
+.seltzer{background:var(--paper)}
+.chapter{
+  padding:clamp(3rem,6vw,5rem) clamp(1.6rem,6vw,4rem) clamp(1.5rem,3vw,2.5rem);
+  max-width:1440px;margin:0 auto;
+  border-top:1px solid var(--line);
+}
+.chapter--pad{border-top:none}
+.chapter__num{
+  font-family:var(--serif);font-size:.9rem;font-weight:500;
+  color:var(--moss);letter-spacing:.1em;
+}
+.chapter__title{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.2rem,5vw,3.6rem);line-height:1;
+  letter-spacing:-.02em;color:var(--ink);margin:.4rem 0 1rem;
+}
+.chapter__note{
+  font-size:1rem;line-height:1.65;font-weight:300;color:#4a4d40;
+  max-width:52ch;
+}
+
+/* Flavor filmstrip rows */
+.flavor{
+  display:grid;grid-template-columns:1fr 1.05fr;
+  min-height:640px;max-height:820px;align-items:stretch;
+}
+.flavor--rev{grid-template-columns:1.05fr 1fr}
+.flavor--rev .flavor__img{order:2}
+.flavor--rev .flavor__panel{order:1}
+
+/* Cans are tall portrait shots. Contain + garden-toned matte so the
+   full can is always visible and never bisected at any width. */
+.flavor__img{position:relative;overflow:hidden;background:var(--moss-deep)}
+.flavor__img img{
+  object-fit:contain;object-position:center;
+  transition:transform 1.4s ease;
+}
+.flavor:hover .flavor__img img{transform:scale(1.03)}
+
+.flavor__panel{
+  background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2.5rem,6vw,5rem);
+}
+.flavor__panel--dark{background:var(--moss-deep)}
+.flavor__panel--dark .flavor__index{color:rgba(255,255,255,.62)}
+.flavor__panel--dark .flavor__name{color:#fff}
+.flavor__panel--dark .flavor__desc{color:rgba(255,255,255,.82)}
+.flavor__panel--dark .flavor__spec{color:#fff;border-color:rgba(255,255,255,.3)}
+
+.flavor__index{
+  font-size:.72rem;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--moss);margin-bottom:1.4rem;
+}
+.flavor__name{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.4rem,4.5vw,4rem);line-height:.98;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:1.6rem;
+}
+.flavor__desc{
+  font-size:1.05rem;line-height:1.7;font-weight:300;
+  color:#4a4d40;max-width:36ch;margin-bottom:2.2rem;
+}
+.flavor__spec{
+  align-self:flex-start;
+  font-size:.72rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--moss);
+  padding:.6rem 1.1rem;border:1px solid var(--line);border-radius:2px;
+}
+
+/* ================================================================
+   BREATHER (full-bleed quote)
+   ================================================================ */
+.breather{position:relative;height:82vh;max-height:760px;min-height:560px;overflow:hidden}
+.breather__bg{position:absolute;inset:0}
+.breather__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(12,16,8,.35) 0%,rgba(12,16,8,.15) 40%,rgba(12,16,8,.7) 100%);
+}
+.breather__quote{
+  position:absolute;left:clamp(1.6rem,6vw,5rem);bottom:clamp(4rem,9vh,6rem);
+  max-width:min(680px,82%);z-index:5;
+}
+.breather__quote p{
+  font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(1.6rem,3.4vw,2.8rem);line-height:1.35;
+  color:#fff;letter-spacing:-.01em;margin-bottom:1.4rem;
+}
+.breather__quote cite{
+  font-style:normal;font-size:.8rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);
+}
+
+/* ================================================================
+   THE LINE (grid)
+   ================================================================ */
+.line{background:var(--paper);padding-bottom:clamp(4rem,8vw,6rem)}
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);
+  max-width:1440px;margin:0 auto;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.card{position:relative;background:var(--paper);overflow:hidden}
+.card__img{aspect-ratio:4/5;overflow:hidden}
+.card__img img{transition:transform 1.2s ease}
+.card:hover .card__img img{transform:scale(1.04)}
+.card__cap{
+  position:absolute;left:0;bottom:0;right:0;
+  padding:1.1rem 1.3rem;
+  background:linear-gradient(0deg,rgba(15,18,10,.72) 0%,rgba(15,18,10,0) 100%);
+}
+.card__cap span{
+  font-family:var(--serif);font-weight:400;font-size:1.15rem;
+  color:#fff;letter-spacing:.01em;
+}
+
+/* ================================================================
+   STORY
+   ================================================================ */
+.story{
+  display:grid;grid-template-columns:1.1fr 1fr;
+  min-height:640px;max-height:820px;background:var(--moss-deep);
+}
+.story__img{position:relative;overflow:hidden;min-height:420px}
+.story__panel{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(3rem,7vw,6rem);background:var(--paper);
+}
+.story__head{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.4rem,4.6vw,4rem);line-height:1;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:1.8rem;
+}
+.story__body{
+  font-size:1.08rem;line-height:1.75;font-weight:300;
+  color:#4a4d40;max-width:44ch;margin-bottom:1.4rem;
+}
+.story__panel .btn{margin-top:1.2rem;align-self:flex-start}
+
+/* ================================================================
+   FIND
+   ================================================================ */
+.find{position:relative;min-height:620px;max-height:780px;display:flex;overflow:hidden}
+.find__bg{position:absolute;inset:0}
+.find__scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(12,16,8,.82) 0%,rgba(12,16,8,.35) 55%,rgba(12,16,8,.1) 100%),
+    linear-gradient(180deg,rgba(12,16,8,.2),rgba(12,16,8,.45));
+}
+.find__plate{
+  position:relative;z-index:5;align-self:center;
+  padding:clamp(3.5rem,8vw,6rem) clamp(1.6rem,6vw,5rem);
+  max-width:min(620px,90%);
+}
+.find__head{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.4rem,5vw,4.2rem);line-height:1;
+  letter-spacing:-.02em;color:#fff;margin-bottom:1.6rem;
+}
+.find__sub{
+  font-size:1.08rem;line-height:1.7;font-weight:300;
+  color:rgba(255,255,255,.9);max-width:46ch;margin-bottom:2.4rem;
+}
+.find__actions{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.foot{
+  background:var(--ink);color:rgba(255,255,255,.72);
+  padding:clamp(3.5rem,7vw,5.5rem) clamp(1.6rem,6vw,4rem) 2.4rem;
+}
+.foot__logo{width:auto;height:34px;object-fit:contain;margin-bottom:3rem}
+.foot__cols{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  max-width:1000px;padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.foot__col{display:flex;flex-direction:column;gap:.7rem}
+.foot__label{
+  font-size:.7rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem;
+}
+.foot__col a,.foot__col span{
+  font-size:.92rem;font-weight:300;color:rgba(255,255,255,.78);
+  text-decoration:none;transition:.2s;
+}
+.foot__col a:hover{color:#fff}
+.foot__base{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  margin-top:2.2rem;font-size:.74rem;letter-spacing:.04em;
+  color:rgba(255,255,255,.5);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media(max-width:900px){
+  .nav__links{display:none}
+  .nav{padding:1.5rem 1.4rem}
+
+  .flavor,.flavor--rev{grid-template-columns:1fr;min-height:0;max-height:none}
+  .flavor--rev .flavor__img{order:0}
+  .flavor--rev .flavor__panel{order:0}
+  /* Full-width, single column, taller frame so the portrait can fills
+     without being cut off. Contain guarantees the whole can shows. */
+  .flavor__img{aspect-ratio:3/4;max-height:80vh}
+  .flavor__panel{padding:2.6rem 1.6rem 3.2rem}
+
+  .story{grid-template-columns:1fr}
+  .story__img{aspect-ratio:4/3;min-height:0}
+  .story__panel{padding:3rem 1.6rem}
+
+  .grid{grid-template-columns:repeat(2,1fr)}
+
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero__text{padding:6rem 1.6rem 3rem;order:2}
+  .hero__media{min-height:0;aspect-ratio:3/4;max-height:78vh;order:1}
+  .hero__meta{padding-top:1.8rem}
+  .breather__quote{max-width:88%}
+}
+
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .card__img{aspect-ratio:5/4}
+  .find__actions{flex-direction:column;align-items:stretch}
+  .find__actions .btn{text-align:center}
+  .foot__cols{grid-template-columns:1fr;gap:2.2rem}
+  .foot__base{flex-direction:column}
+  .hero__head{font-size:clamp(2.6rem,11vw,3.4rem)}
+}

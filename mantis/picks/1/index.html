@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mantis Medicinals — Botanical CBD Seltzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Archivo+Expanded:wght@700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Seamless grain filter, applied via CSS to hero/dark panels -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix in="noise" type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+  </filter>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <a class="nav-logo" href="#top" aria-label="Mantis Medicinals home">
+    <img src="../assets/brand/wordmark-ink.png" alt="Mantis Medicinals">
+  </a>
+  <nav class="nav-links">
+    <a href="#flavors">Seltzer</a>
+    <a href="#line">Remedies</a>
+    <a href="#story">Story</a>
+    <a href="#find" class="nav-cta">Find in Maine</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="hero-grain"></div>
+      <p class="eyebrow">Botanical CBD Seltzer · Montville, Maine</p>
+      <h1 class="hero-title">
+        <span>SIP</span>
+        <span>THE</span>
+        <span class="hero-title-accent">GARDEN</span>
+      </h1>
+      <p class="hero-sub">Three loud, organic flavors. 20mg broad-spectrum CBD per can. Zero THC. Small-batch, hand-crafted, grown by a farmer who started with vegetables.</p>
+      <div class="hero-actions">
+        <a href="#flavors" class="btn btn-lime">See the flavors</a>
+        <a href="#find" class="btn btn-ghost">Where to buy</a>
+      </div>
+      <ul class="hero-facts">
+        <li><strong>20mg</strong> broad-spectrum CBD</li>
+        <li><strong>0mg</strong> THC</li>
+        <li><strong>MOFGA</strong> certified organic</li>
+      </ul>
+    </div>
+    <div class="hero-photo">
+      <img src="../assets/brand/hero-cans.jpg" alt="Three cans of Mantis Medicinals botanical CBD seltzer in a garden">
+    </div>
+  </section>
+
+  <!-- MARQUEE / TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>BLUEBERRY &amp; LAVENDER</span><span class="dot">●</span>
+      <span>HIBISCUS &amp; LEMON</span><span class="dot">●</span>
+      <span>LIME &amp; MINT</span><span class="dot">●</span>
+      <span>BLUEBERRY &amp; LAVENDER</span><span class="dot">●</span>
+      <span>HIBISCUS &amp; LEMON</span><span class="dot">●</span>
+      <span>LIME &amp; MINT</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <!-- FLAVORS -->
+  <section id="flavors" class="flavors">
+    <div class="section-head">
+      <h2>Three flavors.<br>Zero compromise.</h2>
+      <p>Each can is 20mg of broad-spectrum CBD and real botanicals. Pick your block.</p>
+    </div>
+
+    <div class="flavor-grid">
+      <!-- LAVENDER -->
+      <article class="flavor flavor--lav">
+        <div class="flavor-info">
+          <span class="flavor-num">01</span>
+          <h3>Blueberry<br>&amp; Lavender</h3>
+          <p>Deep wild blueberry meets soft field lavender. The purple one.</p>
+          <span class="flavor-tag">20mg CBD · 0 THC</span>
+        </div>
+        <div class="flavor-can">
+          <img src="../assets/photography/2026-NFOX-2026-9W8A3055_websize.jpg" alt="Blueberry and Lavender CBD seltzer can">
+        </div>
+      </article>
+
+      <!-- CORAL -->
+      <article class="flavor flavor--coral">
+        <div class="flavor-info">
+          <span class="flavor-num">02</span>
+          <h3>Hibiscus<br>&amp; Lemon</h3>
+          <p>Tart hibiscus, bright Maine-summer lemon. The loud one.</p>
+          <span class="flavor-tag">20mg CBD · 0 THC</span>
+        </div>
+        <div class="flavor-can">
+          <img src="../assets/photography/2026-NFOX-2026-9W8A3079_websize.jpg" alt="Hibiscus and Lemon CBD seltzer can">
+        </div>
+      </article>
+
+      <!-- MINT -->
+      <article class="flavor flavor--mint">
+        <div class="flavor-info">
+          <span class="flavor-num">03</span>
+          <h3>Lime<br>&amp; Mint</h3>
+          <p>Cold-pressed lime and garden mint. The crisp one.</p>
+          <span class="flavor-tag">20mg CBD · 0 THC</span>
+        </div>
+        <div class="flavor-can">
+          <img src="../assets/photography/2026-NFOX-2026-9W8A3111_websize.jpg" alt="Lime and Mint CBD seltzer can">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- STAT BLOCK -->
+  <section class="stats">
+    <div class="stat stat--a"><strong>3</strong><span>organic flavors</span></div>
+    <div class="stat stat--b"><strong>20mg</strong><span>CBD per can</span></div>
+    <div class="stat stat--c"><strong>0</strong><span>THC, always</span></div>
+    <div class="stat stat--d"><strong>1st</strong><span>female MOFGA certified organic cannabis farm</span></div>
+  </section>
+
+  <!-- PRODUCT LINE -->
+  <section id="line" class="line">
+    <div class="section-head section-head--dark">
+      <h2>Beyond the can.</h2>
+      <p>The seltzer is the headline. The remedy line is the rest of the garden, hand-made in small batches.</p>
+    </div>
+    <div class="line-grid">
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A2560_websize.jpg" alt="Miracle Salve"></div>
+        <h4>Miracle Salve</h4>
+      </article>
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A0818_websize.jpg" alt="CBD Body Oil"></div>
+        <h4>CBD Body Oil</h4>
+      </article>
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A2026_websize.jpg" alt="Sleep Oil"></div>
+        <h4>Sleep Oil</h4>
+      </article>
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A0696_websize.jpg" alt="Herbal CBD Tea"></div>
+        <h4>Herbal CBD Tea</h4>
+      </article>
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A0507_websize.jpg" alt="Herbal Bath Soak"></div>
+        <h4>Herbal Bath Soak</h4>
+      </article>
+      <article class="prod">
+        <div class="prod-img"><img src="../assets/photography/9W8A0540_websize.jpg" alt="Herbal Bath Salts"></div>
+        <h4>Herbal Bath Salts</h4>
+      </article>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" class="story">
+    <div class="story-photo">
+      <img src="../assets/photography/9W8A8916_websize.jpg" alt="Mantis Medicinals botanical product resting in a bed of Maine lavender">
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow eyebrow--ink">The grower · Katrina</span>
+      <h2>From a vegetable patch in Montville, Maine.</h2>
+      <p>Katrina started with organic vegetables. That patch grew into cannabis, and then into a line of clean, broad-spectrum CBD made the slow way, by hand, in small batches.</p>
+      <p>Mantis Medicinals is the first female-founded, MOFGA certified organic cannabis farm in Maine. Every can traces back to that soil.</p>
+      <a href="#find" class="btn btn-ink">Find it in Maine</a>
+    </div>
+  </section>
+
+  <!-- FIND -->
+  <section id="find" class="find">
+    <div class="find-grain"></div>
+    <div class="find-inner">
+      <p class="eyebrow eyebrow--light">Availability</p>
+      <h2>Find us in Maine.</h2>
+      <p class="find-sub">Online ordering is coming soon. For now, grab a cold four-pack at a stockist across Maine, or ask your local shop to carry it.</p>
+      <div class="find-actions">
+        <a href="mailto:hello@mantismedicinals.com?subject=Where%20to%20find%20Mantis" class="btn btn-lime">Ask where to buy</a>
+        <span class="find-note">Online ordering coming soon</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <img class="footer-mark" src="../assets/brand/wordmark-white.png" alt="Mantis Medicinals">
+    <nav class="footer-nav">
+      <a href="#flavors">Seltzer</a>
+      <a href="#line">Remedies</a>
+      <a href="#story">Story</a>
+      <a href="#find">Find in Maine</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>Montville, Maine · MOFGA Certified Organic</span>
+    <span>Broad-spectrum CBD · 0 THC · Must be 21+</span>
+    <span>© 2026 Mantis Medicinals</span>
+  </div>
+</footer>
+
+</body>
+</html>
