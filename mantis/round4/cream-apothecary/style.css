@@ -1,0 +1,746 @@
+/* ==========================================================================
+   Mantis Medicinals · Cream Apothecary (R4 tighten)
+   Centred and symmetrical, composed like the can label. Cream ground,
+   gold double-border frames, Cinzel / IM Fell, real wordmark artwork.
+   R4 changes are targeted: side borders gone, wordmark is the label
+   lockup, Katrina photo beside the letter, section colours drift instead
+   of banding, faint botanical ghosts carry the eye between sections.
+   ========================================================================== */
+
+:root {
+  --warm-white: #F5F2EC;
+  --cream: #E8E4DC;
+  --cream-mid: #EEEBE4;
+  --near-white: #f8f6f3;
+  --lavender-mist: #E8DFF0;
+  --lilac: #D8CFE5;
+  --violet: #9a8aaa;
+  --purple: #724E8A;
+  --ink: #281828;
+  --forest: #2D5A2D;
+  --deep-forest: #1A3A1A;
+  --sage: #6B8A5A;
+  --soft-sage: #8aaa8a;
+  --pale-green: #f0f5ec;
+  --gold: #B4914F;
+  --gold-soft: rgba(180, 145, 79, 0.55);
+
+  --script: 'Pinyon Script', cursive;
+  --cinzel: 'Cinzel', serif;
+  --fell: 'IM Fell English', Georgia, serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--warm-white);
+  color: var(--ink);
+  font-family: var(--fell);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+figure { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+button { font: inherit; color: inherit; }
+
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; position: relative; z-index: 1; }
+.wrap-narrow { width: min(760px, 100% - 2 * var(--gutter)); }
+.center { text-align: center; }
+
+/* ---------- Type helpers ---------- */
+.script { font-family: var(--script); font-weight: 400; color: var(--purple); line-height: 1; }
+.fell-i { font-family: var(--fell); font-style: italic; }
+.amp { font-family: var(--fell); font-style: italic; font-weight: 400; color: var(--gold); font-size: 0.9em; }
+.eyebrow {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.eyebrow-i {
+  font-family: var(--fell);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+h2 {
+  font-family: var(--cinzel);
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  line-height: 1.25;
+}
+h3 {
+  font-family: var(--cinzel);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  line-height: 1.3;
+}
+.section-head { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+.section-head .sub { margin-top: 16px; color: rgba(40, 24, 40, 0.78); }
+.tagline {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 14px;
+}
+.tagline .f { white-space: nowrap; }
+.tagline .sep { margin: 0 0.6em; }
+
+/* ---------- Gold double-border frame (the brand device) ---------- */
+.frame {
+  position: relative;
+  border: 1px solid var(--gold);
+  background: var(--near-white);
+}
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold-soft);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Ornament: rule, mantis, rule ---------- */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.ornament::before, .ornament::after {
+  content: "";
+  width: 72px;
+  height: 1px;
+  background: var(--gold);
+}
+.mantis { display: block; width: 22px; height: auto; }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  white-space: nowrap;
+}
+.btn-solid { background: var(--forest); color: var(--warm-white); border-color: var(--forest); }
+.btn-solid:hover { background: var(--deep-forest); border-color: var(--deep-forest); }
+.btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn-outline:hover { background: var(--forest); color: var(--warm-white); }
+.btn-sm { padding: 12px 20px; font-size: 11px; }
+.btn-lg { padding: 18px 40px; font-size: 13px; box-shadow: 0 10px 24px -16px rgba(26, 58, 26, 0.6); }
+.link-gold {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--gold);
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+}
+.link-gold:hover { color: var(--forest); border-color: var(--forest); }
+
+/* ---------- Masthead ----------
+   Centred wordmark on its own row, links centred beneath. The mark is the
+   trimmed script (1720x196), so 56px tall reads at about 490px wide. */
+.mast {
+  position: relative;
+  z-index: 50;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--gold-soft);
+}
+.mast-inner { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.mast-top {
+  position: relative;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mast-logo { display: block; }
+.mast-logo img { height: 56px; width: auto; }
+.mast-actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.btn-nav { padding: 13px 22px; }
+.cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  color: var(--forest);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--near-white);
+  transition: background-color .25s var(--ease), color .25s var(--ease);
+}
+.cart:hover { background: var(--forest); color: var(--warm-white); }
+.cart-count {
+  position: absolute;
+  top: -5px; right: -5px;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--purple);
+  color: var(--warm-white);
+  font-family: var(--cinzel);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+.menu-btn {
+  display: none;
+  width: 44px; height: 44px;
+  padding: 0;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--near-white);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color .25s var(--ease);
+}
+.menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--forest); transition: transform .25s var(--ease); }
+.menu-btn:hover { background: var(--lavender-mist); }
+.menu-btn[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+.mast-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-top: 1px solid rgba(180,145,79,0.3);
+  padding: 15px 0;
+}
+.mast-links a {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+.mast-links a:hover { border-color: var(--gold); color: var(--purple); }
+
+/* ---------- Hero: the label ----------
+   One centred column inside the gold double frame. The side botanical
+   panels are gone (R4), so the frame narrows to keep the stack feeling
+   held rather than adrift. */
+.hero { padding: 36px 0 0; }
+.label {
+  max-width: 940px;
+  margin: 0 auto;
+}
+.label-body {
+  text-align: center;
+  padding: 56px 40px 48px;
+}
+.label-body .eyebrow { margin-bottom: 18px; }
+.wordmark {
+  width: min(360px, 78%);
+  margin: 0 auto 22px;
+  line-height: 0;
+}
+.wordmark img {
+  width: 100%;
+  height: auto;
+  /* the extracted PNG carries a stray fleck on its far right edge, outside the glyphs */
+}
+.flavor-line {
+  font-family: var(--cinzel);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--forest);
+  margin-bottom: 26px;
+  line-height: 1.6;
+}
+.flavor-line .f { white-space: nowrap; }
+.flavor-line .sep { color: var(--gold); margin: 0 0.6em; }
+.hero .ornament { margin-bottom: 26px; }
+.hero .lede { font-size: 21px; color: var(--purple); margin: 0 auto 12px; max-width: 560px; }
+.spec-line {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 30px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.label-photo {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 16px;
+  border: 1px solid var(--gold);
+  padding: 8px;
+  background: var(--cream);
+}
+.label-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: var(--cream);
+}
+.price-line {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ---------- Section ground + botanical ghosts ----------
+   Sections no longer flip from cream to warm-white in a hard band. Each
+   one drifts from the colour it inherits to the one the next section
+   starts on. A very faint watercolor sits low in the transition zones,
+   masked so it dissolves before it can read as a pattern. */
+section { position: relative; }
+.ghost { overflow: hidden; }
+.ghost::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.075;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, rgba(0,0,0,0) 72%);
+  mask-image: radial-gradient(ellipse at center, #000 20%, rgba(0,0,0,0) 72%);
+}
+
+/* ---------- In every can ---------- */
+.facts { padding: 40px 0 0; }
+.facts-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--gold-soft);
+  border-bottom: 1px solid var(--gold-soft);
+}
+.facts-row li {
+  text-align: center;
+  padding: 22px 12px;
+  font-family: var(--cinzel);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest);
+  border-right: 1px solid var(--gold-soft);
+  text-wrap: balance;
+}
+.facts-row li:last-child { border-right: 0; }
+
+/* ---------- Flavors ----------
+   Warm white at the top, settling into cream at the bottom so the
+   apothecary picks up on cream without a seam. A blueberry branch
+   ghosts in behind the lower right of the card row. */
+.flavors {
+  padding: 88px 0 80px;
+  background: linear-gradient(to bottom, var(--warm-white) 0%, var(--warm-white) 45%, var(--cream) 100%);
+}
+.flavors.ghost::after {
+  right: -6%;
+  bottom: -40px;
+  width: min(760px, 62vw);
+  aspect-ratio: 2400 / 1792;
+  background-image: url("../assets/watercolor/bl-branch2.png");
+  background-position: right bottom;
+}
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+.card { padding: 12px; display: flex; flex-direction: column; transition: box-shadow .35s var(--ease); }
+.card:hover { box-shadow: 0 18px 40px -24px rgba(40, 24, 40, 0.35); }
+.card-photo { background: var(--cream); }
+.card-photo img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+}
+.card-body { padding: 26px 16px 18px; text-align: center; flex: 1; display: flex; flex-direction: column; }
+.card-body h3 { font-size: 19px; margin-bottom: 10px; }
+.tasting { color: rgba(40, 24, 40, 0.8); margin-bottom: 14px; min-height: 2.2em; }
+.spec {
+  font-family: var(--cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.packs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.pack {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: transparent;
+  border: 1px solid var(--gold-soft);
+  padding: 10px 4px;
+  cursor: pointer;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+.pack:hover { border-color: var(--gold); background: var(--cream); }
+.pack.is-on { background: var(--lavender-mist); border-color: var(--purple); color: var(--purple); }
+.card-buy {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gold-soft);
+}
+.price { font-family: var(--cinzel); font-size: 18px; color: var(--forest); white-space: nowrap; }
+.price small { font-family: var(--fell); font-style: italic; font-size: 14px; color: var(--violet); margin-left: 4px; }
+.flavor-note { text-align: center; margin-top: 36px; color: var(--purple); font-size: 18px; }
+
+/* ---------- Apothecary ----------
+   Opens on cream (handed over by the flavors), lifts back to warm white
+   by the button so the story section can start on warm white. */
+.apothecary {
+  padding: 80px 0 88px;
+  background: linear-gradient(to bottom, var(--cream) 0%, var(--cream-mid) 40%, var(--warm-white) 100%);
+}
+.apothecary.ghost::after {
+  left: -8%;
+  top: 140px;
+  width: min(680px, 56vw);
+  aspect-ratio: 2400 / 1792;
+  background-image: url("../assets/watercolor/bl-branch.png");
+  background-position: left top;
+  opacity: 0.065;
+}
+.bouquet { width: clamp(110px, 12vw, 140px); margin: 0 auto 22px; }
+.apoth-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  margin-bottom: 44px;
+}
+.apoth-card { padding: 10px 10px 22px; text-align: center; display: block; transition: box-shadow .35s var(--ease); }
+.apoth-card:hover { box-shadow: 0 18px 40px -24px rgba(40, 24, 40, 0.35); }
+.apoth-card figure { background: var(--cream); margin-bottom: 18px; overflow: hidden; }
+.apoth-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: opacity .35s var(--ease); }
+.apoth-card:hover img { opacity: 0.92; }
+.apoth-card h3 { font-size: 15px; margin-bottom: 8px; padding: 0 8px; }
+.apoth-card p { font-size: 15px; color: rgba(40, 24, 40, 0.75); padding: 0 12px; }
+
+/* ---------- Our Story (photo beside the letter) ----------
+   Warm white drifting down into pale green, which is where the
+   Come Find Us section picks up. */
+.story {
+  padding: 80px 0 88px;
+  background: linear-gradient(to bottom, var(--warm-white) 0%, var(--warm-white) 55%, var(--pale-green) 100%);
+}
+.story .section-head { margin-bottom: 44px; }
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.story-photo { padding: 10px; background: var(--cream); }
+.story-photo img { width: 100%; height: auto; aspect-ratio: 1500 / 844; object-fit: cover; }
+.story-photo figcaption {
+  font-size: 14px;
+  color: var(--violet);
+  text-align: center;
+  padding: 12px 6px 4px;
+}
+.letter { max-width: 480px; text-align: left; }
+.letter p { color: rgba(40, 24, 40, 0.86); }
+.signature { font-family: var(--script); font-size: 48px; color: var(--purple); line-height: 1; margin: 26px 0 10px; }
+.sig-line {
+  font-family: var(--cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-wrap: balance;
+}
+
+/* ---------- Come Find Us ----------
+   Pale green from the story, settling to cream toward the certification
+   frame. A lime and mint sprig ghosts in low on the right. */
+.find {
+  padding: 80px 0 88px;
+  background: linear-gradient(to bottom, var(--pale-green) 0%, var(--pale-green) 50%, var(--cream) 100%);
+}
+.find.ghost::after {
+  right: -4%;
+  bottom: -30px;
+  width: min(640px, 52vw);
+  aspect-ratio: 2400 / 1792;
+  background-image: url("../assets/watercolor/mint-lime.png");
+  background-position: right bottom;
+  opacity: 0.07;
+}
+.find .section-head { max-width: 680px; margin-bottom: 44px; }
+.find .section-head .sub { text-align: center; }
+.locator {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  padding: clamp(28px, 3.5vw, 40px) clamp(24px, 4vw, 48px);
+  text-align: center;
+}
+.locator-label {
+  display: block;
+  font-family: var(--cinzel);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+.locator-copy {
+  color: rgba(40, 24, 40, 0.78);
+  max-width: 520px;
+  margin: 0 auto 22px;
+}
+.locator-row {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.locator-row input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--fell);
+  font-size: 17px;
+  color: var(--ink);
+  background: var(--warm-white);
+  border: 1px solid var(--gold);
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.locator-row input::placeholder { color: var(--violet); font-style: italic; }
+.locator-row input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(45, 90, 45, 0.12); }
+.find-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.find-col {
+  text-align: center;
+  padding: 0 12px;
+  border-right: 1px solid var(--gold-soft);
+}
+.find-col:last-child { border-right: 0; }
+.find-col h3 { margin-bottom: 12px; }
+.find-col p { color: rgba(40, 24, 40, 0.8); margin-bottom: 18px; max-width: 300px; margin-inline: auto; }
+
+/* ---------- Certified ----------
+   Cream into warm white, so the closing lands on the page ground. */
+.certified {
+  padding: 64px 0 72px;
+  background: linear-gradient(to bottom, var(--cream) 0%, var(--warm-white) 100%);
+}
+.cert-frame {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(36px, 4vw, 52px) clamp(24px, 5vw, 64px);
+  text-align: center;
+}
+.cert-badge { width: 130px; height: auto; margin: 0 auto 24px; }
+.cert-frame h2 { font-size: clamp(20px, 2.2vw, 26px); margin-bottom: 16px; }
+.cert-frame p { color: rgba(40, 24, 40, 0.82); max-width: 560px; margin-inline: auto; }
+.cert-frame .link-gold { display: inline-block; margin-top: 18px; }
+
+/* ---------- Closing (plain) ---------- */
+.closing { padding: 72px 0 96px; text-align: center; }
+.closing-inner { max-width: 560px; margin: 0 auto; }
+.closing .ornament { margin-bottom: 26px; }
+.closing h2 { margin-bottom: 12px; }
+.closing .fell-i { font-size: 19px; color: rgba(40, 24, 40, 0.8); margin-bottom: 30px; }
+
+/* ---------- Footer (centred, unchanged from R2) ---------- */
+.footer { background: var(--cream); border-top: 1px solid var(--gold-soft); padding: 64px 0 40px; text-align: center; }
+.footer-brand { margin-bottom: 36px; }
+.footer-logo { height: 40px; width: auto; max-width: 100%; margin: 0 auto 14px; }
+.footer-brand p { color: var(--purple); }
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+  margin-bottom: 44px;
+}
+.footer-nav a {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest);
+  transition: color .25s var(--ease);
+}
+.footer-nav a:hover { color: var(--purple); }
+.footer-bottom { border-top: 1px solid var(--gold-soft); padding-top: 24px; }
+.footer-bottom p { font-size: 13px; color: var(--violet); margin-bottom: 6px; max-width: 620px; margin-inline: auto; }
+
+/* ---------- Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .flavor-line .f { display: block; line-height: 1.9; }
+  .flavor-line .sep { display: none; }
+  .apoth-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .mast-logo img { height: 48px; }
+  .mast-links { gap: 28px; }
+}
+
+@media (max-width: 860px) {
+  /* Masthead: wordmark on its own centred row, utilities on the row below */
+  .mast-top { height: auto; flex-wrap: wrap; row-gap: 12px; padding: 16px 0 12px; }
+  .mast-logo { flex: 0 0 100%; display: flex; justify-content: center; }
+  .mast-logo img { height: 40px; }
+  .mast-actions { position: static; transform: none; flex: 0 0 100%; justify-content: flex-end; gap: 12px; }
+  .menu-btn { display: flex; margin-right: auto; }
+  .mast-links {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: var(--warm-white);
+    border-top: 0;
+    border-bottom: 1px solid var(--gold-soft);
+    padding: 8px var(--gutter) 16px;
+  }
+  .mast-links.open { display: flex; }
+  .mast-links a { padding: 14px 0; border-bottom: 1px solid rgba(180,145,79,0.25); }
+  .mast-links a:last-child { border-bottom: 0; }
+  .btn-nav { padding: 12px 16px; font-size: 11px; }
+
+  .hero { padding: 24px 0 0; }
+  .label-body { padding: 40px 24px 36px; }
+  .wordmark { width: min(300px, 82%); margin-bottom: 18px; }
+  .cert-frame h2 .line { display: block; }
+  .hero .lede { font-size: 19px; }
+  .hero-actions { gap: 20px; margin-bottom: 32px; }
+
+  .facts { padding: 32px 0 0; }
+  .facts-row { grid-template-columns: repeat(2, 1fr); }
+  .facts-row li { border-bottom: 1px solid var(--gold-soft); padding: 18px 10px; font-size: 11px; }
+  .facts-row li:nth-child(2n) { border-right: 0; }
+  .facts-row li:nth-last-child(-n+2) { border-bottom: 0; }
+
+  .flavors, .apothecary, .story, .find, .closing { padding: 64px 0; }
+  .certified { padding: 56px 0; }
+  .flavor-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .ghost::after { opacity: 0.06; }
+  .flavors.ghost::after { width: 80vw; right: -20%; }
+  .apothecary.ghost::after { width: 70vw; left: -22%; top: 60px; }
+  .find.ghost::after { width: 76vw; right: -22%; }
+
+  .story-grid { grid-template-columns: 1fr; gap: 36px; max-width: 560px; }
+  .story-photo { max-width: 520px; margin: 0 auto; width: 100%; }
+  .letter { max-width: 100%; text-align: center; margin: 0 auto; }
+
+  .find-grid { grid-template-columns: 1fr; gap: 32px; }
+  .find-col { border-right: 0; border-bottom: 1px solid var(--gold-soft); padding-bottom: 32px; }
+  .find-col:last-child { border-bottom: 0; padding-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .mast-logo img { height: 40px; }
+  .btn-nav { padding: 11px 13px; font-size: 10px; letter-spacing: 0.12em; }
+  .cart, .menu-btn { width: 40px; height: 40px; }
+  .label-body { padding: 32px 18px 30px; }
+  .wordmark { width: min(260px, 84%); }
+  .flavor-line { font-size: 14px; }
+  .spec-line { font-size: 10px; letter-spacing: 0.16em; }
+  .spec-line .ml { display: none; }
+  .label-photo { padding: 6px; }
+  .price-line { font-size: 10px; letter-spacing: 0.12em; }
+  .apoth-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .apoth-card { padding: 8px 8px 18px; }
+  .apoth-card h3 { font-size: 13px; }
+  .apoth-card p { font-size: 13.5px; padding: 0 4px; }
+  .card { padding: 10px; }
+  .card-body { padding: 22px 8px 14px; }
+  .pack { font-size: 10px; letter-spacing: 0.06em; padding: 9px 2px; }
+  .card-buy { flex-direction: column; align-items: stretch; text-align: center; }
+  .card-buy .btn { text-align: center; }
+  .btn-lg { padding: 16px 28px; font-size: 12px; }
+  .locator-row { flex-direction: column; }
+  .locator-row .btn { text-align: center; }
+  .cert-badge { width: 110px; }
+  .tagline .f { display: block; line-height: 2; }
+  .tagline .sep { display: none; }
+  .footer-nav { gap: 12px 22px; }
+}

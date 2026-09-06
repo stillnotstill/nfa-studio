@@ -1,0 +1,465 @@
+/* ==========================================================================
+   Mantis Medicinals · shared house base (Cream Apothecary system)
+   Cream ground, gold double-border frames, Pinyon / Cinzel / IM Fell.
+   ========================================================================== */
+
+:root {
+  --warm-white: #F5F2EC;
+  --cream: #E8E4DC;
+  --near-white: #f8f6f3;
+  --lavender-mist: #E8DFF0;
+  --lilac: #D8CFE5;
+  --violet: #9a8aaa;
+  --purple: #724E8A;
+  --ink: #281828;
+  --forest: #2D5A2D;
+  --deep-forest: #1A3A1A;
+  --sage: #6B8A5A;
+  --soft-sage: #8aaa8a;
+  --pale-green: #f0f5ec;
+  --gold: #B4914F;
+  --gold-soft: rgba(180, 145, 79, 0.55);
+  --gold-faint: rgba(180, 145, 79, 0.3);
+
+  --script: 'Pinyon Script', cursive;
+  --cinzel: 'Cinzel', serif;
+  --fell: 'IM Fell English', Georgia, serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--warm-white);
+  color: var(--ink);
+  font-family: var(--fell);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+figure { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3 { margin: 0; font-weight: 500; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.wrap-narrow { width: min(760px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+.center { text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Type helpers ---------- */
+.script { font-family: var(--script); font-weight: 400; color: var(--purple); line-height: 1; }
+.fell-i { font-family: var(--fell); font-style: italic; }
+.amp { font-family: var(--fell); font-style: italic; font-weight: 400; color: var(--gold); font-size: 0.9em; }
+.eyebrow {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+h1 {
+  font-family: var(--cinzel);
+  font-size: clamp(30px, 3.4vw, 42px);
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+h2 {
+  font-family: var(--cinzel);
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+h3 {
+  font-family: var(--cinzel);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.section-head { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+.section-head .sub { margin-top: 16px; color: rgba(40, 24, 40, 0.78); }
+.tagline {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 14px;
+}
+.tagline .f { white-space: nowrap; }
+.tagline .sep { margin: 0 0.6em; }
+
+/* ---------- Gold double-border frame (the brand device) ---------- */
+.frame {
+  position: relative;
+  border: 1px solid var(--gold);
+  background: var(--near-white);
+}
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold-soft);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Ornament: rule, mantis, rule ---------- */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.ornament::before, .ornament::after {
+  content: "";
+  width: 72px;
+  height: 1px;
+  background: var(--gold);
+}
+.mantis { display: block; width: 22px; height: auto; }
+
+/* ---------- Botanical Seltzer lockup: real label artwork, never type ---------- */
+.bs-mark { display: block; height: auto; }
+.bs-mark img { width: 100%; height: auto; }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border: 1px solid transparent;
+  transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-solid { background: var(--forest); color: var(--warm-white); border-color: var(--forest); }
+.btn-solid:hover { background: var(--deep-forest); border-color: var(--deep-forest); }
+.btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn-outline:hover { background: var(--forest); color: var(--warm-white); }
+.btn-sm { padding: 12px 20px; font-size: 11px; }
+.link-gold {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--gold);
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+  white-space: nowrap;
+}
+.link-gold:hover { color: var(--forest); border-color: var(--forest); }
+.text-link { color: var(--purple); border-bottom: 1px solid var(--gold-soft); transition: color .25s var(--ease), border-color .25s var(--ease); }
+.text-link:hover { color: var(--forest); border-color: var(--forest); }
+
+/* ---------- Masthead ----------
+   Centred wordmark on its own row, links centred beneath. The mark is the
+   trimmed script (1720x196), so 56px tall reads at about 490px wide. */
+.mast {
+  position: relative;
+  z-index: 50;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--gold-soft);
+}
+.mast-inner { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.mast-top {
+  position: relative;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mast-logo { display: block; }
+.mast-logo img { height: 56px; width: auto; }
+.mast-actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.btn-nav { padding: 13px 22px; }
+.cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  color: var(--forest);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--near-white);
+  transition: background-color .25s var(--ease), color .25s var(--ease);
+}
+.cart:hover { background: var(--forest); color: var(--warm-white); }
+.cart-count {
+  position: absolute;
+  top: -5px; right: -5px;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--purple);
+  color: var(--warm-white);
+  font-family: var(--cinzel);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+.menu-btn {
+  display: none;
+  width: 44px; height: 44px;
+  padding: 0;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--near-white);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color .25s var(--ease);
+}
+.menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--forest); transition: transform .25s var(--ease); }
+.menu-btn:hover { background: var(--lavender-mist); }
+.menu-btn[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+.mast-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-top: 1px solid var(--gold-faint);
+  padding: 15px 0;
+}
+.mast-links a {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+.mast-links a:hover { border-color: var(--gold); color: var(--purple); }
+.mast-links a[aria-current="page"] { color: var(--purple); border-color: var(--gold); }
+
+/* ---------- Footer (centred) ---------- */
+.footer { background: var(--cream); border-top: 1px solid var(--gold-soft); padding: 64px 0 40px; text-align: center; }
+.footer-brand { margin-bottom: 36px; }
+.footer-logo { height: 40px; width: auto; max-width: 100%; margin: 0 auto 14px; }
+.footer-brand p { color: var(--purple); }
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+  margin-bottom: 44px;
+}
+.footer-nav a {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest);
+  transition: color .25s var(--ease);
+}
+.footer-nav a:hover { color: var(--purple); }
+.footer-bottom { border-top: 1px solid var(--gold-soft); padding-top: 24px; }
+.footer-bottom p { font-size: 13px; color: var(--violet); margin-bottom: 6px; max-width: 620px; margin-inline: auto; }
+
+/* ---------- Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Masthead responsive ---------- */
+@media (max-width: 1024px) {
+  .mast-logo img { height: 48px; }
+  .mast-links { gap: 28px; }
+}
+@media (max-width: 860px) {
+  .mast-top { height: auto; flex-wrap: wrap; row-gap: 12px; padding: 16px 0 12px; }
+  .mast-logo { flex: 0 0 100%; display: flex; justify-content: center; }
+  .mast-logo img { height: 40px; }
+  .mast-actions { position: static; transform: none; flex: 0 0 100%; justify-content: flex-end; gap: 12px; }
+  .menu-btn { display: flex; margin-right: auto; }
+  .mast-links {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: var(--warm-white);
+    border-top: 0;
+    border-bottom: 1px solid var(--gold-soft);
+    padding: 8px var(--gutter) 16px;
+  }
+  .mast-links.open { display: flex; }
+  .mast-links a { padding: 14px 0; border-bottom: 1px solid rgba(180,145,79,0.25); }
+  .mast-links a:last-child { border-bottom: 0; }
+  .btn-nav { padding: 12px 16px; font-size: 11px; }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .mast-logo img { height: 40px; }
+  .btn-nav { padding: 11px 13px; font-size: 10px; letter-spacing: 0.12em; }
+  .cart, .menu-btn { width: 40px; height: 40px; }
+  .footer-nav { gap: 12px 22px; }
+}
+
+/* ==========================================================================
+   FAQ page
+   Layout harvested from the Modern Storefront questions block: intro column
+   that stays put on the left, the questions on the right. Translated into
+   the cream house type. No arches, no cards, just gold rules.
+   ========================================================================== */
+.faq-page {
+  padding: 72px 0 104px;
+  background: linear-gradient(180deg, var(--warm-white) 0%, var(--warm-white) 55%, var(--cream) 100%);
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.faq-intro { position: sticky; top: 40px; }
+.faq-intro .bs-mark { width: clamp(150px, 14vw, 190px); margin-bottom: 30px; }
+.faq-intro h1 { margin-bottom: 14px; }
+.framing {
+  font-size: 21px;
+  color: var(--purple);
+  margin-bottom: 18px;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+.intro-body { color: rgba(40, 24, 40, 0.8); max-width: 38ch; }
+.intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.intro-rule { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--gold-soft); }
+.intro-rule .tagline { margin-top: 0; }
+.intro-rule .tagline .f { display: block; line-height: 2; }
+
+/* groups */
+.faq-group + .faq-group { margin-top: 56px; }
+.group-title {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+/* accordion */
+.faq-list { border-top: 1px solid var(--gold-soft); }
+.faq-list details { border-bottom: 1px solid var(--gold-soft); }
+.faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 4px;
+  font-family: var(--cinzel);
+  font-size: 17px;
+  letter-spacing: 0.03em;
+  color: var(--forest);
+  line-height: 1.4;
+  transition: color .25s var(--ease);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary .q { text-wrap: balance; }
+.faq-list summary::after {
+  content: "+";
+  flex: none;
+  width: 30px; height: 30px;
+  border: 1px solid var(--gold-soft);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--fell);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--gold);
+  transition: transform .3s var(--ease), background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.faq-list summary:hover { color: var(--purple); }
+.faq-list summary:hover::after { border-color: var(--gold); }
+.faq-list details[open] summary::after {
+  transform: rotate(45deg);
+  background: var(--lavender-mist);
+  border-color: var(--gold);
+}
+.faq-a { padding: 0 54px 26px 4px; max-width: 60ch; color: rgba(40, 24, 40, 0.84); }
+.faq-a p + p { margin-top: 10px; }
+
+/* sign-off */
+.faq-signoff {
+  margin-top: 64px;
+  padding: clamp(28px, 4vw, 40px) clamp(24px, 4vw, 48px);
+  text-align: center;
+}
+.faq-signoff p { max-width: 44ch; margin-inline: auto; color: rgba(40, 24, 40, 0.84); }
+.signature { font-family: var(--script); font-size: 44px; color: var(--purple); line-height: 1; margin: 22px 0 10px; }
+.sig-line {
+  font-family: var(--cinzel);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.faq-signoff .link-gold { display: inline-block; margin-top: 20px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .faq-page { padding: 48px 0 72px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 48px; }
+  .faq-intro { position: static; }
+  .intro-body { max-width: 52ch; }
+  .intro-rule { display: none; }
+}
+@media (max-width: 480px) {
+  .faq-intro .bs-mark { width: 150px; margin-bottom: 22px; }
+  .framing { font-size: 19px; }
+  .faq-list summary { font-size: 15px; padding: 18px 2px; gap: 16px; }
+  .faq-a { padding: 0 8px 22px 2px; }
+  .faq-group + .faq-group { margin-top: 44px; }
+  .faq-signoff { margin-top: 48px; }
+  .signature { font-size: 40px; }
+}

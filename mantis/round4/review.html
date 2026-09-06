@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mantis Medicinals · Design Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F2EC; --near-white:#f8f6f3; --cream-2:#E8E4DC;
+  --purple:#724E8A; --ink:#281828; --forest:#2D5A2D; --gold:#B4914F;
+  --gold-soft:rgba(180,145,79,.5); --muted:#6e6862;
+  --blue:#3A5A8A; --hibiscus:#c05a5a;
+  --cinzel:'Cinzel',serif; --fell:'IM Fell English',Georgia,serif;
+  --jost:'Jost',system-ui,sans-serif; --script:'Pinyon Script',cursive;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--jost);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+a{color:inherit}
+
+.top{text-align:center;padding:54px 0 30px;border-bottom:1px solid var(--gold-soft)}
+.top .mark{font-family:var(--script);font-size:clamp(38px,6vw,58px);color:var(--purple);line-height:1;margin:0}
+.top .sub{font-family:var(--cinzel);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-top:16px}
+
+.intro{padding:40px 0 8px;max-width:660px}
+.intro h2{font-family:var(--cinzel);font-weight:500;font-size:clamp(20px,2.6vw,26px);color:var(--forest);margin:0 0 14px}
+.intro p{margin:0 0 14px;font-size:16.5px;color:rgba(40,24,40,.82)}
+.intro .note{font-family:var(--fell);font-style:italic;font-size:17px;color:var(--purple)}
+
+.shared{margin:26px 0 0;padding:20px 24px;background:var(--near-white);border:1px solid var(--gold-soft)}
+.shared h3{font-family:var(--cinzel);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:500}
+.shared ul{margin:0;padding-left:18px}
+.shared li{font-size:15.5px;color:rgba(40,24,40,.78);margin-bottom:5px}
+
+.sec-label{font-family:var(--cinzel);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:56px 0 6px}
+.sec-label + h2{margin-top:0}
+.wrap > h2{font-family:var(--cinzel);font-weight:500;font-size:clamp(22px,3vw,30px);color:var(--forest);margin:46px 0 26px}
+.sec-label + h2{font-family:var(--cinzel);font-weight:500;font-size:clamp(22px,3vw,30px);color:var(--forest);margin:0 0 8px}
+.sec-label + h2 + p{margin:0 0 26px;color:var(--muted);font-size:16px;max-width:640px}
+
+.card{background:var(--near-white);border:1px solid var(--gold-soft);margin-bottom:34px}
+.card__shot{position:relative;background:var(--cream-2);border-bottom:1px solid var(--gold-soft)}
+.card__shot img{display:block;width:100%;height:auto}
+.card__shot img.m{display:none}
+.card.is-mobile .card__shot{padding:26px 0;display:flex;justify-content:center;background:var(--cream-2)}
+.card.is-mobile .card__shot img.d{display:none}
+.card.is-mobile .card__shot img.m{display:block;width:300px;height:auto;border:1px solid var(--gold-soft);background:#fff}
+.card__body{padding:24px 26px 26px}
+.card__no{font-family:var(--cinzel);font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.card__body h3{font-family:var(--cinzel);font-weight:500;font-size:24px;color:var(--purple);margin:6px 0 10px}
+.card__diff{font-family:var(--fell);font-style:italic;font-size:18px;color:var(--ink);margin:0 0 12px}
+.card__body p{margin:0 0 14px;font-size:15.5px;color:rgba(40,24,40,.78)}
+.card__meta{font-size:14px;color:var(--muted);margin:0 0 18px}
+.card__meta b{font-weight:500;color:var(--forest)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-block;font-family:var(--cinzel);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border:1px solid var(--forest);color:var(--forest);background:transparent;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--forest);color:var(--near-white)}
+.btn--solid{background:var(--forest);color:var(--near-white)}
+.btn--solid:hover{background:var(--forest-deep,#1A3A1A)}
+.toggle{margin-left:auto;display:inline-flex;border:1px solid var(--gold-soft)}
+.toggle button{font-family:var(--cinzel);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--gold);color:var(--near-white)}
+
+.directions{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.directions .card{margin-bottom:0}
+.directions .card__body h3{font-size:21px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ab .card{margin-bottom:0}
+.ab .card__body h3{font-size:20px}
+
+.support{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+
+.ask{margin:60px 0 0;padding:34px 32px;background:var(--near-white);border:1px solid var(--gold)}
+.ask h2{font-family:var(--cinzel);font-weight:500;font-size:24px;color:var(--forest);margin:0 0 6px}
+.ask .lead{font-family:var(--fell);font-style:italic;font-size:17.5px;color:var(--purple);margin:0 0 22px}
+.ask ol{margin:0;padding-left:22px}
+.ask li{margin-bottom:16px;font-size:16px;color:rgba(40,24,40,.85)}
+.ask li b{font-weight:500;color:var(--forest);display:block;font-family:var(--cinzel);font-size:14px;letter-spacing:.04em}
+.ask .small{margin-top:22px;font-size:14.5px;color:var(--muted)}
+
+.foot{text-align:center;padding:46px 0 60px;margin-top:50px;border-top:1px solid var(--gold-soft);font-size:13px;color:var(--muted)}
+.foot .mantis{font-family:var(--script);font-size:26px;color:var(--purple);display:block;margin-bottom:8px}
+
+@media (max-width:820px){
+  .directions,.ab,.support{grid-template-columns:1fr}
+  .toggle{margin-left:0;width:100%}
+  .toggle button{flex:1}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <p class="mark">Mantis Medicinals</p>
+  <p class="sub">Website Design · Round Four</p>
+</header>
+
+<div class="wrap">
+
+
+
+  <h2>The four directions</h2>
+
+  <div class="directions">
+
+  <article class="card" id="c1">
+    <div class="card__shot">
+      <img class="d" src="_shots/homepage-desktop.jpg" alt="The Storefront, desktop">
+      <img class="m" src="_shots/homepage-mobile.jpg" alt="The Storefront, mobile">
+    </div>
+    <div class="card__body">
+      <p class="card__no">Direction One</p>
+      <h3>The Storefront</h3>
+      <p class="card__diff">Leads with the product. You see all three cans before you read a single word.</p>
+      <p>The most straightforwardly commercial of the four. A full-bleed photograph of the cans fills the first screen, and the buy button is right there. Below it, flavor cards, occasions, the apothecary, and a pack-size selector.</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="homepage/index.html">Open it</a>
+        <div class="toggle"><button aria-pressed="true" data-v="d">Desktop</button><button aria-pressed="false" data-v="m">Phone</button></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" id="c2">
+    <div class="card__shot">
+      <img class="d" src="_shots/violet-hour-desktop.jpg" alt="Violet Hour, desktop">
+      <img class="m" src="_shots/violet-hour-mobile.jpg" alt="Violet Hour, mobile">
+    </div>
+    <div class="card__body">
+      <p class="card__no">Direction Two</p>
+      <h3>Violet Hour</h3>
+      <p class="card__diff">One can, centered, on deep aubergine. A gallery wall rather than a shop window.</p>
+      <p>One can held up on its own rather than a room you walk into. Housekeeping changes only, current pricing and tightened copy. </p>
+      <div class="actions">
+        <a class="btn btn--solid" href="violet-hour/index.html">Open it</a>
+        <div class="toggle"><button aria-pressed="true" data-v="d">Desktop</button><button aria-pressed="false" data-v="m">Phone</button></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" id="c3">
+    <div class="card__shot">
+      <img class="d" src="_shots/dark-luxe-desktop.jpg" alt="Dark Luxe, desktop">
+      <img class="m" src="_shots/dark-luxe-mobile.jpg" alt="Dark Luxe, mobile">
+    </div>
+    <div class="card__body">
+      <p class="card__no">Direction Three</p>
+      <h3>Dark Luxe</h3>
+      <p class="card__diff">Deep forest green and champagne gold. Evening, not daytime.</p>
+      <p>The one you picked out of the eight, kept as it was. Forest green where the last one is aubergine, and a room rather than a wall. Pricing added, and the section called The Maker is now Our Story. Nothing else changed.</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="dark-luxe/index.html">Open it</a>
+        <div class="toggle"><button aria-pressed="true" data-v="d">Desktop</button><button aria-pressed="false" data-v="m">Phone</button></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="card" id="c4">
+    <div class="card__shot">
+      <img class="d" src="_shots/cream-type-desktop.jpg" alt="Cream Apothecary, desktop">
+      <img class="m" src="_shots/cream-type-mobile.jpg" alt="Cream Apothecary, mobile">
+    </div>
+    <div class="card__body">
+      <p class="card__no">Direction Four</p>
+      <h3>Cream Apothecary</h3>
+      <p class="card__diff">The website is the label. Script, gold rules, warm paper, and the product further down.</p>
+      <p>The quietest of the four and the most like the can itself. It reads as a bottled remedy from an old pharmacy rather than a beverage brand. This is the one where the apothecary line sits most naturally beside the seltzer.</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="cream-apothecary/index-oneline.html">Open it</a>
+        <div class="toggle"><button aria-pressed="true" data-v="d">Desktop</button><button aria-pressed="false" data-v="m">Phone</button></div>
+      </div>
+    </div>
+  </article>
+
+  </div>
+
+  <p class="sec-label">One small question</p>
+  <h2>Cream Apothecary, with and without the cans up top</h2>
+  <p>The one direction where the product is not on screen right away. Worth deciding which you prefer, because it changes what the page is for.</p>
+
+  <div class="ab">
+    <article class="card">
+      <div class="card__shot"><img class="d" src="_shots/cream-type-desktop.jpg" alt="Type first"><img class="m" src="_shots/cream-type-mobile.jpg" alt="Type first, mobile"></div>
+      <div class="card__body">
+        <h3>A · Type first</h3>
+        <p>The label leads. Cans appear as you scroll. Slower, more confident, less obviously for sale.</p>
+        <div class="actions"><a class="btn" href="cream-apothecary/index-oneline.html">Open A</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__shot"><img class="d" src="_shots/cream-product-desktop.jpg" alt="Product first"><img class="m" src="_shots/cream-product-mobile.jpg" alt="Product first, mobile"></div>
+      <div class="card__body">
+        <h3>B · Cans first</h3>
+        <p>The three cans sit above the name. You know what is being sold in the first second.</p>
+        <div class="actions"><a class="btn" href="cream-apothecary/index-product.html">Open B</a></div>
+      </div>
+    </article>
+  </div>
+
+  <p class="sec-label">Supporting</p>
+  <h2>Extra pages</h2>
+
+  <div class="support">
+    <article class="card">
+      <div class="card__shot"><img class="d" src="_shots/faq-desktop.jpg" alt="FAQ"><img class="m" src="_shots/faq-mobile.jpg" alt="FAQ mobile"></div>
+      <div class="card__body">
+        <h3>FAQ</h3>
+        <p>Moved off the homepage onto its own page.</p>
+        <div class="actions"><a class="btn" href="faq/index.html">Open</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card__shot"><img class="d" src="_shots/lab-desktop.jpg" alt="Lab results"><img class="m" src="_shots/lab-mobile.jpg" alt="Lab results mobile"></div>
+      <div class="card__body">
+        <h3>Lab Results</h3>
+        <p>Where the QR code on the can lands. Compliance, and proof.</p>
+        <div class="actions"><a class="btn" href="lab-results/index.html">Open</a></div>
+      </div>
+    </article>
+  </div>
+
+  <section class="ask">
+    <h2>What would help most</h2>
+    <ol>
+      <li><b>Which one is Mantis?</b> Not which is prettiest. Which one would you be happy to hand to a shop owner or print on a card.</li>
+      <li><b>What is wrong in the one you picked?</b> There is always something. Name it even if you cannot say why.</li>
+      <li><b>Copy.</b> Ready to start writing the real words whenever you are. Send anything you want said, and anything on here that is wrong.</li>
+      <li><b>Anything missing?</b> Wholesale, events, a page for the apothecary on its own, anything a customer asks you that this does not answer.</li>
+    </ol>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <span class="mantis">Mantis Medicinals</span>
+  Montville, Maine
+</footer>
+
+<script>
+document.querySelectorAll('.toggle').forEach(function(t){
+  t.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    t.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); });
+    b.closest('.card').classList.toggle('is-mobile', b.dataset.v === 'm');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mantis Medicinals · Botanical Seltzer · Made in Maine</title>
+<meta name="description" content="Sparkling botanical infusion with 20 mg broad spectrum CBD, made in small batches in Montville, Maine. Three flavors: Blueberry & Lavender, Hibiscus & Lemon, Lime & Mint.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- MOCKUP OVERRIDES (Josh, 9/6): one-line wordmark + flavour colour ---- */
+  :root {
+    /* matched to the flavour colours already approved on the homepage variant:
+       .flavor--blueberry #3A5A8A, .flavor--hibiscus #c05a5a, .flavor--lime --forest */
+    --berry-ink: #3A5A8A;
+    --hibiscus:  #c05a5a;
+    --mint-ink:  #2D5A2D;
+  }
+  .wordmark { width: min(680px, 90%); margin-bottom: 26px; }
+
+  .flavor-line .f-berry { color: var(--berry-ink); }
+  .flavor-line .f-hib   { color: var(--hibiscus); }
+  .flavor-line .f-mint  { color: var(--mint-ink); }
+
+  /* ---- Vertical rhythm: one scale for every section instead of 80/88 pairs.
+         Was 160-168px of dead air between sections, now 96-144px depending
+         on viewport width, and it breathes rather than collapsing. ---- */
+  :root { --sec-y: clamp(40px, 3vw, 56px); }
+
+  .flavors,
+  .apothecary,
+  .story,
+  .find,
+  .certified { padding-top: var(--sec-y); padding-bottom: var(--sec-y); }
+  .closing    { padding-top: var(--sec-y); padding-bottom: calc(var(--sec-y) * 1.15); }
+
+  /* the head block was carrying another 56px on its own */
+  .section-head { margin-bottom: clamp(28px, 2.6vw, 40px); }
+  /* the pack note is a footnote to the cards, not a standalone block */
+  .flavor-note { margin-top: 18px; }
+  .flavors     { padding-bottom: calc(var(--sec-y) * 0.72); }
+  .facts        { padding-top: 32px; }
+
+  @media (max-width: 760px) {
+    .wordmark { width: 94%; }
+    :root { --sec-y: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD (centred, like the top of a label) ============ -->
+<header class="mast" id="top">
+  <div class="mast-inner">
+    <div class="mast-top">
+      <a class="mast-logo" href="#top" aria-label="Mantis Medicinals home">
+        <img src="../assets/brand/wordmark-purple-trim.png" alt="Mantis Medicinals">
+      </a>
+      <div class="mast-actions">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+        <a class="btn btn-solid btn-nav" href="#seltzer">Shop Seltzer</a>
+        <a class="cart" href="#seltzer" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h2l2.4 10.2A1.5 1.5 0 0 0 8.9 17.5h8.4a1.5 1.5 0 0 0 1.5-1.2L20.5 9H6.2"/>
+            <circle cx="9.5" cy="20.5" r="1"/><circle cx="17" cy="20.5" r="1"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+    <nav class="mast-links" id="navLinks" aria-label="Primary">
+      <a href="#seltzer">Seltzer</a>
+      <a href="#apothecary">Apothecary</a>
+      <a href="#story">Our Story</a>
+      <a href="#find">Come Find Us</a>
+      <a href="../faq/index.html">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO: the label ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="frame label">
+      <div class="label-body">
+        <p class="eyebrow">Made in Maine</p>
+        <h1 class="wordmark">
+          <img src="../assets/brand/wordmark-botanical-seltzer-oneline.png" alt="Botanical Seltzer" width="1835" height="550">
+        </h1>
+        <p class="flavor-line">
+          <span class="f f-berry">Blueberry <span class="amp">&amp;</span> Lavender</span><span class="sep">·</span><span class="f f-hib">Hibiscus <span class="amp">&amp;</span> Lemon</span><span class="sep">·</span><span class="f f-mint">Lime <span class="amp">&amp;</span> Mint</span>
+        </p>
+        <div class="ornament" aria-hidden="true"><img class="mantis" src="mantis-gold.png" alt=""></div>
+        <p class="lede fell-i">Sparkling botanical infusion crafted in small batches, Montville, ME</p>
+        <p class="spec-line">20 mg CBD · Broad Spectrum · 12 fl oz<span class="ml"> (355 ml)</span></p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#seltzer">Shop the Seltzer</a>
+          <a class="link-gold" href="#find">Come Find Us</a>
+        </div>
+
+        <figure class="label-photo">
+          <img src="../assets/photography/9W8A2904_websize.jpg" alt="The three Botanical Seltzer cans, Lime & Mint, Hibiscus & Lemon, and Blueberry & Lavender, on a wooden table outdoors">
+        </figure>
+        <p class="price-line">4-pack $24 · 12-pack $58 · 24-pack $98</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN EVERY CAN ============ -->
+<section class="facts">
+  <div class="wrap">
+    <ul class="facts-row reveal">
+      <li>Organic Botanicals</li>
+      <li>20 mg Broad Spectrum CBD</li>
+      <li>Small Batches, Montville, Maine</li>
+      <li>Third Party Lab Tested</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ THREE FLAVORS ============ -->
+<section class="flavors ghost" id="seltzer">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow-i">The Seltzer</p>
+      <h2>Three Flavors</h2>
+      <p class="sub">Sparkling water, organic botanicals, and 20 mg of broad spectrum hemp extract in every can. Enjoy chilled.</p>
+    </div>
+
+    <div class="flavor-grid">
+      <article class="frame card reveal">
+        <figure class="card-photo">
+          <img src="../assets/cans/2026-NFOX-2026-9W8A3055_websize.jpg" alt="Blueberry & Lavender Botanical Seltzer can">
+        </figure>
+        <div class="card-body">
+          <h3>Blueberry <span class="amp">&amp;</span> Lavender</h3>
+          <p class="fell-i tasting">Soft and floral, a little sweet. Good company at the end of the day.</p>
+          <p class="spec">20 mg CBD · Broad Spectrum · 12 fl oz</p>
+          <div class="packs" role="group" aria-label="Pack size">
+            <button type="button" class="pack is-on" data-price="24" aria-pressed="true">4 cans</button>
+            <button type="button" class="pack" data-price="58" aria-pressed="false">12 cans</button>
+            <button type="button" class="pack" data-price="98" aria-pressed="false">24 cans</button>
+          </div>
+          <div class="card-buy">
+            <span class="price">$<span class="price-num">24</span> <small class="pack-label">four-pack</small></span>
+            <button type="button" class="btn btn-solid btn-sm add">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="frame card reveal">
+        <figure class="card-photo">
+          <img src="../assets/cans/2026-NFOX-2026-9W8A3079_websize.jpg" alt="Hibiscus & Lemon Botanical Seltzer can">
+        </figure>
+        <div class="card-body">
+          <h3>Hibiscus <span class="amp">&amp;</span> Lemon</h3>
+          <p class="fell-i tasting">Bright and tart. Made for a hot afternoon on the porch.</p>
+          <p class="spec">20 mg CBD · Broad Spectrum · 12 fl oz</p>
+          <div class="packs" role="group" aria-label="Pack size">
+            <button type="button" class="pack is-on" data-price="24" aria-pressed="true">4 cans</button>
+            <button type="button" class="pack" data-price="58" aria-pressed="false">12 cans</button>
+            <button type="button" class="pack" data-price="98" aria-pressed="false">24 cans</button>
+          </div>
+          <div class="card-buy">
+            <span class="price">$<span class="price-num">24</span> <small class="pack-label">four-pack</small></span>
+            <button type="button" class="btn btn-solid btn-sm add">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="frame card reveal">
+        <figure class="card-photo">
+          <img src="../assets/cans/2026-NFOX-2026-9W8A3111_websize.jpg" alt="Lime & Mint Botanical Seltzer can">
+        </figure>
+        <div class="card-body">
+          <h3>Lime <span class="amp">&amp;</span> Mint</h3>
+          <p class="fell-i tasting">Cool and clean. Pour it with dinner and it disappears fast.</p>
+          <p class="spec">20 mg CBD · Broad Spectrum · 12 fl oz</p>
+          <div class="packs" role="group" aria-label="Pack size">
+            <button type="button" class="pack is-on" data-price="24" aria-pressed="true">4 cans</button>
+            <button type="button" class="pack" data-price="58" aria-pressed="false">12 cans</button>
+            <button type="button" class="pack" data-price="98" aria-pressed="false">24 cans</button>
+          </div>
+          <div class="card-buy">
+            <span class="price">$<span class="price-num">24</span> <small class="pack-label">four-pack</small></span>
+            <button type="button" class="btn btn-solid btn-sm add">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="flavor-note fell-i reveal">Packs of 4, 12, or 24.</p>
+  </div>
+</section>
+
+<!-- ============ THE APOTHECARY (moved up, right after the seltzer) ============ -->
+<section class="apothecary ghost" id="apothecary">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <img class="bouquet" src="bouquet.png" alt="" aria-hidden="true">
+      <p class="eyebrow-i">Salves, oils, tea, and bath</p>
+      <h2>The Apothecary</h2>
+      <p class="tagline"><span class="f">Grown in Living Soil</span><span class="sep">·</span><span class="f">Hand Crafted</span><span class="sep">·</span><span class="f">Higher Standards</span></p>
+      <p class="sub">Made with certified organic hemp from my garden. Our topicals are made using whole herbs instead of essential oils. Glass jars and plastic free packaging.</p>
+    </div>
+
+    <div class="apoth-grid">
+      <a class="frame apoth-card reveal" href="#">
+        <figure><img src="../assets/photography/9W8A2560_websize.jpg" alt="Miracle Salve in a glass jar"></figure>
+        <h3>Miracle Salve</h3>
+        <p class="fell-i">Whole herbs, no essential oils. For hands, joints, and skin.</p>
+      </a>
+      <a class="frame apoth-card reveal" href="#">
+        <figure><img src="../assets/photography/9W8A0818_websize.jpg" alt="CBD Oil in a dropper bottle"></figure>
+        <h3>CBD Oil</h3>
+        <p class="fell-i">Hemp from the garden, made in small batches.</p>
+      </a>
+      <a class="frame apoth-card reveal" href="#">
+        <figure><img src="../assets/photography/9W8A0682_websize.jpg" alt="Herbal CBD tea in a glass jar"></figure>
+        <h3>Herbal Tea</h3>
+        <p class="fell-i">Loose leaf. Steep it and sit down.</p>
+      </a>
+      <a class="frame apoth-card reveal" href="#">
+        <figure><img src="../assets/photography/9W8A0507_websize.jpg" alt="Herbal Bath Soak in a glass jar"></figure>
+        <h3>Herbal Bath Soak</h3>
+        <p class="fell-i">Salt and whole herbs for a long bath.</p>
+      </a>
+    </div>
+
+    <div class="center reveal">
+      <a class="btn btn-solid btn-lg" href="#">Shop the Apothecary</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY (Katrina, photo beside the letter) ============ -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Montville, Maine</h2>
+    </div>
+
+    <div class="story-grid">
+      <figure class="story-photo frame reveal">
+        <img src="../assets/Kat/Screen+Shot+2022-07-13+at+9.05.11+PM.webp" alt="Katrina walking the path to the greenhouse with her dog, fall light on the farm in Montville, Maine" width="1500" height="844">
+        <figcaption class="fell-i">Katrina, on the walk out to the greenhouse.</figcaption>
+      </figure>
+
+      <div class="letter reveal">
+        <p>I've been growing plants for as long as I can remember, but when I was introduced to Cannabis in 2010, I knew this plant was different.</p>
+        <p>It all started in 2019 making CBD infused salve as Christmas gifts for loved ones. That became the apothecary line: salves, oils, tea, and bath soaks. The hemp in those is certified organic. I grow that hemp myself in Mid-Coast Maine and hand make each product in small batches.</p>
+        <p>The seltzer is the newest thing we make. We make every batch in Montville with organic botanicals and broad spectrum hemp extract, and every batch is third party lab tested.</p>
+        <p class="signature">Katrina</p>
+        <p class="sig-line">1st Female Owned + Female Powered Certified Clean Maine Cannabis Farm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME FIND US ============ -->
+<section class="find ghost" id="find">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow-i">Mid-Coast Maine and beyond</p>
+      <h2>Come Find Us</h2>
+      <p class="sub">Our seltzers can be discovered in coolers and shelves across Mid-Coast, Maine. Ask for us at your local dispensary, co-op, or market. And always feel welcome to order direct, we'd be happy to ship to your door. Selections vary by store, so feel free to call ahead if you're craving something specific.</p>
+    </div>
+
+    <form class="locator frame reveal" action="#" onsubmit="return false;">
+      <label for="locatorInput" class="locator-label">Find a store</label>
+      <p class="locator-copy">Our botanical seltzer is available across the state and the list keeps on growing. Enter a town or zip and we'll point you to the closest partner.</p>
+      <div class="locator-row">
+        <input id="locatorInput" type="text" name="q" placeholder="Town or ZIP code" autocomplete="postal-code">
+        <button type="submit" class="btn btn-solid">Search</button>
+      </div>
+    </form>
+
+    <div class="find-grid">
+      <div class="find-col reveal">
+        <h3>Order Direct</h3>
+        <p>Packs of 4, 12, or 24, shipped from Montville, Maine.</p>
+        <a class="link-gold" href="#seltzer">Shop the seltzer</a>
+      </div>
+      <div class="find-col reveal">
+        <h3>Carry It</h3>
+        <p>Run a shop, co-op, or cafe? Wholesale is open.</p>
+        <a class="link-gold" href="#">Wholesale inquiries</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFIED / TESTED ============ -->
+<section class="certified">
+  <div class="wrap">
+    <div class="frame cert-frame reveal">
+      <img class="cert-badge" src="../assets/brand/MOFGA_MC3_Cert_RGB-06-1.png" alt="Certified Clean Cannabis by MOFGA">
+      <h2><span class="line">Certified Clean.</span> <span class="line">Third Party Tested.</span></h2>
+      <p>Our farm is certified clean cannabis by MOFGA, the Maine Organic Farmers and Gardeners Association. That certification covers the hemp we grow for the apothecary line.</p>
+      <p>All our CBD is third party lab tested, the seltzer included. Ask us for the certificate of analysis for your can.</p>
+      <a class="link-gold" href="../lab-results/index.html">View lab results</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-inner reveal">
+      <div class="ornament" aria-hidden="true"><img class="mantis" src="mantis-gold.png" alt=""></div>
+      <h2>Enjoy Chilled</h2>
+      <p class="fell-i">Packs of 4, 12, or 24, shipped from Montville, Maine.</p>
+      <a class="btn btn-solid" href="#seltzer">Shop the Seltzer</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <img class="footer-logo" src="../assets/brand/wordmark-purple-trim.png" alt="Mantis Medicinals">
+      <p class="fell-i">Sparkling botanical infusion crafted in small batches, Montville, ME</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#seltzer">Seltzer</a>
+      <a href="#apothecary">Apothecary</a>
+      <a href="#story">Our Story</a>
+      <a href="#find">Come Find Us</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../lab-results/index.html">Lab Results</a>
+      <a href="#">Wholesale</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>Mantis Medicinals LLC · Montville, Maine</p>
+      <p>These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Mobile menu
+  var btn = document.getElementById('menuBtn');
+  var links = document.getElementById('navLinks');
+  btn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Pack selector + cart count
+  var labels = { '24': 'four-pack', '58': 'twelve-pack', '98': 'case of 24' };
+  var count = 0;
+  var countEl = document.getElementById('cartCount');
+  document.querySelectorAll('.card').forEach(function (card) {
+    var packs = card.querySelectorAll('.pack');
+    var num = card.querySelector('.price-num');
+    var lab = card.querySelector('.pack-label');
+    packs.forEach(function (p) {
+      p.addEventListener('click', function () {
+        packs.forEach(function (q) { q.classList.remove('is-on'); q.setAttribute('aria-pressed', 'false'); });
+        p.classList.add('is-on');
+        p.setAttribute('aria-pressed', 'true');
+        num.textContent = p.dataset.price;
+        lab.textContent = labels[p.dataset.price];
+      });
+    });
+    card.querySelector('.add').addEventListener('click', function () {
+      count += 1;
+      countEl.textContent = count;
+      countEl.parentNode.setAttribute('aria-label', 'Cart, ' + count + (count === 1 ? ' item' : ' items'));
+    });
+  });
+
+  // Scroll reveal
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
