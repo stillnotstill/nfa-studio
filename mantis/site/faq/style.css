@@ -503,3 +503,7 @@ h3 {
 
 .footer-ig span { display: none; }
 .footer-ig svg { width: 18px; height: 18px; }
+
+/* MANTIS-R8: nav links match the rest of the site. Katrina spotted these two
+   pages rendering the nav in the serif while everywhere else uses the sans. */
+.mast-links a { font-family: var(--jost, "Jost", system-ui, sans-serif); font-weight: 400; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }

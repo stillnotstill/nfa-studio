@@ -593,3 +593,9 @@ h3 {
 .footer-ig svg { width: 18px; height: 18px; }
 /* The one-line lockup reads better larger. */
 .bs-mark img { width: min(560px, 88%); height: auto; }
+
+/* MANTIS-R8: nav links match the rest of the site. */
+.mast-links a { font-family: var(--jost, "Jost", system-ui, sans-serif); font-weight: 400; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* Larger one-line lockup on Lab Results. */
+.bs-mark img { width: min(680px, 92%) !important; height: auto; }
