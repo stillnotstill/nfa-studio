@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOLUNTARY</title>
+<meta name="description" content="A zombie comedy sketch. One room, one day, Los Angeles, October 2026.">
+<meta property="og:title" content="VOLUNTARY">
+<meta property="og:description" content="Somebody gets to do it. A zombie comedy sketch. One room, one day.">
+<meta property="og:image" content="https://nfa.studio/voluntary/img/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --ground:#0c0e0c; --raise:#141714; --edge:#262a25;
+  --bone:#e9e4d8; --dim:#9a9b91; --faint:#6d6f67;
+  --rust:#b8391f; --ember:#d9a441;
+  --disp:"Barlow Condensed",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--bone);
+  font-family:var(--body);font-size:16.5px;line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+
+/* ---------- bands ---------- */
+.band{padding-block:64px;border-top:1px solid var(--edge)}
+.band:first-of-type{border-top:0}
+.eyebrow{font-family:var(--disp);font-weight:600;text-transform:uppercase;
+  letter-spacing:.2em;font-size:13px;color:var(--rust);margin:0 0 18px}
+h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  letter-spacing:.015em;font-size:clamp(28px,4.4vw,42px);line-height:1;
+  margin:0 0 22px;text-wrap:balance}
+p{margin:0 0 17px;max-width:62ch}
+.lede{font-size:19px;color:#d6d1c4}
+.logline{font-family:var(--disp);font-weight:500;font-size:clamp(22px,3.3vw,29px);
+  line-height:1.26;color:var(--bone);margin:14px 0 26px;max-width:34ch;
+  border-left:3px solid var(--rust);padding-left:20px}
+
+/* ---------- hero ---------- */
+.hero{padding-block:52px 60px}
+.heroGrid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  gap:52px;align-items:start}
+.posterFrame{border:1px solid var(--edge);background:#000;
+  box-shadow:0 26px 60px -28px #000}
+.posterFrame img{width:100%}
+.mark{font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:clamp(56px,12vw,104px);line-height:.84;letter-spacing:-.005em;margin:0}
+.tag{font-family:var(--disp);font-weight:500;text-transform:uppercase;
+  letter-spacing:.24em;font-size:clamp(13px,2.2vw,16px);color:var(--ember);
+  margin:16px 0 30px}
+.tag s{color:var(--faint);text-decoration-color:var(--rust);
+  text-decoration-thickness:2px}
+.facts{list-style:none;padding:0;margin:0 0 30px;border-top:1px solid var(--edge)}
+.facts li{display:flex;gap:18px;padding:9px 0;border-bottom:1px solid var(--edge);
+  font-size:15px}
+.facts b{font-family:var(--disp);font-weight:600;text-transform:uppercase;
+  letter-spacing:.13em;font-size:12.5px;color:var(--faint);
+  flex:0 0 108px;padding-top:3px}
+.facts span{color:#d6d1c4}
+
+/* ---------- doc list ---------- */
+.docs{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:6px}
+.doc{display:grid;min-width:0;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;
+  align-items:center;padding:18px 22px;border:1px solid var(--edge);
+  background:var(--raise);text-decoration:none;
+  transition:border-color .16s,background .16s,transform .16s}
+.doc:hover,.doc:focus-visible{border-color:var(--rust);background:#191d18;transform:translateX(3px)}
+.doc:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.doc .n{font-family:var(--disp);font-weight:700;font-size:26px;color:var(--rust);
+  line-height:1;width:22px;text-align:center}
+.doc>span{min-width:0}
+.doc h3{overflow-wrap:break-word;font-family:var(--disp);font-weight:600;text-transform:uppercase;
+  letter-spacing:.05em;font-size:21px;margin:0 0 2px;line-height:1.1}
+.doc p{margin:0;font-size:14.5px;color:var(--dim);max-width:none}
+.doc .len{font-family:var(--disp);font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;font-size:12px;color:var(--faint);white-space:nowrap}
+.doc.lead{border-color:#3d2a20;background:#1a1512}
+.doc.lead .len{color:var(--ember)}
+
+/* ---------- roles ---------- */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));
+  gap:1px;background:var(--edge);border:1px solid var(--edge);margin-top:4px}
+.role{background:var(--ground);padding:20px 22px;display:flex;flex-direction:column}
+.role .who{font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:24px;line-height:1;margin:0 0 5px}
+.role .desc{font-size:14.5px;color:var(--dim);margin:0 0 16px}
+.pill{display:inline-block;align-self:flex-start;margin-top:auto;font-family:var(--disp);font-weight:600;
+  text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;
+  padding:4px 11px;border:1px solid currentColor}
+.pill.cast{color:var(--ember)}
+.pill.open{color:var(--rust)}
+
+/* ---------- stills ---------- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;margin-top:34px}
+.strip img{width:100%;aspect-ratio:4/3;object-fit:cover;
+  border:1px solid var(--edge);filter:saturate(.82) contrast(1.05)}
+
+/* ---------- pull ---------- */
+.pull{border-left:3px solid var(--rust);padding:2px 0 2px 24px;margin:30px 0}
+.pull p{font-size:20px;line-height:1.5;color:#ddd8cb;margin:0}
+
+/* ---------- ask ---------- */
+.ask{background:var(--raise);border:1px solid var(--edge);padding:34px 32px;margin-top:8px}
+.ask h2{margin-bottom:14px}
+.mailto{display:inline-block;margin-top:10px;font-family:var(--disp);
+  font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:18px;
+  color:var(--ember);text-decoration:none;border-bottom:2px solid var(--rust);
+  padding-bottom:3px}
+.mailto:hover{color:var(--bone)}
+
+footer{border-top:1px solid var(--edge);padding-block:32px 46px;
+  color:var(--faint);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 26px}
+footer a{color:var(--dim)}
+
+@media (max-width:760px){
+  .heroGrid{grid-template-columns:1fr;gap:34px}
+  .posterFrame{max-width:320px}
+  .band{padding-block:48px}
+  .doc{grid-template-columns:auto minmax(0,1fr);gap:14px}
+  .doc .len{grid-column:2;margin-top:4px}
+  .facts b{flex-basis:92px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <div class="heroGrid">
+    <div class="posterFrame"><img src="img/poster.jpg" alt="VOLUNTARY poster"></div>
+    <div>
+      <h1 class="mark">Voluntary</h1>
+      <p class="logline">A man staggers in bitten and begs his friends to kill him
+      before he turns. One of them volunteers a little too quickly.</p>
+      <p>The first two minutes play as straight horror. Five people in a boarded up
+      room, a rope, a chair, and a very reasonable man with a knife. Then the scene
+      turns, and nobody in that room comes off well.</p>
+      <ul class="facts">
+        <li><b>What</b><span>A four minute comedy sketch, plus four shorter bits shot the same day</span></li>
+        <li><b>Where</b><span>A living room, an apartment parking lot, and the street. Los Angeles.</span></li>
+        <li><b>When</b><span>One day. Estimated Sunday, September 27.</span></li>
+        <li><b>Who</b><span>Five on camera, three behind it</span></li>
+      </ul>
+  </div>
+</header>
+
+<section class="band wrap">
+  <div class="eyebrow">Materials</div>
+
+  <div class="docs">
+    <a class="doc lead" href="files/VOLUNTARY-treatment.pdf">
+      <span class="n">1</span>
+      <span><h3>Treatment</h3><p>Tone, look, references, and how the whole thing is built.</p></span>
+      <span class="len">Deck</span>
+    </a>
+    <a class="doc" href="files/VOLUNTARY-short-read.pdf">
+      <span class="n">2</span>
+      <span><h3>Voluntary - Main sketch - 4ish minutes</h3></span>
+      <span class="len">3 pages</span>
+    </a>
+    <a class="doc" href="files/VOLUNTARY-bits.pdf">
+      <span class="n">3</span>
+      <span><h3>The bits</h3><p>Four one page sketches set in the same world, shot the same day. Each one stands on its own.</p></span>
+      <span class="len">4 pages</span>
+    </a>
+  </div>
+
+  <div class="strip">
+    <img src="img/page-2-arm.jpg" alt="">
+    <img src="img/window.jpg" alt="">
+    <img src="img/knife.jpg" alt="">
+    <img src="img/lantern.jpg" alt="">
+  </div>
+</section>
+
+<section class="band wrap">
+  <h2>What comes out of the day</h2>
+  <p class="lede">The main sketch, four verticals that each stand on their own, a
+  teaser, and a set of stills. All of it out of the same Sunday.</p>
+  <p>Everything goes out through October and into Halloween, so instead of one video
+  that goes up and disappears, you are in something new most weeks for a month.</p>
+</section>
+
+<section class="band wrap">
+  <div class="eyebrow">Cast</div>
+  <h2>Who is in, what is open</h2>
+  <div class="roles">
+    <div class="role">
+      <p class="who">Terry</p>
+      <p class="desc">The volunteer. The most reasonable person in the room. That is the trick.</p>
+      <span class="pill cast">Josh</span>
+    </div>
+    <div class="role">
+      <p class="who">Cristian</p>
+      <p class="desc">Already survived something. Practical, unbothered, wrong.</p>
+      <span class="pill cast">Cristian</span>
+    </div>
+    <div class="role">
+      <p class="who">Dean</p>
+      <p class="desc">The bitten. Has to spiral and oversell without ever winking.</p>
+      <span class="pill open">Open</span>
+    </div>
+    <div class="role">
+      <p class="who">Nyla</p>
+      <p class="desc">The nurse. Patches everyone up. The one who tries to fix things.</p>
+      <span class="pill open">Open</span>
+    </div>
+    <div class="role">
+      <p class="who">Cathy</p>
+      <p class="desc">Says the quiet part, at volume.</p>
+      <span class="pill open">Open</span>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:46px">Crew</div>
+  <h2>Three people behind the camera</h2>
+  <p>Three cameras roll every take, so coverage is not the problem. Hands are.</p>
+  <div class="roles">
+    <div class="role">
+      <p class="who">DP</p>
+      <p class="desc">Three FX3s, two battery lights, shooting 4K at night.</p>
+      <span class="pill open">Open</span>
+    </div>
+    <div class="role">
+      <p class="who">Sound</p>
+      <p class="desc">Five people yelling over each other in one room.</p>
+      <span class="pill open">Open</span>
+    </div>
+    <div class="role">
+      <p class="who">Floater</p>
+      <p class="desc">Second camera, light moves, resetting blood between takes.</p>
+      <span class="pill open">Open</span>
+    </div>
+  </div>
+</section>
+
+<section class="band wrap">
+  <div class="ask">
+    <h2>What I need</h2>
+    <p class="lede">Your schedule. The estimated shoot day is Sunday, September 27,
+    in Los Angeles.</p>
+    <a class="mailto" href="mailto:josh@nfa.studio?subject=VOLUNTARY">josh@nfa.studio</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>VOLUNTARY &middot; written and directed by Joshua Peters</span>
+  <span><a href="https://nfa.studio">NFA Studio</a></span>
+</footer>
+
+</body>
+</html>
