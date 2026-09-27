@@ -200,7 +200,7 @@
 
       <div class="packs__form">
         <p class="eyebrow">Stock the fridge</p>
-        <h2>Pick a flavor. Pick a pack.</h2>
+        <h2>Pick a flavor. Pick a pack</h2>
         <p class="packs__lede">One to try it. Four for the weekend. Twelve when you know what you like.</p>
 
         <div class="packs__group" role="radiogroup" aria-label="Flavor">
@@ -280,7 +280,7 @@
   <div class="wrap">
     <header class="section-head section-head--center reveal">
       <h2>Come Find Us</h2>
-      <p class="find__body">Our seltzers can be discovered in coolers and shelves across Maine. Ask for us at your local dispensary, co-op, or market. And always feel welcome to order direct, we'd be happy to ship to your door. Selections vary by store, so feel free to call ahead if you're craving something specific.</p>
+      <p class="find__body">Our seltzers can be discovered in coolers and shelves across Maine. Ask for us at your local market, co-op, cafe, or dispensary. And always feel welcome to order direct, we'd be happy to ship to your door. Selections vary by store, so feel free to call ahead if you're craving something specific.</p>
     </header>
 
     <!-- Store locator -->
@@ -303,12 +303,7 @@
         <div class="kind">
           <svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v10H3z"/><path d="M9 20v-6h6v6"/></svg>
           <b>Natural food stores</b>
-          <span>Co-ops and grocers. Look in the cooler next to the kombucha.</span>
-        </div>
-        <div class="kind">
-          <svg viewBox="0 0 24 24"><path d="M12 3c-3 4-6 6-6 10a6 6 0 0 0 12 0c0-4-3-6-6-10z"/><path d="M12 21v-8"/></svg>
-          <b>Dispensaries</b>
-          <span>Ask for Mantis by name. Some carry the apothecary line too.</span>
+          <span>Co-ops and grocers. Look in the cooler next to the kombucha. Some of the stores carry the apothecary too.</span>
         </div>
         <div class="kind">
           <svg viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11"/><path d="M4 12h16M10 20v-5h4v5"/></svg>
@@ -398,8 +393,7 @@
       </a>
 </nav>
     <div class="footer-cert">
-      <img src="assets/brand/MOFGA_MC3_Cert_RGB-06-1.png" alt="Certified Clean Cannabis by MOFGA" loading="lazy">
-      <p>1st Female Owned + Female Powered Certified Clean Maine Cannabis Farm</p>
+      <p>Certified organic hemp, grown and hand made in Maine</p>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Mantis Medicinals LLC · Montville, Maine</p>
@@ -668,6 +662,27 @@ document.querySelectorAll('.product__sizes').forEach(function (row) {
     });
   }, 3000);
 })();
+</script>
+<script>
+/* When a size is picked, the photo changes with it. Fades rather than snaps. */
+document.querySelectorAll('.product__sizes').forEach(function (row) {
+  var card = row.closest('.product');
+  var img  = card.querySelector('.product__media img');
+  if (!img) return;
+  row.addEventListener('click', function (e) {
+    var b = e.target.closest('.size-pill');
+    if (!b || !b.dataset.img || b.dataset.img === img.getAttribute('src')) return;
+    var next = new Image();
+    next.onload = function () {
+      img.style.opacity = '0';
+      setTimeout(function () {
+        img.src = b.dataset.img;
+        img.style.opacity = '1';
+      }, 170);
+    };
+    next.src = b.dataset.img;
+  });
+});
 </script>
 </body>
 

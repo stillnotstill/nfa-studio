@@ -507,3 +507,7 @@ h3 {
 /* MANTIS-R8: nav links match the rest of the site. Katrina spotted these two
    pages rendering the nav in the serif while everywhere else uses the sans. */
 .mast-links a { font-family: var(--jost, "Jost", system-ui, sans-serif); font-weight: 400; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* MANTIS-R12: .faq-signoff p (0-1-1) was beating .signature (0-1-0), so the
+   script rendered near-black instead of purple. */
+.faq-signoff .signature { color: var(--purple); }
