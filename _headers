@@ -1,0 +1,4 @@
+# Client preview builds: crawlable so search engines can read the noindex,
+# but never indexed. Applies to every file under /mantis/, images included.
+/mantis/*
+  X-Robots-Tag: noindex, nofollow

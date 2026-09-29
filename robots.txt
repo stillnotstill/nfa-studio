@@ -1,0 +1,51 @@
+# nfa.studio
+
+# Search engines: crawl everything. /mantis/* serves an X-Robots-Tag noindex,
+# so it is read and then dropped rather than blocked-but-guessed-at.
+User-agent: *
+Allow: /
+
+# AI and answer engines honour robots.txt but not noindex, so the client
+# preview under /mantis/ is blocked by name to keep it out of training data
+# and out of cited answers about the client's brand.
+User-agent: GPTBot
+Disallow: /mantis/
+
+User-agent: OAI-SearchBot
+Disallow: /mantis/
+
+User-agent: ChatGPT-User
+Disallow: /mantis/
+
+User-agent: ClaudeBot
+Disallow: /mantis/
+
+User-agent: Claude-Web
+Disallow: /mantis/
+
+User-agent: anthropic-ai
+Disallow: /mantis/
+
+User-agent: PerplexityBot
+Disallow: /mantis/
+
+User-agent: Perplexity-User
+Disallow: /mantis/
+
+User-agent: Google-Extended
+Disallow: /mantis/
+
+User-agent: Applebot-Extended
+Disallow: /mantis/
+
+User-agent: CCBot
+Disallow: /mantis/
+
+User-agent: Bytespider
+Disallow: /mantis/
+
+User-agent: meta-externalagent
+Disallow: /mantis/
+
+User-agent: Amazonbot
+Disallow: /mantis/
