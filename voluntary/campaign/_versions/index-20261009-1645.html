@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOLUNTARY, released like a film</title>
+<meta name="description" content="A four-minute zombie comedy sketch built out like a studio release: poster, trailer, four standalone shorts, scripts, boards and a month of posts, all before a frame was shot.">
+<meta property="og:title" content="VOLUNTARY, released like a film">
+<meta property="og:image" content="https://nfa.studio/voluntary/campaign/img/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --ground:#0c0e0c; --raise:#141714; --edge:#262a25;
+  --bone:#e9e4d8; --dim:#9a9b91; --faint:#6d6f67;
+  --rust:#b8391f; --ember:#d9a441;
+  --disp:"Barlow Condensed",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--bone);font-family:var(--body);
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+.band{padding-block:64px;border-top:1px solid var(--edge)}
+.eyebrow{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.2em;
+  font-size:13px;color:var(--rust);margin:0 0 18px}
+h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.015em;
+  font-size:clamp(28px,4.4vw,42px);line-height:1;margin:0 0 22px;text-wrap:balance}
+p{margin:0 0 17px;max-width:62ch}
+.lede{font-size:19px;color:#d6d1c4}
+.note{font-size:14px;color:var(--faint)}
+
+.hero{padding-block:52px 60px}
+.heroGrid{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:52px;align-items:start}
+.posterFrame{border:1px solid var(--edge);background:#000;box-shadow:0 26px 60px -28px #000}
+.mark{font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:clamp(56px,12vw,104px);line-height:.84;margin:0 0 18px}
+.facts{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid var(--edge)}
+.facts li{display:flex;gap:18px;padding:9px 0;border-bottom:1px solid var(--edge);font-size:15px}
+.facts b{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.13em;
+  font-size:12.5px;color:var(--faint);flex:0 0 118px;padding-top:3px}
+.facts span{color:#d6d1c4}
+
+.pieces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--edge);border:1px solid var(--edge)}
+.piece{background:var(--ground);padding:20px 22px;display:flex;flex-direction:column}
+.piece .k{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:23px;line-height:1;margin:0 0 4px}
+.piece .f{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.13em;
+  font-size:11.5px;color:var(--ember);margin:0 0 10px}
+.piece p{font-size:14.5px;color:var(--dim);margin:0 0 14px}
+.piece a{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+  font-size:12px;color:var(--bone);text-decoration:none;border-bottom:1px solid var(--rust);
+  align-self:flex-start;margin-top:auto;padding-bottom:2px}
+.piece a:hover{color:var(--ember)}
+
+.memes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:8px 0 26px;max-width:900px}
+.memes img{border:1px solid var(--edge)}
+
+.cal{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:15px}
+.cal th{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.13em;
+  font-size:12px;color:var(--faint);text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--edge)}
+.cal td{padding:11px 10px 11px 0;border-bottom:1px solid var(--edge);vertical-align:top;color:#d6d1c4}
+.cal td:first-child{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:19px;
+  color:var(--bone);white-space:nowrap;width:140px}
+.cal .fmt{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+  font-size:11.5px;color:var(--ember);display:block;margin-top:3px}
+
+.boards{display:grid;grid-template-columns:1fr;gap:14px;margin:8px 0 18px}
+.boards img{border:1px solid var(--edge);background:#fff}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.two img{border:1px solid var(--edge)}
+
+.who{background:var(--raise);border:1px solid var(--edge);padding:34px 32px}
+.who h2{margin-bottom:14px}
+.links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px}
+.links a{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.1em;
+  font-size:16px;color:var(--ember);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px}
+.links a:hover{color:var(--bone)}
+footer{border-top:1px solid var(--edge);padding-block:32px 46px;color:var(--faint);font-size:13.5px;
+  display:flex;flex-wrap:wrap;gap:8px 26px}
+footer a{color:var(--dim)}
+
+@media (max-width:760px){
+  .heroGrid,.two{grid-template-columns:1fr;gap:34px}
+  .pieces,.memes{grid-template-columns:1fr}
+  .posterFrame{max-width:300px}
+  .band{padding-block:48px}
+  .cal td:first-child{width:auto;font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <div class="heroGrid">
+    <div class="posterFrame"><img src="img/poster.jpg" alt="VOLUNTARY poster"></div>
+    <div>
+      <div class="eyebrow">Case study</div>
+      <h1 class="mark">Voluntary</h1>
+      <p class="lede">A four-minute zombie comedy sketch for Halloween, built out the way a studio
+      would release a film. Poster, trailer, four standalone shorts, scripts, storyboards, and a
+      month of posts planned from one day of shooting.</p>
+      <p>Everything on this page was made in pre-production, before a frame was shot, by one person.</p>
+      <ul class="facts">
+        <li><b>The film</b><span>There isn't one. The sketch is the whole movie, and the campaign is built as if it weren't.</span></li>
+        <li><b>Shoot</b><span>One day. A living room, a parking lot, and a street in Los Angeles.</span></li>
+        <li><b>Output</b><span>One horizontal sketch, four verticals, a trailer, stills and memes, across a month</span></li>
+        <li><b>Built with</b><span>Fountain, code-drawn boards, AI-generated concept stills, a Notion and Claude Code back office</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="band wrap">
+  <div class="eyebrow">The pieces</div>
+  <h2>Everything a release needs, from one script</h2>
+  <div class="pieces">
+    <div class="piece">
+      <p class="k">The sketch</p><p class="f">Horizontal &middot; 4 min</p>
+      <p>Five people in a boarded-up room. Dean comes in bitten and begs to be killed. Terry volunteers a little too fast.</p>
+      <a href="files/VOLUNTARY-script.pdf">Script</a>
+    </div>
+    <div class="piece">
+      <p class="k">Four shorts</p><p class="f">Vertical &middot; under a minute each</p>
+      <p>Extra Teeth, Don't Touch Me, Prep, The Loud One. Same world, same cast, same day. Each one stands on its own.</p>
+      <a href="files/VOLUNTARY-bits.pdf">The bits</a>
+    </div>
+    <div class="piece">
+      <p class="k">The trailer</p><p class="f">Horizontal &middot; 90 sec</p>
+      <p>Cut from everything above, for the feature it pretends to be. Nobody in the trailer knows it's a comedy.</p>
+      <a href="files/VOLUNTARY-trailer.pdf">Trailer script</a>
+    </div>
+    <div class="piece">
+      <p class="k">Poster</p><p class="f">Key art</p>
+      <p>The tagline was "Somebody has to do it." Somebody crossed out "has." That correction is the whole joke.</p>
+      <a href="img/poster.jpg">Full size</a>
+    </div>
+    <div class="piece">
+      <p class="k">Treatment</p><p class="f">13 pages</p>
+      <p>Tone, look, references, cast, crew, and why it works, written for people who get asked to be in things.</p>
+      <a href="files/VOLUNTARY-treatment.pdf">Deck</a>
+    </div>
+    <div class="piece">
+      <p class="k">Cast page</p><p class="f">nfa.studio/voluntary</p>
+      <p>One link for actors and crew. Logline, the three things to read, open roles, the date.</p>
+      <a href="/voluntary/">Open it</a>
+    </div>
+  </div>
+</section>
+
+<section class="band wrap">
+  <div class="eyebrow">Don't Touch Me</div>
+  <h2>One short, built to be a meme</h2>
+  <p class="lede">Sixty seconds. Zombie point of view chasing a woman down a dark street. She turns,
+  screams DON'T TOUCH ME straight down the lens, and the zombie backs off terrified.</p>
+  <p>Put a different line over the top and it's a different meme. Three are below. If any one of
+  them catches, the public takes it from there.</p>
+  <div class="memes">
+    <img src="img/meme-a.jpg" alt="Meme still: every time I approach a girl at the bar">
+    <img src="img/meme-b.jpg" alt="Meme still: every time a guy approaches me at the bar">
+    <img src="img/meme-c.jpg" alt="Meme still: why I stopped online dating">
+  </div>
+  <p class="note">Concept still, AI-generated in pre-production to lock the frame before casting.</p>
+</section>
+
+<section class="band wrap">
+  <div class="eyebrow">Distribution</div>
+  <h2>One day becomes a month</h2>
+  <p class="lede">Every piece is planned so it goes out on its own schedule, stands on its own, and
+  points back at the sketch. Horizontal for YouTube, vertical for everything else, cut from the
+  same takes.</p>
+  <table class="cal">
+    <thead><tr><th>When</th><th>What goes out</th></tr></thead>
+    <tbody>
+      <tr><td>Week 1</td><td>The trailer. Played straight, no reveal.<span class="fmt">Horizontal, plus a vertical crop</span></td></tr>
+      <tr><td>Week 2</td><td>Don't Touch Me, then the two meme versions a few days apart.<span class="fmt">Vertical</span></td></tr>
+      <tr><td>Week 3</td><td>Prep and The Loud One. Stills from the room between them.<span class="fmt">Vertical</span></td></tr>
+      <tr><td>Halloween</td><td>The sketch. Extra Teeth the morning after.<span class="fmt">Horizontal, then vertical</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">The order is a plan, not a rule. Whatever people stay on moves up.</p>
+</section>
+
+<section class="band wrap">
+  <div class="eyebrow">Coverage</div>
+  <h2>Shot for horizontal and vertical at the same time</h2>
+  <p class="lede">Three cameras. Every frame is composed for 16:9 first, then each shot is marked
+  with how the vertical comes out of it: crop it, grab an extra take, or split-screen two cameras
+  for the ensemble beats.</p>
+  <p>The boards are drawn in code, so reblocking is a number change and a new PDF in seconds.</p>
+  <div class="boards">
+    <img src="img/boards-1.jpg" alt="Storyboard frames 1 to 6 with vertical crop notes">
+    <img src="img/boards-2.jpg" alt="Storyboard frames 13 to 16 with split-screen notes">
+  </div>
+  <div class="links"><a href="files/VOLUNTARY-boards.pdf">All boards</a><a href="files/VOLUNTARY-shotlist.pdf">Shot list</a></div>
+</section>
+
+<section class="band wrap">
+  <div class="two">
+    <div>
+      <div class="eyebrow">Hooks</div>
+      <h2>Tested, not guessed</h2>
+      <p class="lede">There is never just one trailer. Five versions of the first three seconds go
+      out, the one people stay past three seconds on is the one that gets pushed, and the recut is
+      same-day because the edit pipeline and the posting calendar are one system.</p>
+      <p>That's the same way Crazy Stupid Money runs every week, and it's why one person can keep
+      five platforms moving without an agency.</p>
+    </div>
+    <div>
+      <div class="eyebrow">The detail</div>
+      <h2>Scripts that look like scripts</h2>
+      <p>The cast draft carries a photocopied, red-penned version of the poster on the title page,
+      the way an old production draft would.</p>
+      <img src="img/titlepage.jpg" alt="Script title page with photocopied poster" style="max-width:360px">
+    </div>
+  </div>
+</section>
+
+<section class="band wrap">
+  <div class="who">
+    <h2>Who made this</h2>
+    <p class="lede">Josh Peters. Creative director, Los Angeles.</p>
+    <p>Wrote it, designed the poster, built the deck, the boards, the shot list, the cast page and
+    this one. Four years running Ankord Media's global creative team before that, and currently
+    the creator and host of Crazy Stupid Money, a street interview show shot, cut and posted across
+    five platforms by one person.</p>
+    <div class="links">
+      <a href="https://nfa.studio">nfa.studio</a>
+      <a href="https://instagram.com/crazystupidmoney">Crazy Stupid Money</a>
+      <a href="mailto:josh@nfa.studio">josh@nfa.studio</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>VOLUNTARY &middot; written and directed by Joshua Peters</span>
+  <span><a href="https://nfa.studio">NFA Studio</a></span>
+</footer>
+
+</body>
+</html>
