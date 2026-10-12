@@ -361,7 +361,7 @@ h3 {
 .tests { padding: 0 0 96px; }
 .tests-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid var(--gold-soft);
   border-bottom: 1px solid var(--gold-soft);
 }

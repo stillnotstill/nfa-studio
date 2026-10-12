@@ -46,7 +46,7 @@
       <a href="seltzer.html" aria-current="page">Seltzer</a>
       <a href="shop.html">Shop</a>
       <a href="story.html">My Story</a>
-      <a href="#find">Come Find Us</a>
+      <a href="find.html">Come Find Us</a>
       <a href="faq/index.html">FAQ</a>
       <a href="lab-results/index.html">Lab Results</a>
     </nav>
@@ -76,10 +76,10 @@
   </picture>
 
   <div class="hero__stack">
-    <h1 class="hero__line">Botanical seltzer, made in small batches in Montville, Maine</h1>
+    <h1 class="hero__line">Botanical seltzer, made in small batches in Maine</h1>
     <div class="hero__cta">
       <a class="btn btn--lg" href="#packs">Shop the Seltzer</a>
-      <a class="btn btn--glass" href="#find">Find a store</a>
+      <a class="btn btn--glass" href="find.html">Find a store</a>
     </div>
   </div>
 
@@ -207,7 +207,7 @@
           </thead>
           <tbody>
             <tr><th scope="row">CBD per can</th><td class="col-us">20mg per can</td><td class="no">None</td><td class="no">None</td><td class="no">None</td></tr>
-            <tr><th scope="row">Organic botanicals</th><td class="col-us"><span class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Yes</span></td><td class="no">Rarely</td><td class="no">Sometimes</td><td class="no">No</td></tr>
+            <tr><th scope="row">Real botanicals</th><td class="col-us"><span class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Yes</span></td><td class="no">Rarely</td><td class="no">Sometimes</td><td class="no">No</td></tr>
             <tr><th scope="row">Alcohol</th><td class="col-us">None</td><td>None</td><td>Trace</td><td>4 to 5%</td></tr>
             <tr><th scope="row">Added sugar</th><td class="col-us">None</td><td>39g+</td><td>Some</td><td>Some</td></tr>
             <tr><th scope="row">Calories</th><td class="col-us">Low</td><td>140+</td><td>30 to 60</td><td>100+</td></tr>
@@ -234,7 +234,7 @@
     <div class="details-copy reveal">
       <p class="eyebrow">Product details</p>
       <h2>What's in the can</h2>
-      <p class="details-lede">Sparkling water, organic botanicals, and 20mg of hemp extract. The full breakdown is below.</p>
+      <p class="details-lede">Sparkling water, botanical extracts, and 20mg of hemp extract. The full breakdown is below.</p>
 
       <div class="tabs">
         <div class="tablist" role="tablist" aria-label="Product information">
@@ -247,8 +247,8 @@
           <p>Each can holds one serving of CBD in a drink you would reach for anyway. Zero THC, no alcohol, no caffeine, no added sugar.</p>
           <ul class="checks">
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>20mg hemp extract per can</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Organic botanicals and sparkling water</li>
-            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Made in small batches in Montville, Maine</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Botanical extracts and sparkling water</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Made in small batches in Maine</li>
             <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Third party lab tested, results posted for every batch</li>
           </ul>
           <a class="link-gold" href="lab-results/index.html">See lab results</a>
@@ -256,9 +256,9 @@
 
         <div class="tabpanel" role="tabpanel" id="panel-ingredients" aria-labelledby="tab-ingredients" hidden>
           <dl class="ing">
-            <div><dt>Blueberry &amp; Lavender</dt><dd>Sparkling water, organic blueberry, organic lavender, hemp extract.</dd></div>
-            <div><dt>Hibiscus &amp; Lemon</dt><dd>Sparkling water, organic hibiscus, organic lemon, hemp extract.</dd></div>
-            <div><dt>Lime &amp; Mint</dt><dd>Sparkling water, organic lime, organic mint, hemp extract.</dd></div>
+            <div><dt>Blueberry &amp; Lavender</dt><dd>Sparkling water, blueberry extract, lavender, hemp extract.</dd></div>
+            <div><dt>Hibiscus &amp; Lemon</dt><dd>Sparkling water, hibiscus, lemon extract, hemp extract.</dd></div>
+            <div><dt>Lime &amp; Mint</dt><dd>Sparkling water, lime extract, mint, hemp extract.</dd></div>
           </dl>
           <p class="ing-note">Full ingredient statements are printed on every can.</p>
         </div>
@@ -319,9 +319,7 @@
           <input id="zip" type="text" inputmode="text" placeholder="Town or zip code" autocomplete="postal-code">
           <button class="btn btn--forest" type="submit">Find Nearby</button>
         </form>
-        <div class="regions" aria-label="Browse by region">
-          <a href="#stockists">Mid-Coast</a><a href="#stockists">Portland</a><a href="#stockists">Bangor</a><a href="#stockists">Down East</a><a href="#stockists">Western Maine</a>
-        </div>
+        <p class="locator__status" id="locStatus" aria-live="polite"></p>
       </div>
 
       <div class="kinds">
@@ -341,56 +339,30 @@
           <span>On the menu for people who are not drinking tonight.</span>
         </div>
       </div>
-    </div>
-
-    <!-- Stockists by town + order direct -->
-    <div class="find__grid" id="stockists">
-      <aside class="order-card reveal">
-        <p class="label">Order direct</p>
-        <p class="order-card__title">From the Farm</p>
-        <p>Every flavor, every pack size, and the whole Apothecary. Packed by hand in Montville.</p>
-        <a class="btn" href="shop.html">Shop the Seltzer</a>
-      </aside>
-
-      <div class="stockists reveal">
-        <div class="stockist">
-          <p class="stockist__town">Montville</p>
-          <p class="label stockist__where">The farm</p>
-          <ul><li>Mantis Medicinals farmstand</li><li>Pickup by appointment</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Belfast</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Camden</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Rockland</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Portland</p>
-          <p class="label stockist__where">Southern Maine</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Bangor</p>
-          <p class="label stockist__where">Central Maine</p>
-          <ul><li>Stockist name</li></ul>
-        </div>
+      <div class="regions" aria-label="Browse by region">
+        <button type="button">Southern Maine</button><button type="button">Portland</button><button type="button">Mid-Coast</button><button type="button">Western Maine</button><button type="button">Bangor</button><button type="button">Down East</button>
       </div>
     </div>
 
+    <!-- Stockists by town + order direct -->
+    <div class="find__results" id="stockists">
+      <div class="stockists reveal" id="shops" data-mode="compact"></div>
+    </div>
+
+    <div class="find__cards">
+      <aside class="order-card reveal">
+        <p class="label">Nothing close by?</p>
+        <p class="order-card__title">Order direct</p>
+        <p>Every flavor, every pack size, and the whole Apothecary. Packed by hand in Montville.</p>
+        <a class="btn" href="shop.html">Shop the Seltzer</a>
+      </aside>
       <aside class="wholesale reveal">
         <p class="label">For shops</p>
         <p class="wholesale__p">We are in co-ops, dispensaries, boutiques and cafes across Maine. If you want to carry us, say hello.</p>
         <a class="btn btn--forest" href="mailto:hello@mantismedicine.com?subject=Wholesale%20inquiry">Contact for wholesale</a>
       </aside>
+    </div>
+
   </div>
 </section>
 
@@ -401,13 +373,13 @@
   <div class="wrap">
     <div class="footer-brand">
       <img class="footer-logo" src="assets/brand/wordmark-purple-trim.png" alt="Mantis Medicinals">
-      <p class="fell-i">Sparkling botanical infusion crafted in small batches, Montville, ME</p>
+      <p class="fell-i">Sparkling botanical infusion crafted in small batches in Maine</p>
     </div>
     <nav class="footer-nav" aria-label="Footer">
       <a href="seltzer.html" aria-current="page">Seltzer</a>
       <a href="shop.html">Shop</a>
       <a href="story.html">My Story</a>
-      <a href="#find">Come Find Us</a>
+      <a href="find.html">Come Find Us</a>
       <a href="faq/index.html">FAQ</a>
       <a href="lab-results/index.html">Lab Results</a>
       <a href="mailto:hello@mantismedicine.com">Contact</a>
@@ -712,6 +684,7 @@ document.querySelectorAll('.product__sizes').forEach(function (row) {
   });
 });
 </script>
+<script src="stores.js" defer></script>
 </body>
 
 </html>

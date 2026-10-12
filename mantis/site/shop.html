@@ -45,7 +45,7 @@
       <a href="seltzer.html">Seltzer</a>
       <a href="shop.html" aria-current="page">Shop</a>
       <a href="story.html">My Story</a>
-      <a href="#find">Come Find Us</a>
+      <a href="find.html">Come Find Us</a>
       <a href="faq/index.html">FAQ</a>
       <a href="lab-results/index.html">Lab Results</a>
     </nav>
@@ -295,9 +295,7 @@
           <input id="zip" type="text" inputmode="text" placeholder="Town or zip code" autocomplete="postal-code">
           <button class="btn btn--forest" type="submit">Find Nearby</button>
         </form>
-        <div class="regions" aria-label="Browse by region">
-          <a href="#stockists">Mid-Coast</a><a href="#stockists">Portland</a><a href="#stockists">Bangor</a><a href="#stockists">Down East</a><a href="#stockists">Western Maine</a>
-        </div>
+        <p class="locator__status" id="locStatus" aria-live="polite"></p>
       </div>
 
       <div class="kinds">
@@ -317,56 +315,30 @@
           <span>On the menu for people who are not drinking tonight.</span>
         </div>
       </div>
-    </div>
-
-    <!-- Stockists by town + order direct -->
-    <div class="find__grid" id="stockists">
-      <aside class="order-card reveal">
-        <p class="label">Order direct</p>
-        <p class="order-card__title">From the Farm</p>
-        <p>Every flavor, every pack size, and the whole Apothecary. Packed by hand in Montville.</p>
-        <a class="btn" href="#packs">Shop the Seltzer</a>
-      </aside>
-
-      <div class="stockists reveal">
-        <div class="stockist">
-          <p class="stockist__town">Montville</p>
-          <p class="label stockist__where">The farm</p>
-          <ul><li>Mantis Medicinals farmstand</li><li>Pickup by appointment</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Belfast</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Camden</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Rockland</p>
-          <p class="label stockist__where">Mid-Coast</p>
-          <ul><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Portland</p>
-          <p class="label stockist__where">Southern Maine</p>
-          <ul><li>Stockist name</li><li>Stockist name</li></ul>
-        </div>
-        <div class="stockist">
-          <p class="stockist__town">Bangor</p>
-          <p class="label stockist__where">Central Maine</p>
-          <ul><li>Stockist name</li></ul>
-        </div>
+      <div class="regions" aria-label="Browse by region">
+        <button type="button">Southern Maine</button><button type="button">Portland</button><button type="button">Mid-Coast</button><button type="button">Western Maine</button><button type="button">Bangor</button><button type="button">Down East</button>
       </div>
     </div>
 
+    <!-- Stockists by town + order direct -->
+    <div class="find__results" id="stockists">
+      <div class="stockists reveal" id="shops" data-mode="compact"></div>
+    </div>
+
+    <div class="find__cards">
+      <aside class="order-card reveal">
+        <p class="label">Nothing close by?</p>
+        <p class="order-card__title">Order direct</p>
+        <p>Every flavor, every pack size, and the whole Apothecary. Packed by hand in Montville.</p>
+        <a class="btn" href="#packs">Shop the Seltzer</a>
+      </aside>
       <aside class="wholesale reveal">
         <p class="label">For shops</p>
         <p class="wholesale__p">We are in co-ops, dispensaries, boutiques and cafes across Maine. If you want to carry us, say hello.</p>
         <a class="btn btn--forest" href="mailto:hello@mantismedicine.com?subject=Wholesale%20inquiry">Contact for wholesale</a>
       </aside>
+    </div>
+
   </div>
 </section>
 
@@ -377,13 +349,13 @@
   <div class="wrap">
     <div class="footer-brand">
       <img class="footer-logo" src="assets/brand/wordmark-purple-trim.png" alt="Mantis Medicinals">
-      <p class="fell-i">Sparkling botanical infusion crafted in small batches, Montville, ME</p>
+      <p class="fell-i">Sparkling botanical infusion crafted in small batches in Maine</p>
     </div>
     <nav class="footer-nav" aria-label="Footer">
       <a href="seltzer.html">Seltzer</a>
       <a href="story.html">My Story</a>
       <a href="shop.html" aria-current="page">Shop</a>
-      <a href="#find">Come Find Us</a>
+      <a href="find.html">Come Find Us</a>
       <a href="faq/index.html">FAQ</a>
       <a href="lab-results/index.html">Lab Results</a>
       <a href="mailto:hello@mantismedicine.com">Contact</a>
@@ -685,6 +657,7 @@ document.querySelectorAll('.product__sizes').forEach(function (row) {
   });
 });
 </script>
+<script src="stores.js" defer></script>
 </body>
 
 </html>
