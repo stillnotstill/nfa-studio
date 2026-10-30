@@ -1,1 +1,8 @@
 node_modules/
+
+# Private business folders (never publish to nfa.studio)
+Active clients/
+Creations/
+NFA Corp/
+Perspective clients/
+NFA Finacial/
