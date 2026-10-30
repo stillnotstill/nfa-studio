@@ -3,7 +3,6 @@
    nothing unless the locator markup is on the page. No dependencies. */
 (function () {
   var STORES = [
-    { n: "Mantis Medicinals farmstand", a: "", t: "Montville", z: "", p: "", r: "The Farm", note: "Pickup by appointment" },
 
     // ---- Portland ----
     { n: "Atlantic Farms", a: "460 Warren Ave", t: "Portland", z: "04103", p: "2076139520", r: "Portland" },
@@ -69,7 +68,7 @@
     { n: "Day Break Growers Alliance", a: "", t: "Online", z: "", p: "", r: "Online", url: "https://daybreakgrowersalliance.com" }
   ];
 
-  var ORDER = ["The Farm", "Southern Maine", "Portland", "Mid-Coast", "Western Maine", "Bangor", "Down East", "Online"];
+  var ORDER = ["Southern Maine", "Portland", "Mid-Coast", "Western Maine", "Bangor", "Down East", "Online"];
 
   var root = document.getElementById("shops");
   var anchor = document.getElementById("stockists");
